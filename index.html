@@ -1,0 +1,149 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TerriaJS data source editor</title>
+    
+    <script src="jsoneditor.js"></script>
+    <link rel="stylesheet" href="foundation-5.5.2/css/foundation.css">
+    <link rel="stylesheet" href="foundation-icons/foundation-icons.css">
+
+    <!-- This is how you would link your custom stylesheet -->
+    <!--<link rel="stylesheet" href="foundation-5.5.2/css/app.css">-->
+
+    <script src="foundation-5.5.2/js/vendor/modernizr.js"></script>  
+    <style>
+      body, html { font-size: 75% ; } /* Why is Foundation so massive by default? */
+
+      #editor-buttons>button {
+        display: none;
+      }
+    </style>
+    </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel">
+          <h1>TerriaJS data source editor (proof of concept)</h1>
+          <formset id="editor-buttons">
+          <button id='submit'>Submit (console.log)</button>
+          <button id='restore'>Restore to Default</button>
+          <button id='enable_disable'>Disable/Enable Form</button>
+          <span id='valid_indicator'></span>
+
+          <div id='editor_holder'></div>
+          </formset>
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      var request = new XMLHttpRequest();
+      request.open('GET', 'schema2.json', true);
+
+      var schema={};
+      var editor;
+
+      request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+          // Success!
+          schema =  JSON.parse(request.responseText);
+          afterLoad();
+
+      } else {
+          alert ("Couldn't access schema.");
+        }
+      };
+
+      request.onerror = function() {
+          alert ("Couldn't access schema.");
+      };
+
+      request.send();
+
+      
+      // This is the starting value for the editor
+      // We will use this to seed the initial editor 
+      // and to provide a "Restore to Default" button.
+      var starting_value = {};
+      
+      function afterLoad() { 
+          // Initialize the editor
+          editor = new JSONEditor(document.getElementById('editor_holder'),{
+            // Enable fetching schemas via ajax
+            //ajax: true,
+            keep_oneof_values: false, // See https://github.com/jdorn/json-editor/issues/398
+            
+            // The schema for the editor
+            schema: schema,//{ $ref: "schema2.json" },
+            theme: "foundation5",
+            iconlib: "foundation3", 
+            disable_edit_json: true
+            
+            // Seed the form with a starting value
+            //startval: starting_value,
+            
+            // Disable additional properties
+            //no_additional_properties: true,
+            
+            // Require all properties by default
+            //required_by_default: true
+          });
+
+        // Hook up the submit button to log to the console
+        document.getElementById('submit').addEventListener('click',function() {
+          // Get the value from the editor
+          console.log(editor.getValue());
+        });
+        
+        // Hook up the Restore to Default button
+        document.getElementById('restore').addEventListener('click',function() {
+          editor.setValue(starting_value);
+        });
+        
+        // Hook up the enable/disable button
+        document.getElementById('enable_disable').addEventListener('click',function() {
+          // Enable form
+          if(!editor.isEnabled()) {
+            editor.enable();
+          }
+          // Disable form
+          else {
+            editor.disable();
+          }
+        });
+        
+        // Hook up the validation indicator to update its 
+        // status whenever the editor changes
+        editor.on('change',function() {
+          // Get an array of errors from the validator
+          var errors = editor.validate();
+          
+          var indicator = document.getElementById('valid_indicator');
+          
+          // Not valid
+          if(errors.length) {
+            indicator.style.color = 'red';
+            indicator.textContent = "not valid";
+            console.log(errors);
+          }
+          // Valid
+          else {
+            indicator.style.color = 'green';
+            indicator.textContent = "valid";
+          }
+        });
+      }
+
+    </script>
+    
+    <script src="foundation-5.5.2/js/vendor/jquery.js"></script>
+    <script src="foundation-5.5.2/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
