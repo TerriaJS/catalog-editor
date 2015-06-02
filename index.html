@@ -6,15 +6,25 @@
     <title>TerriaJS data source editor</title>
     
     <script src="jsoneditor.js"></script>
+    <!--
     <link rel="stylesheet" href="foundation-5.5.2/css/foundation.css">
     <link rel="stylesheet" href="foundation-icons/foundation-icons.css">
 
-    <!-- This is how you would link your custom stylesheet -->
-    <!--<link rel="stylesheet" href="foundation-5.5.2/css/app.css">-->
 
     <script src="foundation-5.5.2/js/vendor/modernizr.js"></script>  
+    -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="overrides.css">
+
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+
+
     <style>
-      body, html { font-size: 75% ; } /* Why is Foundation so massive by default? */
+      /* body, html { font-size: 100% ; } /* Why is Foundation so massive by default? */
       #jsonoutput { 
         display: none; 
         width: 80%;
@@ -22,12 +32,13 @@
         font-family:monospace;
         background-color: hsl(220,80%,95%);
       }
-      #editor-buttons>button {
-        /*display: none;*/
-      }
+      /*#editor-buttons>button {
+        //display: none;
+      }*/
     </style>
     </head>
   <body>
+    <div class="container">
     <div class="row">
       <div class="large-12 columns">
           <h1>TerriaJS data source editor (proof of concept)</h1>
@@ -44,7 +55,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="large-12 columns">
+      <div class="col-md-12">
           <formset id="editor-buttons">
           <button id='enable_disable' style="display: none">Disable/Enable Form</button>
           <span id='valid_indicator'></span>
@@ -54,11 +65,12 @@
 
       </div>
     </div>
+    </div>
 
     <script>
 
       var request = new XMLHttpRequest();
-      request.open('GET', 'schema3.json', true);
+      request.open('GET', 'catalog.json', true);
 
       var schema={};
       var editor;
@@ -95,8 +107,9 @@
             
             // The schema for the editor
             schema: schema,//{ $ref: "schema2.json" },
-            theme: "foundation5",
-            iconlib: "foundation3", 
+            //theme: "foundation5",
+            theme: "bootstrap3",
+            iconlib: "bootstrap3", 
             disable_edit_json: true
             
             // Seed the form with a starting value
@@ -148,11 +161,13 @@
       }
 
     </script>
-    
+    <!-- Latest compiled and minified JavaScript -->
     <script src="foundation-5.5.2/js/vendor/jquery.js"></script>
-    <script src="foundation-5.5.2/js/foundation.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+    <!--<script src="foundation-5.5.2/js/foundation.min.js"></script>
     <script>
       $(document).foundation();
-    </script>
+    </script>-->
   </body>
 </html>

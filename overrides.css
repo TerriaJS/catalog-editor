@@ -1,0 +1,9 @@
+.foundation-dnu-panel {
+  /* So many levels of nesting hurts your eyes... */
+  margin-right: -2px;
+  padding-right: 0;
+}
+
+.well-sm,.col-md-10 {
+  padding-right: 0;
+}
