@@ -4,10 +4,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "item.json"
-    },
-    {
-      "$ref": "itemOrGroup.json"
+      "$ref": "catalogGroup.json"
     }
   ],
   "defaultProperties": [

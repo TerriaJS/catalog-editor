@@ -3,10 +3,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "item.json"
-    },
-    {
-      "$ref": "itemOrGroup.json"
+      "$ref": "catalogItem.json"
     }
   ],
   "properties": {

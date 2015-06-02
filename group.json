@@ -2,10 +2,7 @@
   "title": "Group",
   "allOf": [
     {
-      "$ref": "itemGroup.json"
-    },
-    {
-      "$ref": "itemOrGroup.json"
+      "$ref": "catalogGroup.json"
     }
   ],
   "description": "A manual grouping of more items or groups",
@@ -13,6 +10,11 @@
   "required": [
     "name",
     "type"
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "items"
   ],
   "properties": {
     "type": {

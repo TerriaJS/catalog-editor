@@ -1,0 +1,82 @@
+{
+  type: object
+  allOf: [
+    { "$ref": "catalogMember.json" }
+  ]
+  properties: {
+    rectangle: {
+      type: "array" # TODO limit to 4 ? sometimes 2?
+      items: [
+        {
+          type: [
+            number
+            string
+          ]
+        }
+      ]
+    }
+    legendUrl: {
+      type: "string"
+      title: "Legend URL"
+      description: "The URL of the legend for this data item, or undefined if this data item does not have a legend."
+    }
+    dataUrlType: {
+      title: "Data URL Type"
+      description: 
+        "None: don't generate a URL for downloading data. 
+        Direct: use a hardcoded URL. Valid values are:
+        `direct` - A direct link to the data.
+        `wfs` - A Web Feature Service (WFS) base URL.  If dataUrl is not
+        specified, the base URL will be this data item's URL.
+        `wfs-complete` - A complete, ready-to-use link to download features from a WFS server.
+        `none` - There is no data link."
+      type: string
+      enum: [ "none", "direct", "wfs", "wfs-complete" ]
+    }
+    dataUrl: {
+      title: "Data URL"
+      description: "Hard coded location of data to download. Requires dataUrlType=direct"
+      type: string
+      format: url
+    }
+    dataCustodian: {
+      title: "Data Custodian"
+      description: "Text description of who is the custodian of this data source."
+      type: string
+    }
+    metadataUrl: {
+      title: "Metadata URL"
+      description: 
+        "The URL from which this data item's metadata description can be retrieved, or undefined if
+        metadata is not available for this data item.  The format of the metadata depends on the type of data item.
+        For example, Web Map Service (WMS) data items provide their metadata via their GetCapabilities document."
+    }
+    isEnabled: {
+      title: "Is Enabled"
+      type: boolean
+      description: 
+        "whether this data item is enabled.  An enabled data item appears in the
+        `Now Viewing` pane, but is not necessarily shown on the map."
+    }
+    isShown: {
+      title: "Is Shown"
+      type: boolean
+      description: 
+        "Whether this data item is currently shown on the map.  In order to be shown,
+        the item must also be enabled."
+    }
+    isLegendIvisible: {
+      title: "Is Legend Visible"
+      type: boolean
+      description: 
+        "Whether the legend for this data item is currently visible."
+    }
+    clock: {
+      title: "Clock"
+      type: object #??
+      description: "the clock parameters for this data item"        
+    }
+  }
+  # allOf: [ { "$ref": "itemOrGroup.json" } ]
+  # not: [ { "$ref": "#/definitions/group" } ]
+}

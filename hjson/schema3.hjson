@@ -33,7 +33,7 @@
     }
     corsDomains: {
       title: "CORS Domains"
-      description: "A list of domains that should be accessed through a proxy, due to not supporting CORS (cross-origin resource sharing)."
+      description: "A list of domains that can be accessed directly, since they are known to support CORS (cross-origin resource sharing)."
       items: {
           title: Host
           description: "Host name without protocol. For example: arcgis.com"

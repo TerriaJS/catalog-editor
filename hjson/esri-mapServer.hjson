@@ -3,8 +3,7 @@
   description: "One or more layers accessed through ESRI Mapserver"
   type: object
   allOf: [
-    { "$ref": "item.json" }
-    { "$ref": "itemOrGroup.json" }
+    { "$ref": "catalogItem.json" }
     { "$ref": "imageryLayer.json" }
     ]
   defaultProperties: [ "name", "type", "url", "layers" ]

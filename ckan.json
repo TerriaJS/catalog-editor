@@ -3,10 +3,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "itemOrGroup.json"
-    },
-    {
-      "$ref": "item.json"
+      "$ref": "catalogGroup.json"
     }
   ],
   "defaultProperties": [
@@ -61,6 +58,30 @@
           "type": "boolean"
         }
       }
+    },
+    "useResourceName": {
+      "title": "Use Resource Name",
+      "description": "Whether each catalog item's name should be populated from individual resources instead of from the CKAN dataset",
+      "type": "boolean"
+    },
+    "blacklist": {
+      "type": "object",
+      "description": "Names of datasets that will be filtered out of the catalogue. Set each to \"true\".",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "whitelist": {
+      "type": "object",
+      "description": "If there is a whitelist, only the names of datasets contained in it will be shown. All other datasets will be removed.",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "itemProperties": {
+      "type": "object",
+      "title": "Item Properties",
+      "description": "Any additional properties to set on each item in the group, overriding values retrieved from data sources."
     }
   }
 }

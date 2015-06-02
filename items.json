@@ -6,7 +6,7 @@
     "type": "object",
     "allOf": [
       {
-        "$ref": "itemOrGroup.json"
+        "$ref": "catalogMember.json"
       }
     ],
     "oneOf": [
@@ -17,7 +17,10 @@
         "$ref": "wms.json"
       },
       {
-        "$ref": "wmsGetCapabilities.json"
+        "$ref": "wms-getCapabilities.json"
+      },
+      {
+        "$ref": "wfs-getCapabilities.json"
       },
       {
         "$ref": "ckan.json"
@@ -36,6 +39,9 @@
       },
       {
         "$ref": "gpx.json"
+      },
+      {
+        "$ref": "ogr.json"
       },
       {
         "$ref": "esri-mapServer.json"

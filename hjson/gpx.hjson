@@ -3,8 +3,7 @@
   description: "A file containing a GPX trace."
   type: object
   allOf: [
-    { "$ref": "item.json" }
-    { "$ref": "itemOrGroup.json" }
+    { "$ref": "catalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url" ]
   properties: {

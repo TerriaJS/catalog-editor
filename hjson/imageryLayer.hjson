@@ -3,15 +3,14 @@
   description: "A generic source of imagery"
   type: object
   allOf: [
-    { "$ref": "item.json" }
-    { "$ref": "itemOrGroup.json" }
+    { "$ref": "catalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url", "layers" ]
   properties: {
 
     opacity: {
-      description: "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque"
-      type: number
+      description: "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque. Default: 0.6"
+      type: [ "number", "string" ]
     }
     treat404AsError: {
       description: 

@@ -1,0 +1,13 @@
+{
+  # General class for group items
+  type: object
+  properties: {
+    isOpen: {
+      title: "Is Open"
+      description: "Should this group be automatically opened when Terria loads?"
+      type: boolean
+    }
+    # The property `items: []` generally shouldn't be set, other than for the "group" type.
+
+  }
+}

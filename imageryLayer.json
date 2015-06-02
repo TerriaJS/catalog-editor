@@ -4,10 +4,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "item.json"
-    },
-    {
-      "$ref": "itemOrGroup.json"
+      "$ref": "catalogItem.json"
     }
   ],
   "defaultProperties": [
@@ -18,8 +15,11 @@
   ],
   "properties": {
     "opacity": {
-      "description": "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque",
-      "type": "number"
+      "description": "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque. Default: 0.6",
+      "type": [
+        "number",
+        "string"
+      ]
     },
     "treat404AsError": {
       "description": "whether a 404 response code when requesting a tile should be treated as an error.  If false, 404s\n        are assumed to just be missing tiles and need not be reported to the user.",

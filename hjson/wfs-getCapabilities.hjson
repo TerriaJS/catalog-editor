@@ -3,8 +3,7 @@
   description: "A number of layers from a Web Feature Service server"
   type: object
   allOf: [
-    { "$ref": "itemGroup.json" }
-    { "$ref": "itemOrGroup.json" }
+    { "$ref": "catalogGroup.json" }
     ]
   # required: [ "name", "type" ]
   defaultProperties: [ "name", "type", "url" ] # , "layers" ]
