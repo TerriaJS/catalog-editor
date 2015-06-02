@@ -1,0 +1,16 @@
+{
+  title: "KML file"
+  description: "A KML file (Keyhole Markup Language)"
+  type: object
+  allOf: [
+    { "$ref": "item.json" }
+    { "$ref": "itemOrGroup.json" }
+    ]
+  defaultProperties: [ "name", "type", "url" ]
+  properties: {
+    type: {
+      type: "string"
+      enum: [ "kml" ]
+    }
+  }
+}

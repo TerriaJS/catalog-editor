@@ -5,7 +5,6 @@
   allOf: [
     { "$ref": "item.json" }
     { "$ref": "itemOrGroup.json" }
-    { "$ref": "imageryLayer.json" }
     ]
   defaultProperties: [ "name", "type", "url", "layers" ]
   properties: {

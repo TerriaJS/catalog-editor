@@ -1,0 +1,42 @@
+{
+  title: "Imagery layer"
+  description: "A generic source of imagery"
+  type: object
+  allOf: [
+    { "$ref": "item.json" }
+    { "$ref": "itemOrGroup.json" }
+    ]
+  defaultProperties: [ "name", "type", "url", "layers" ]
+  properties: {
+
+    opacity: {
+      description: "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque"
+      type: number
+    }
+    treat404AsError: {
+      description: 
+        "whether a 404 response code when requesting a tile should be treated as an error.  If false, 404s
+        are assumed to just be missing tiles and need not be reported to the user."
+      type: boolean
+    }
+    ignoreUnknownTileErrors: {
+      description:
+        "Gets or sets a value indicating whether non-specific (no HTTP status code) tile errors should be ignored. This is a
+         last resort, for dealing with odd cases such as data sources that return non-images (eg XML) with a 200 status code.
+         No error messages will be shown to the user."
+      type: string
+    }
+
+    intervals: {
+      description: 
+        "The {@link TimeIntervalCollection} defining the intervals of distinct imagery.  If this catalog item 
+        is not time-dynamic, undefined."
+      type: object
+    }
+    keepOnTop: {
+      description:
+        "Keeps the layer on top of all other imagery layers.  This property is observable."
+      type: boolean
+    }
+  }
+}

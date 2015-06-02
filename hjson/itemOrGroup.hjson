@@ -11,7 +11,7 @@
     type: {
       title: "Item type"
       type: string
-      enum: [ "wms", "group", "ckan", "csv","abs-itt","wfs","wms-getCapabilities" ]
+      #enum: [ "wms", "group", "ckan", "csv","abs-itt","wfs","wms-getCapabilities" ]
     }
     url: {
       title: "URL"

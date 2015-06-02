@@ -8,6 +8,9 @@
     },
     {
       "$ref": "itemOrGroup.json"
+    },
+    {
+      "$ref": "imageryLayer.json"
     }
   ],
   "defaultProperties": [

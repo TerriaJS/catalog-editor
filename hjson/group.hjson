@@ -7,7 +7,7 @@
   description: "A manual grouping of more items or groups"
   type: "object"
   # defaultProperties: [ "name", "type", "items" ]
-  required: [ "name", "type"/*, "items" */]
+  required: [ "name", "type" ] # items?
   properties: {
     type: { type: "string", enum: [ "group" ] }
     items: { "$ref":  "items.json" }

@@ -13,16 +13,7 @@
     },
     "type": {
       "title": "Item type",
-      "type": "string",
-      "enum": [
-        "wms",
-        "group",
-        "ckan",
-        "csv",
-        "abs-itt",
-        "wfs",
-        "wms-getCapabilities"
-      ]
+      "type": "string"
     },
     "url": {
       "title": "URL",

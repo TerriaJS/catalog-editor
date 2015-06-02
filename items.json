@@ -30,6 +30,18 @@
       },
       {
         "$ref": "wfs.json"
+      },
+      {
+        "$ref": "kml.json"
+      },
+      {
+        "$ref": "gpx.json"
+      },
+      {
+        "$ref": "esri-mapServer.json"
+      },
+      {
+        "$ref": "esri-mapServer-group.json"
       }
     ]
   }
