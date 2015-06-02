@@ -26,7 +26,7 @@
     <style>
       /* body, html { font-size: 100% ; } /* Why is Foundation so massive by default? */
       #jsonoutput { 
-        display: none; 
+        /*display: none; */
         width: 80%;
         height: 200px;
         font-family:monospace;
@@ -46,8 +46,8 @@
     </div>
     <div class="row">
       <div class="large-8 columns">
-          <button id='submit'>View JSON</button>
-          <button id='load'>Load from JSON</button>
+          <!--<button id='submit'>View JSON</button>
+          <button id='load'>Load from JSON</button>-->
           <textarea id="jsonoutput">
           </textarea>
       </div>
@@ -60,7 +60,7 @@
           <button id='enable_disable' style="display: none">Disable/Enable Form</button>
           <span id='valid_indicator'></span>
 
-          <div id='editor_holder'></div>
+          <div id='editor_holder' style="display: none"></div>
           </formset>
 
       </div>
@@ -92,6 +92,20 @@
 
       request.send();
 
+      JSONEditor.defaults.iconlibs.mybootstrap = JSONEditor.AbstractIconLib.extend({
+        mapping: {
+          collapse: 'chevron-down',
+          //expand: 'pencil',
+          "delete": 'remove',
+          edit: 'pencil',
+          add: 'plus',
+          cancel: 'floppy-remove',
+          save: 'floppy-saved',
+          moveup: 'arrow-up',
+          movedown: 'arrow-down'
+        },
+        icon_prefix: 'glyphicon glyphicon-'
+      });
       
       // This is the starting value for the editor
       // We will use this to seed the initial editor 
@@ -109,7 +123,7 @@
             schema: schema,//{ $ref: "schema2.json" },
             //theme: "foundation5",
             theme: "bootstrap3",
-            iconlib: "bootstrap3", 
+            iconlib: "mybootstrap", 
             disable_edit_json: true
             
             // Seed the form with a starting value
@@ -123,6 +137,7 @@
           });
 
         // Hook up the submit button to log to the console
+        /*
         $("#submit").click(function() {
           // Get the value from the editor
           $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
@@ -131,10 +146,11 @@
         
         $("#load").click(function() {
           editor.setValue(JSON.parse($("#jsonoutput").val()));
-        });
+        });*/
 
         $("#jsonoutput").change(function() {
           editor.setValue(JSON.parse($("#jsonoutput").val()));
+          $("#editor_holder").show();
         });
         
         // Hook up the validation indicator to update its 

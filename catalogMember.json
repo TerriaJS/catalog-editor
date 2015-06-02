@@ -13,7 +13,8 @@
     },
     "type": {
       "title": "Item type",
-      "type": "string"
+      "type": "string",
+      "description": "Code designating the kind of data source. Cannot be changed in this editor."
     },
     "description": {
       "title": "Description",

@@ -30,6 +30,11 @@
           "type": "boolean"
         },
         "colorMap": {
+          "type": "array",
+          "format": "table",
+          "options": {
+            "collapsed": true
+          },
           "items": [
             {
               "required": [
@@ -46,8 +51,7 @@
                 }
               }
             }
-          ],
-          "type": "array"
+          ]
         },
         "displayTime": {
           "type": "integer"

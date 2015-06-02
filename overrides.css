@@ -6,4 +6,19 @@
 
 .well-sm,.col-md-10 {
   padding-right: 0;
+  margin-left:-11px;
+  margin-right:-1px;
+}
+
+label {
+  font-size:24px;
+}
+
+label.control-label {
+  font-size:14px;
+}
+
+button.btn.btn-default.json-editor-btn-delete[title="Delete Last Item"],
+button.btn.btn-default.json-editor-btn-delete[title="Delete All"] {
+  display: none; /* spammy buttons at the top of each object */
 }

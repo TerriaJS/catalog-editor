@@ -5,8 +5,11 @@
       "$ref": "catalogGroup.json"
     }
   ],
-  "description": "A manual grouping of more items or groups",
+  "description": "An additional layer in the catalog hierarchy.",
   "type": "object",
+  "options": {
+    "disable_collapse": true
+  },
   "required": [
     "name",
     "type"

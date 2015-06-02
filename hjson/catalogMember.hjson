@@ -11,6 +11,7 @@
     type: {
       title: "Item type"
       type: string
+      description: "Code designating the kind of data source. Cannot be changed in this editor."
       #enum: [ "wms", "group", "ckan", "csv","abs-itt","wfs","wms-getCapabilities" ]
     }
     description: {

@@ -49,7 +49,7 @@
     }
     dataCustodian: {
       title: "Data Custodian"
-      description: "Text description of who is the custodian of this data source."
+      description: "Markdown/text description of the custodian of this data source."
       type: string
     }
     metadataUrl: {

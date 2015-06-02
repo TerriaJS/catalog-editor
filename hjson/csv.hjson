@@ -17,10 +17,13 @@
         scaleByValue: {
           type: boolean
         }
-        colorMap:
-        {
-          items:
-          [
+        colorMap: {
+          type: array
+          format: table
+          options: {
+            collapsed: true
+          }
+          items: [
             {
               required: [
                 color
@@ -39,9 +42,9 @@
               }
             }
           ]
-          type: array
+          
         }
-        displayTime:{
+        displayTime: {
           type: integer
         }
         maxDisplayValue: {
