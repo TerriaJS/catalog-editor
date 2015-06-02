@@ -2,10 +2,12 @@
   title: "Items" 
   description: List of items or groups
   type: array
-  #format: tabs
+  format: tabs
   items:
     {
     type: object
+    title: Item
+    headerTemplate: "{{ self.name }}" # ({{self.type}})",
     allOf: [ { "$ref": "catalogMember.json" } ]
     oneOf: [ # keep in sync with catalog in main schema file.
       { "$ref": "group.json" }

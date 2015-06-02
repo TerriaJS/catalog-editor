@@ -4,7 +4,8 @@
     "isOpen": {
       "title": "Is Open",
       "description": "Should this group be automatically opened when Terria loads?",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     }
   }
 }

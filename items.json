@@ -2,8 +2,11 @@
   "title": "Items",
   "description": "List of items or groups",
   "type": "array",
+  "format": "tabs",
   "items": {
     "type": "object",
+    "title": "Item",
+    "headerTemplate": "{{ self.name }}",
     "allOf": [
       {
         "$ref": "catalogMember.json"

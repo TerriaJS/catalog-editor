@@ -8,6 +8,14 @@
   "properties": {
     "rectangle": {
       "type": "array",
+      "format": "table",
+      "title": "Bounding box",
+      "options": {
+        "collapsed": true,
+        "disable_array_reorder": true
+      },
+      "maxItems": 4,
+      "minItems": 2,
       "items": [
         {
           "type": [
@@ -51,16 +59,19 @@
     "isEnabled": {
       "title": "Is Enabled",
       "type": "boolean",
+      "format": "checkbox",
       "description": "whether this data item is enabled.  An enabled data item appears in the\n        `Now Viewing` pane, but is not necessarily shown on the map."
     },
     "isShown": {
       "title": "Is Shown",
       "type": "boolean",
+      "format": "checkbox",
       "description": "Whether this data item is currently shown on the map.  In order to be shown,\n        the item must also be enabled."
     },
-    "isLegendIvisible": {
+    "isLegendVisible": {
       "title": "Is Legend Visible",
       "type": "boolean",
+      "format": "checkbox",
       "description": "Whether the legend for this data item is currently visible."
     },
     "clock": {

@@ -6,6 +6,7 @@
       title: "Is Open"
       description: "Should this group be automatically opened when Terria loads?"
       type: boolean
+      format: checkbox
     }
     # The property `items: []` generally shouldn't be set, other than for the "group" type.
 
