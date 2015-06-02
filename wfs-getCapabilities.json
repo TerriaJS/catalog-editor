@@ -1,0 +1,26 @@
+{
+  "title": "WFS group ('GetCapabilities')",
+  "description": "A number of layers from a Web Feature Service server",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "itemGroup.json"
+    },
+    {
+      "$ref": "itemOrGroup.json"
+    }
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "wfs-getCapabilities"
+      ]
+    }
+  }
+}
