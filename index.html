@@ -15,34 +15,50 @@
     <script src="foundation-5.5.2/js/vendor/modernizr.js"></script>  
     <style>
       body, html { font-size: 75% ; } /* Why is Foundation so massive by default? */
-
+      #jsonoutput { 
+        display: none; 
+        width: 80%;
+        height: 200px;
+        font-family:monospace;
+        background-color: hsl(220,80%,95%);
+      }
       #editor-buttons>button {
-        display: none;
+        /*display: none;*/
       }
     </style>
     </head>
   <body>
     <div class="row">
       <div class="large-12 columns">
-        <div class="panel">
           <h1>TerriaJS data source editor (proof of concept)</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-8 columns">
+          <button id='submit'>View JSON</button>
+          <button id='load'>Load from JSON</button>
+          <textarea id="jsonoutput">
+          </textarea>
+      </div>
+      <div class="large-4 columns">
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
           <formset id="editor-buttons">
-          <button id='submit'>Submit (console.log)</button>
-          <button id='restore'>Restore to Default</button>
-          <button id='enable_disable'>Disable/Enable Form</button>
+          <button id='enable_disable' style="display: none">Disable/Enable Form</button>
           <span id='valid_indicator'></span>
 
           <div id='editor_holder'></div>
           </formset>
 
-        </div>
       </div>
     </div>
 
     <script>
 
       var request = new XMLHttpRequest();
-      request.open('GET', 'schema2.json', true);
+      request.open('GET', 'schema3.json', true);
 
       var schema={};
       var editor;
@@ -74,7 +90,7 @@
           // Initialize the editor
           editor = new JSONEditor(document.getElementById('editor_holder'),{
             // Enable fetching schemas via ajax
-            //ajax: true,
+            ajax: true,
             keep_oneof_values: false, // See https://github.com/jdorn/json-editor/issues/398
             
             // The schema for the editor
@@ -94,26 +110,18 @@
           });
 
         // Hook up the submit button to log to the console
-        document.getElementById('submit').addEventListener('click',function() {
+        $("#submit").click(function() {
           // Get the value from the editor
-          console.log(editor.getValue());
+          $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
+          $("#jsonoutput").show();
         });
         
-        // Hook up the Restore to Default button
-        document.getElementById('restore').addEventListener('click',function() {
-          editor.setValue(starting_value);
+        $("#load").click(function() {
+          editor.setValue(JSON.parse($("#jsonoutput").val()));
         });
-        
-        // Hook up the enable/disable button
-        document.getElementById('enable_disable').addEventListener('click',function() {
-          // Enable form
-          if(!editor.isEnabled()) {
-            editor.enable();
-          }
-          // Disable form
-          else {
-            editor.disable();
-          }
+
+        $("#jsonoutput").change(function() {
+          editor.setValue(JSON.parse($("#jsonoutput").val()));
         });
         
         // Hook up the validation indicator to update its 
@@ -134,6 +142,7 @@
           else {
             indicator.style.color = 'green';
             indicator.textContent = "valid";
+            $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
           }
         });
       }

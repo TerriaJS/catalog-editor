@@ -1,0 +1,4 @@
+#/bin/bash
+for x in *.hjson; do
+hjson -j ${x%.*}.hjson > ../${x%.*}.json
+done

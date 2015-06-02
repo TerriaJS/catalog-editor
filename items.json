@@ -1,0 +1,36 @@
+{
+  "title": "Items",
+  "description": "List of items or groups",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "allOf": [
+      {
+        "$ref": "itemOrGroup.json"
+      }
+    ],
+    "oneOf": [
+      {
+        "$ref": "group.json"
+      },
+      {
+        "$ref": "wms.json"
+      },
+      {
+        "$ref": "wmsGetCapabilities.json"
+      },
+      {
+        "$ref": "ckan.json"
+      },
+      {
+        "$ref": "csv.json"
+      },
+      {
+        "$ref": "abs-itt.json"
+      },
+      {
+        "$ref": "wfs.json"
+      }
+    ]
+  }
+}

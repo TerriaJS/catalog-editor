@@ -1,0 +1,15 @@
+{
+  title: "Group"
+  allOf: [
+    { "$ref": "itemGroup.json" }
+    { "$ref": "itemOrGroup.json" }
+  ]
+  description: "A manual grouping of more items or groups"
+  type: "object"
+  # defaultProperties: [ "name", "type", "items" ]
+  required: [ "name", "type"/*, "items" */]
+  properties: {
+    type: { type: "string", enum: [ "group" ] }
+    items: { "$ref":  "items.json" }
+  }
+}

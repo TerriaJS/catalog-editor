@@ -1,0 +1,72 @@
+{
+  title: "CSV file"
+  description: "A comma-separated value file to be loaded as either points or mapped to regions."
+  type: object
+  allOf: [ 
+    { "$ref": "item.json" }
+    { "$ref": "itemOrGroup.json" }
+  ]
+  defaultProperties: [ "name", "type", "url", "tableStyle" ]
+  properties: {
+    type: { type: "string", enum: [ "csv" ] }
+    tableStyle: {
+      type: object
+      properties: {
+        scale: {
+          type: number
+        }
+        scaleByValue: {
+          type: boolean
+        }
+        colorMap:
+        {
+          items:
+          [
+            {
+              required: [
+                color
+                offset
+              ]
+              type: object
+              properties: {
+                color:
+                {
+                  type: string
+                }
+                offset:
+                {
+                  type: number
+                }
+              }
+            }
+          ]
+          type: array
+        }
+        displayTime:{
+          type: integer
+        }
+        maxDisplayValue: {
+          type: integer
+        }
+        imageUrl: {
+          type: string
+        }
+        regionType: { #unclear how this works
+          type: string
+        }
+        minDisplayValue: {
+          type: integer
+        }
+        dataVariable: {
+          type: string
+        }
+        regionVariable: {
+          type: string
+        }
+
+      }
+    }
+
+  }
+
+}

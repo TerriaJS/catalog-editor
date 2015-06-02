@@ -1,0 +1,57 @@
+{
+  title: "CKAN catalog"
+  type: object
+  allOf: [
+    # { "$ref": "itemGroup.json" }
+    { "$ref": "itemOrGroup.json" }
+    { "$ref": "item.json" } ## CHANGEME`
+  ]
+  defaultProperties: [ "type", "name", "url" ]
+  properties: {
+    type: { type: "string", enum: [ "ckan" ] }
+    filterQuery: {
+      type: array
+      title: "Filter Query"
+      description: 
+        '''
+        The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the
+        array is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The
+        search string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.
+        See the Solr documentation (http://wiki.apache.org/solr/CommonQueryParameters#fq) for information about filter queries.
+        '''
+      items: [ { "type": "string" } ]
+    }
+    includeWms: {
+      title: "Include WMS Data Sources"
+      type: boolean
+    }
+    includeKml: {
+      title: "Include KML Data Sources"
+      type: boolean
+    }
+    includeEsriMapServer: {
+      title: "Include ESRI Map Server Data Sources"
+      type: boolean
+    }
+    minimumMaxScaleDenominator: {
+      title: "Minimum Max Scale Denominator"
+      description: "The minimum MaxScaleDenominator that is allowed for a WMS dataset to be included in this CKAN group."
+      type: number
+    }
+    filterByWmsGetCapabilities: {
+      title: "Filter by WMS 'Get Capabilities'"
+      type: boolean
+
+      description: "Whether the CKAN datasets should be filtered by querying GetCapabilities from each referenced WMS server and excluding datasets not found therein."
+    }
+    wmsParameters: {
+      type: object
+      description: "Parameters that will be set on each WMS item found in the catalog"
+      properties: {
+        tiled: {
+          type: boolean
+        }
+      }
+    }
+  }
+}

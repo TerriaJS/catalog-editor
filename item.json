@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "dataUrlType": {
+      "title": "Data URL Type",
+      "description": "None: don't generate a URL for downloading data. \n        Direct: use a hardcoded URL. alid values are:\n        `direct` - A direct link to the data.\n        `wfs` - A Web Feature Service (WFS) base URL.  If dataUrl is not\n        specified, the base URL will be this data item's URL.\n        `wfs-complete` - A complete, ready-to-use link to download features from a WFS server.\n        `none` - There is no data link.",
+      "type": "string",
+      "enum": [
+        "none",
+        "direct",
+        "wfs",
+        "wfs-complete"
+      ]
+    },
+    "dataUrl": {
+      "title": "Data URL",
+      "description": "Hard coded location of data to download. Requires dataUrlType=direct",
+      "type": "string",
+      "format": "url"
+    },
+    "keepOnTop": {
+      "title": "Keep On Top",
+      "description": "Whether to show this layer above others.",
+      "type": "boolean"
+    }
+  }
+}
