@@ -71,18 +71,12 @@ function afterSchemaLoad() {
     // Get an array of errors from the validator
     var errors = editor.validate();
     
-    var indicator = document.getElementById('valid_indicator');
-    
     // Not valid
     if(errors.length) {
-      indicator.style.color = 'red';
-      indicator.textContent = "not valid";
+      alert("Error in the schema file.")
       console.log(errors);
-    }
-    // Valid
-    else {
-      indicator.style.color = 'green';
-      indicator.textContent = "valid";
+    } else {
+      
       $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
     }
   });
@@ -106,11 +100,13 @@ $("#external-jsons li").click(function(e) {
       error: function(e) { alert("Error " + e.status + ": " + e.statusText); }
   });
   $("#editor_holder").hide();
+  $("#loading h2").text("Loading datasource file");
   $("#loading").show();
+
 });
 function loadedFile(t) {
     var catalog = t;
-
+    $("#loading h2").text("Parsing datasource file"); // Doesn't seem to display in time...
     editor.setValue(catalog);
     $("#editor_holder").show();
     $("#loading").hide();
