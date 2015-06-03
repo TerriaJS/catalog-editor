@@ -22,7 +22,7 @@
     },
     "tableStyle": {
       "type": "object",
-      "title": "Table style",
+      "title": "Table styling",
       "properties": {
         "scale": {
           "type": "number"

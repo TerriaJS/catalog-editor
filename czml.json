@@ -1,0 +1,23 @@
+{
+  "title": "CZML file",
+  "description": "A CZML (Cesium markup language) file",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "catalogItem.json"
+    }
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "czml"
+      ]
+    }
+  }
+}

@@ -44,6 +44,9 @@
         "$ref": "geojson.json"
       },
       {
+        "$ref": "czml.json"
+      },
+      {
         "$ref": "gpx.json"
       },
       {

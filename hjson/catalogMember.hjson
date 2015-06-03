@@ -1,4 +1,5 @@
 {
+  # Ultimate base class for both items and groups
   required: [ "name", "type" ]
   type: object
   properties: {
