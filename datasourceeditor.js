@@ -5,8 +5,12 @@ var editor;
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     // Success!
-    schema =  JSON.parse(request.responseText);
-    afterLoad();
+    try {
+      schema =  JSON.parse(request.responseText);
+      afterSchemaLoad();
+    } catch (e) {
+      alert ("Problem loading schema: " + e.message);
+    }
 
 } else {
     alert ("Couldn't access schema.");
@@ -23,7 +27,7 @@ $(function() {
 });
 
       
-function afterLoad() { 
+function afterSchemaLoad() { 
     // Initialize the editor
 
     JSONEditor.defaults.iconlibs.mybootstrap = JSONEditor.AbstractIconLib.extend({
@@ -89,6 +93,8 @@ $("#external-jsons li").click(function(e) {
   targetname = e.target.textContent.trim();
   if  (targetname=='test-special') {
     url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/191a4cb06ecf5089cd632f56140c2ec6f52df3c6/gistfile1.json';
+  } else if (targetname == 'ganew') {
+    url ='https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/ganew.json?ref=ga-datasource';
   } else {
     url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
   }
