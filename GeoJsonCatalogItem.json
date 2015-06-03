@@ -1,0 +1,22 @@
+{
+  "title": "GeoJSON file",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    }
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "geojson"
+      ]
+    }
+  }
+}

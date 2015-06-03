@@ -2,7 +2,7 @@
   title: "CKAN catalog"
   type: object
   allOf: [
-    { "$ref": "catalogGroup.json" }
+    { "$ref": "grouptypes.json" }
   ]
   defaultProperties: [ "type", "name", "url" ]
   properties: {

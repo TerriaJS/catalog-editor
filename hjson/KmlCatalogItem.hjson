@@ -1,15 +1,15 @@
 {
-  title: "CZML file"
-  description: "A CZML (Cesium markup language) file"
+  title: "KML file"
+  description: "A KML or KMZ file (Keyhole Markup Language)"
   type: object
   allOf: [
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url" ]
   properties: {
     type: {
       type: "string"
-      enum: [ "czml" ]
+      enum: [ "kml" ]
     }
   }
 }

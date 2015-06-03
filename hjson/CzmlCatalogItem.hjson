@@ -1,15 +1,15 @@
 {
-  title: "GeoJSON file"
-  #description: "A GeoJSON file"
+  title: "CZML file"
+  description: "A CZML (Cesium markup language) file"
   type: object
   allOf: [
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url" ]
   properties: {
     type: {
       type: "string"
-      enum: [ "geojson" ]
+      enum: [ "czml" ]
     }
   }
 }

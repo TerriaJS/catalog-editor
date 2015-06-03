@@ -2,7 +2,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "catalogMember.json"
+      "$ref": "CatalogMember.json"
     }
   ],
   "properties": {

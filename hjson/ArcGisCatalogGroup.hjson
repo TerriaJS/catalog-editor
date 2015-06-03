@@ -3,7 +3,7 @@
   description: "An ESRI Mapserver catalog"
   type: object
   allOf: [
-    { "$ref": "catalogGroup.json" }
+    { "$ref": "grouptypes.json" }
     ]
   defaultProperties: [ "name", "type", "url", "dataCustodian"  ]
   properties: {

@@ -2,7 +2,7 @@
   title: "ABS ITT" # what does ITT stand for?
   type: object
   allOf: [ 
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
   ]
   defaultProperties: [ "type", "url", "name", "dataSetID", "regionType", "regionConcept", "filter" ]
   properties: {

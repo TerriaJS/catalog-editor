@@ -3,9 +3,9 @@
   description: "A single layer from a Web Mapping Service server"
   type: object
   allOf: [
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
     # { "$ref": "itemOrGroup.json" }
-    { "$ref": "imageryLayer.json" }
+    { "$ref": "ImageryLayerCatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url", "layers" ]
   properties: {

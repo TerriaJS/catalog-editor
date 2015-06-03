@@ -2,7 +2,7 @@
   title: "ABS ITT Dataset List" # what does ITT stand for?
   type: object
   allOf: [
-    { "$ref": "catalogGroup.json" }
+    { "$ref": "grouptypes.json" }
   ]
   properties: {
     type: { type: "string", enum: [ "abs-itt-dataset-list" ] }

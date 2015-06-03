@@ -1,21 +1,16 @@
 {
-  # General class for group items
-  type: object
+  title: "Group"
+  allOf: [
+    { "$ref": "grouptypes.json" }
+  ]
+  description: "An additional layer in the catalog hierarchy."
+  type: "object"
+  options: { "disable_collapse": true }
+  # defaultProperties: [ "name", "type", "items" ]
+  required: [ "name", "type" ] # items?
+  defaultProperties: [ "name", "type", "items" ]
   properties: {
-    isOpen: {
-      title: "Is Open"
-      description: "Should this group be automatically opened when Terria loads?"
-      type: boolean
-      format: checkbox
-    }
-    # The property `items: []` generally shouldn't be set, other than for the "group" type.
-
-    # Technically set on each item individually..."
-    dataCustodian: {
-      title: "Data Custodian"
-      description: "Markdown/text description of the custodian of this data source."
-      type: string
-    }
-
+    type: { type: "string", enum: [ "group" ] }
+    items: { "$ref":  "items.json" }
   }
 }

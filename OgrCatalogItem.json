@@ -1,0 +1,23 @@
+{
+  "title": "Other geospatial file (OGR)",
+  "description": "A URL pointing to any file supported by the ogr2ogr conversion library.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    }
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "ogr"
+      ]
+    }
+  }
+}

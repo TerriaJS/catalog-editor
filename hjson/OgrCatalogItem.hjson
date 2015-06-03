@@ -3,7 +3,7 @@
   description: "A URL pointing to any file supported by the ogr2ogr conversion library."
   type: object
   allOf: [
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url" ]
   properties: {

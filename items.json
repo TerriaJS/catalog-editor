@@ -9,57 +9,57 @@
     "headerTemplate": "{{ self.name }}",
     "allOf": [
       {
-        "$ref": "catalogMember.json"
+        "$ref": "CatalogMember.json"
       }
     ],
     "oneOf": [
       {
-        "$ref": "group.json"
+        "$ref": "CatalogGroup.json"
       },
       {
-        "$ref": "wms.json"
+        "$ref": "WebMapServiceCatalogItem.json"
       },
       {
-        "$ref": "wms-getCapabilities.json"
+        "$ref": "WebMapServiceCatalogGroup.json"
       },
       {
-        "$ref": "wfs-getCapabilities.json"
+        "$ref": "WebFeatureServiceCatalogGroup.json"
       },
       {
-        "$ref": "ckan.json"
+        "$ref": "CkanCatalogGroup.json"
       },
       {
-        "$ref": "csv.json"
+        "$ref": "CsvCatalogItem.json"
       },
       {
-        "$ref": "abs-itt.json"
+        "$ref": "AbsIttCatalogItem.json"
       },
       {
-        "$ref": "abs-itt-dataset-list.json"
+        "$ref": "AbsIttCatalogGroup.json"
       },
       {
-        "$ref": "wfs.json"
+        "$ref": "WebFeatureServiceCatalogItem.json"
       },
       {
-        "$ref": "kml.json"
+        "$ref": "KmlCatalogItem.json"
       },
       {
-        "$ref": "geojson.json"
+        "$ref": "GeoJsonCatalogItem.json"
       },
       {
-        "$ref": "czml.json"
+        "$ref": "CzmlCatalogItem.json"
       },
       {
-        "$ref": "gpx.json"
+        "$ref": "GpxCatalogItem.json"
       },
       {
-        "$ref": "ogr.json"
+        "$ref": "OgrCatalogItem.json"
       },
       {
-        "$ref": "esri-mapServer.json"
+        "$ref": "ArcGisCatalogItem.json"
       },
       {
-        "$ref": "esri-mapServer-group.json"
+        "$ref": "ArcGisCatalogGroup.json"
       }
     ]
   }

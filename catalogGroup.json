@@ -1,16 +1,33 @@
 {
+  "title": "Group",
+  "allOf": [
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ],
+  "description": "An additional layer in the catalog hierarchy.",
   "type": "object",
+  "options": {
+    "disable_collapse": true
+  },
+  "required": [
+    "name",
+    "type"
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "items"
+  ],
   "properties": {
-    "isOpen": {
-      "title": "Is Open",
-      "description": "Should this group be automatically opened when Terria loads?",
-      "type": "boolean",
-      "format": "checkbox"
+    "type": {
+      "type": "string",
+      "enum": [
+        "group"
+      ]
     },
-    "dataCustodian": {
-      "title": "Data Custodian",
-      "description": "Markdown/text description of the custodian of this data source.",
-      "type": "string"
+    "items": {
+      "$ref": "items.json"
     }
   }
 }

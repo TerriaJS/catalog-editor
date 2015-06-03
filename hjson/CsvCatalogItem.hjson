@@ -3,7 +3,7 @@
   description: "A comma-separated value file to be loaded as either points or mapped to regions."
   type: object
   allOf: [ 
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
   ]
   defaultProperties: [ "name", "type", "url", "tableStyle" ]
   properties: {

@@ -3,7 +3,7 @@
   description: "A feature from a Web Feature Service server"
   type: object
   allOf: [
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url", "typeNames" ]
   properties: {

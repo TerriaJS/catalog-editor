@@ -3,7 +3,7 @@
   description: "A generic source of imagery"
   type: object
   allOf: [
-    { "$ref": "catalogItem.json" }
+    { "$ref": "CatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url", "layers" ]
   properties: {
