@@ -63,7 +63,6 @@
       format: checkbox
     }
     blacklist: {
-      # Blacklists are an object of { itemname: true } pairs.
       type: object
       description: "Names of datasets that will be filtered out of the catalogue. Set each to \"true\"."
       additionalProperties: {

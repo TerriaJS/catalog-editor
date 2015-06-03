@@ -1,6 +1,6 @@
 {
   "title": "KML file",
-  "description": "A KML file (Keyhole Markup Language)",
+  "description": "A KML or KMZ file (Keyhole Markup Language)",
   "type": "object",
   "allOf": [
     {

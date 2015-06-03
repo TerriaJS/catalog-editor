@@ -6,8 +6,13 @@
     { "$ref": "catalogGroup.json" }
     ]
   # required: [ "name", "type" ]
-  defaultProperties: [ "name", "type", "url" ] # , "layers" ]
+  defaultProperties: [ "name", "type", "url", "dataCustodian" ] # , "layers" ]
   properties: {
     type: { type: "string", enum: [ "wms-getCapabilities" ] }
+    dataCustodian: {
+      title: "Data Custodian"
+      description: "Markdown/text description of the custodian of this data source."
+      type: string
+    }
   }
 }

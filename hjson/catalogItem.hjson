@@ -84,7 +84,7 @@
     }
     clock: {
       title: "Clock"
-      type: object #??
+      type: "object" #??
       description: "the clock parameters for this data item"        
     }
   }

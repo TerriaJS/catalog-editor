@@ -35,6 +35,9 @@
         "$ref": "abs-itt.json"
       },
       {
+        "$ref": "abs-itt-dataset-list.json"
+      },
+      {
         "$ref": "wfs.json"
       },
       {

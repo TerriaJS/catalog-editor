@@ -17,6 +17,7 @@
       { "$ref": "ckan.json" }
       { "$ref": "csv.json" }
       { "$ref": "abs-itt.json" }
+      { "$ref": "abs-itt-dataset-list.json" }
       { "$ref": "wfs.json" }
       { "$ref": "kml.json" }
       { "$ref": "geojson.json" }

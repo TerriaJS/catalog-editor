@@ -6,6 +6,11 @@
       "description": "Should this group be automatically opened when Terria loads?",
       "type": "boolean",
       "format": "checkbox"
+    },
+    "dataCustodian": {
+      "title": "Data Custodian",
+      "description": "Markdown/text description of the custodian of this data source.",
+      "type": "string"
     }
   }
 }

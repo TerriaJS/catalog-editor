@@ -10,5 +10,12 @@
     }
     # The property `items: []` generally shouldn't be set, other than for the "group" type.
 
+    # Technically set on each item individually..."
+    dataCustodian: {
+      title: "Data Custodian"
+      description: "Markdown/text description of the custodian of this data source."
+      type: string
+    }
+
   }
 }
