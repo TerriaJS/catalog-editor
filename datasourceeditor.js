@@ -2,9 +2,6 @@ var request = new XMLHttpRequest();
 var schema={};
 var editor;
 
-
-
-
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     // Success!
@@ -45,8 +42,6 @@ function afterLoad() {
     });
 
 
-    //JSONEditor.defaults.editors.options = {};
-    //JSONEditor.defaults.editors.options.checkbox = true;
     editor = new JSONEditor(document.getElementById('editor_holder'),{
       // Enable fetching schemas via ajax
       ajax: true,
@@ -58,28 +53,8 @@ function afterLoad() {
       theme: "bootstrap3",
       iconlib: "mybootstrap", 
       disable_edit_json: true
-      
-      // Seed the form with a starting value
-      //startval: starting_value,
-      
-      // Disable additional properties
-      //no_additional_properties: true,
-      
-      // Require all properties by default
-      //required_by_default: true
     });
 
-  // Hook up the submit button to log to the console
-  /*
-  $("#submit").click(function() {
-    // Get the value from the editor
-    $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
-    $("#jsonoutput").show();
-  });
-  
-  $("#load").click(function() {
-    editor.setValue(JSON.parse($("#jsonoutput").val()));
-  });*/
 
   $("#jsonoutput").change(function() {
     editor.setValue(JSON.parse($("#jsonoutput").val()));
@@ -127,8 +102,6 @@ $("#external-jsons li").click(function(e) {
   $("#loading").show();
 });
 function loadedFile(t) {
-    //var t = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Base64.parse(d.content).words);
-    //var t = decodeBase64(d.content);
     var catalog = t;
 
     editor.setValue(catalog);
