@@ -87,7 +87,7 @@ $("#external-jsons li").click(function(e) {
   e.preventDefault();
   var url;
   targetname = e.target.textContent.trim();
-  if  (targetname='text-special') {
+  if  (targetname=='test-special') {
     url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/191a4cb06ecf5089cd632f56140c2ec6f52df3c6/gistfile1.json';
   } else {
     url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
@@ -96,7 +96,8 @@ $("#external-jsons li").click(function(e) {
       dataType: "json",
       url: url,
       accepts: { 'json': 'application/vnd.github.v3.raw'},
-      success: loadedFile
+      success: loadedFile,
+      error: function(e) { alert("Error " + e.status + ": " + e.statusText); }
   });
   $("#editor_holder").hide();
   $("#loading").show();
