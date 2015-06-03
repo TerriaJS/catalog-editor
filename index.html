@@ -5,26 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TerriaJS data source editor</title>
     
+    <script src="js/jquery.js"></script>
     <script src="jsoneditor.js"></script>
-    <!--
-    <link rel="stylesheet" href="foundation-5.5.2/css/foundation.css">
-    <link rel="stylesheet" href="foundation-icons/foundation-icons.css">
+    <script src="js/modernizr.js"></script>  
 
-
-    <script src="foundation-5.5.2/js/vendor/modernizr.js"></script>  
-    -->
-
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="overrides.css">
 
-    <!-- Optional theme -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
-
 
     <style>
-      /*body, html { font-size: 75% ; } */
       #jsonoutput { 
         /*display: none; */
         width: 80%;
@@ -32,24 +22,20 @@
         font-family:monospace;
         background-color: hsl(220,80%,95%);
       }
-      /*#editor-buttons>button {
-        //display: none;
-      }*/
     </style>
 
 
-    </head>
+  </head>
   <body>
     <div class="container">
     <div class="row">
       <div class="large-12 columns">
-          <h1>TerriaJS data source editor (proof of concept)</h1>
+          <h1>TerriaJS data source editor (alpha)</h1>
       </div>
     </div>
     <div class="row">
       <div class="large-8 columns">
-          <!--<button id='submit'>View JSON</button>
-          <button id='load'>Load from JSON</button>-->
+          <!--<button id='load'>Load from JSON</button>-->
           <textarea id="jsonoutput">
           </textarea>
       </div>
@@ -88,22 +74,10 @@
       </div>
     </div>
     </div>
-    <script src="foundation-5.5.2/js/vendor/jquery.js"></script>
-
+    
     <script src="datasourceeditor.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-
     
-    <!--<script src="foundation-5.5.2/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>-->
-
-    <!-- Just required for Base64 decoding -->
-    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
-    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-utf16-min.js"></script>
-    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
   </body>
 </html>

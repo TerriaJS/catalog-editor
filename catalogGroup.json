@@ -2,7 +2,7 @@
   "title": "Group",
   "allOf": [
     {
-      "$ref": "CatalogMember.json"
+      "$ref": "grouptypes.json"
     }
   ],
   "description": "An additional layer in the catalog hierarchy.",
