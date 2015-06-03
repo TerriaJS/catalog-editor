@@ -22,15 +22,18 @@
     },
     "tableStyle": {
       "type": "object",
+      "title": "Table style",
       "properties": {
         "scale": {
           "type": "number"
         },
         "scaleByValue": {
+          "title": "Scale by value",
           "type": "boolean",
           "format": "checkbox"
         },
         "colorMap": {
+          "title": "Color map",
           "type": "array",
           "format": "table",
           "options": {
@@ -55,29 +58,37 @@
           ]
         },
         "displayTime": {
+          "title": "Display time",
           "type": "integer"
         },
         "maxDisplayValue": {
+          "title": "Maximum display value",
           "type": "integer"
         },
         "imageUrl": {
+          "title": "Image URL",
           "type": "string"
         },
         "regionType": {
+          "title": "Region type",
           "type": "string"
         },
         "minDisplayValue": {
+          "title": "Minimum display value",
           "type": "integer"
         },
         "dataVariable": {
+          "title": "Data variable",
           "type": "string"
         },
         "regionVariable": {
+          "title": "Region variable",
           "type": "string"
         }
       }
     },
     "keepOnTop": {
+      "title": "Keep on top",
       "description": "Keeps the layer on top of all other imagery layers.",
       "type": "boolean",
       "format": "checkbox"

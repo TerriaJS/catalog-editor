@@ -30,15 +30,17 @@
     },
     "abstract": {
       "type": "string",
+      "title": "Abstract",
       "description": "Override the abstract provided by the WMS server"
     },
     "parameters": {
       "type": "object",
+      "title": "WMS parameters",
       "description": "Additional parameters to pass to the WMS server."
     },
     "clipToRectangle": {
       "title": "Clip to Rectangle",
-      "description": "Whether this dataset should be clipped to the provided rectangle. False by default.",
+      "description": "Whether this dataset should be clipped to the designated bounding box. False by default.",
       "type": "boolean",
       "format": "checkbox"
     },
