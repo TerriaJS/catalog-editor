@@ -110,7 +110,13 @@ function afterLoad() {
 }
 $("#external-jsons li").click(function(e) {
   e.preventDefault();
-  var url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + e.target.textContent.trim() + '.json';
+  var url;
+  targetname = e.target.textContent.trim();
+  if  (targetname='text-special') {
+    url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/191a4cb06ecf5089cd632f56140c2ec6f52df3c6/gistfile1.json';
+  } else {
+    url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
+  }
   $.ajax({
       dataType: "json",
       url: url,

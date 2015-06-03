@@ -76,6 +76,11 @@
           "type": "string"
         }
       }
+    },
+    "keepOnTop": {
+      "description": "Keeps the layer on top of all other imagery layers.",
+      "type": "boolean",
+      "format": "checkbox"
     }
   }
 }
