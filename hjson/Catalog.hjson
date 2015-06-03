@@ -1,0 +1,52 @@
+{
+  required:
+  [
+    "catalog"
+  ]
+  type: object
+  title: "Terria data source"
+  description: "This file configures one or more data sources for TerriaJS."
+  defaultProperties: [ "catalog" ]
+  properties: {
+    # services: # This is [] in all the default config files. Not implemented yet?
+    # {
+    #  items: [ ]
+    #  type: array
+    #  
+    # }
+    catalog: {
+      title: "Catalog"
+      $ref: "items.json" # oh this does work? before I had to copy the list from that def
+      format: ""
+    }
+    homeCamera: {
+      title: "Home Camera"
+      description: "Bounding box of initial view, given by four latitudes/longitudes"
+      required: [ "east", "north", "south", "west" ]
+      type: object
+      format: grid
+      properties: {
+        west: { type: "number" }
+        east: { type: "number" }
+        north: { type: "number" }
+        south: { type: "number" }
+      }
+    }
+    corsDomains: {
+      title: "CORS Domains"
+      description: "A list of domains that can be accessed directly, since they are known to support CORS (cross-origin resource sharing)."
+      items: {
+          title: Host
+          description: "Host name without protocol. For example: arcgis.com"
+          type: string
+
+        }
+      type: array
+      format: tabs
+
+    }
+  }
+  options: {
+    disable_collapse: true
+  }
+}

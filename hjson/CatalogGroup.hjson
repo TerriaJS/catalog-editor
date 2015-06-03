@@ -1,0 +1,16 @@
+{
+  title: "Group"
+  allOf: [
+    { "$ref": "grouptypes.json" }
+  ]
+  description: "An additional layer in the catalog hierarchy."
+  type: "object"
+  options: { "disable_collapse": true }
+  # defaultProperties: [ "name", "type", "items" ]
+  required: [ "name", "type" ] # items?
+  defaultProperties: [ "name", "type", "items" ]
+  properties: {
+    type: { type: "string", enum: [ "group" ] }
+    items: { "$ref":  "items.json" }
+  }
+}

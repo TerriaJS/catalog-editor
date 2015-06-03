@@ -1,0 +1,47 @@
+{
+  # Ultimate base class for both items and groups
+  required: [ "name", "type" ]
+  type: object
+  properties: {
+    name: {
+      title: "Name"
+      type: string
+      description: "Name identifying this item or group."
+      propertyOrder: 1
+    }
+    type: {
+      title: "Item type"
+      type: string
+      description: "Code designating the kind of data source. Cannot be changed in this editor."
+      options: { "hidden": true }
+      #enum: [ "wms", "group", "ckan", "csv","abs-itt","wfs","wms-getCapabilities" ]
+    }
+    description: {
+      title: "Description"
+      description: "Free text description of the layer, appearing in the datasource description box, overriding any retrieved metadata."
+      type: string
+    }
+    url: { # Technically this is defined on every single data source type.
+      title: URL
+      description: "Source of the data to load"
+      type: string
+
+    }
+    info: {
+      type: array
+      description: 
+        "Gets or sets the array of section titles and contents for display in the layer info panel.
+        In future this may replace 'description' above - this list should not contain
+        sections named 'description' or 'Description' if the 'description' property
+        is also set as both will be displayed.
+        Content will be rendered as Markdown with HTML."
+      items: object #??
+    }
+    isPromoted: {
+      type: boolean
+      format: checkbox
+      description:
+        "Whether this item is kept above other non-promoted items."
+    }
+  }
+}
