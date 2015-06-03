@@ -36,6 +36,8 @@
         //display: none;
       }*/
     </style>
+
+
     </head>
   <body>
     <div class="container">
@@ -54,6 +56,30 @@
       <div class="large-4 columns">
       </div>
     </div>
+    <!-- Need to go through Github API or else CORS issues. --> 
+    
+    <ul class="list-inline" id="external-jsons">
+    <li>test</li>
+    <li>nm</li>
+    <li>abs</li>
+    <li>ckan</li>
+    <li>csiro</li>
+    <li>dgakml</li>
+    <li>ganew</li>
+    <li>geelong</li>
+    <li>graphc</li>
+    <li>qld</li>
+    <li>sa</li>
+    <li>vic</li>
+    </ul>
+    <div id="loading" class="container well"  style="display: none">
+      <div class="row bg-info">
+      <div class="large-8 columns">
+      <h2>Loading JSON</h2> Large files take aaaaaaages.
+      </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-12">
           <formset id="editor-buttons">
@@ -66,124 +92,22 @@
       </div>
     </div>
     </div>
-
-    <script>
-
-      var request = new XMLHttpRequest();
-      request.open('GET', 'catalog.json', true);
-
-      var schema={};
-      var editor;
-
-      request.onload = function() {
-        if (request.status >= 200 && request.status < 400) {
-          // Success!
-          schema =  JSON.parse(request.responseText);
-          afterLoad();
-
-      } else {
-          alert ("Couldn't access schema.");
-        }
-      };
-
-      request.onerror = function() {
-          alert ("Couldn't access schema.");
-      };
-
-      request.send();
-
-      JSONEditor.defaults.iconlibs.mybootstrap = JSONEditor.AbstractIconLib.extend({
-        mapping: {
-          collapse: 'chevron-down',
-          //expand: 'pencil',
-          "delete": 'remove',
-          edit: 'pencil',
-          add: 'plus',
-          cancel: 'floppy-remove',
-          save: 'floppy-saved',
-          moveup: 'arrow-up',
-          movedown: 'arrow-down'
-        },
-        icon_prefix: 'glyphicon glyphicon-'
-      });
-      
-      // This is the starting value for the editor
-      // We will use this to seed the initial editor 
-      // and to provide a "Restore to Default" button.
-      var starting_value = {};
-      
-      function afterLoad() { 
-          // Initialize the editor
-          editor = new JSONEditor(document.getElementById('editor_holder'),{
-            // Enable fetching schemas via ajax
-            ajax: true,
-            keep_oneof_values: false, // See https://github.com/jdorn/json-editor/issues/398
-            
-            // The schema for the editor
-            schema: schema,//{ $ref: "schema2.json" },
-            //theme: "foundation5",
-            theme: "bootstrap3",
-            iconlib: "mybootstrap", 
-            disable_edit_json: true
-            
-            // Seed the form with a starting value
-            //startval: starting_value,
-            
-            // Disable additional properties
-            //no_additional_properties: true,
-            
-            // Require all properties by default
-            //required_by_default: true
-          });
-
-        // Hook up the submit button to log to the console
-        /*
-        $("#submit").click(function() {
-          // Get the value from the editor
-          $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
-          $("#jsonoutput").show();
-        });
-        
-        $("#load").click(function() {
-          editor.setValue(JSON.parse($("#jsonoutput").val()));
-        });*/
-
-        $("#jsonoutput").change(function() {
-          editor.setValue(JSON.parse($("#jsonoutput").val()));
-          $("#editor_holder").show();
-        });
-        
-        // Hook up the validation indicator to update its 
-        // status whenever the editor changes
-        editor.on('change',function() {
-          // Get an array of errors from the validator
-          var errors = editor.validate();
-          
-          var indicator = document.getElementById('valid_indicator');
-          
-          // Not valid
-          if(errors.length) {
-            indicator.style.color = 'red';
-            indicator.textContent = "not valid";
-            console.log(errors);
-          }
-          // Valid
-          else {
-            indicator.style.color = 'green';
-            indicator.textContent = "valid";
-            $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
-          }
-        });
-      }
-
-    </script>
-    <!-- Latest compiled and minified JavaScript -->
     <script src="foundation-5.5.2/js/vendor/jquery.js"></script>
+
+    <script src="datasourceeditor.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
     
     <!--<script src="foundation-5.5.2/js/foundation.min.js"></script>
     <script>
       $(document).foundation();
     </script>-->
+
+    <!-- Just required for Base64 decoding -->
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/core-min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-utf16-min.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/enc-base64-min.js"></script>
   </body>
 </html>

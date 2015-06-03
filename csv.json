@@ -27,7 +27,8 @@
           "type": "number"
         },
         "scaleByValue": {
-          "type": "boolean"
+          "type": "boolean",
+          "format": "checkbox"
         },
         "colorMap": {
           "type": "array",

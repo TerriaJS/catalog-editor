@@ -30,15 +30,18 @@
     },
     "includeWms": {
       "title": "Include WMS Data Sources",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     },
     "includeKml": {
       "title": "Include KML Data Sources",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     },
     "includeEsriMapServer": {
       "title": "Include ESRI Map Server Data Sources",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     },
     "minimumMaxScaleDenominator": {
       "title": "Minimum Max Scale Denominator",
@@ -48,6 +51,7 @@
     "filterByWmsGetCapabilities": {
       "title": "Filter by WMS 'Get Capabilities'",
       "type": "boolean",
+      "format": "checkbox",
       "description": "Whether the CKAN datasets should be filtered by querying GetCapabilities from each referenced WMS server and excluding datasets not found therein."
     },
     "wmsParameters": {
@@ -55,27 +59,31 @@
       "description": "Parameters that will be set on each WMS item found in the catalog",
       "properties": {
         "tiled": {
-          "type": "boolean"
+          "type": "boolean",
+          "format": "checkbox"
         }
       }
     },
     "useResourceName": {
       "title": "Use Resource Name",
       "description": "Whether each catalog item's name should be populated from individual resources instead of from the CKAN dataset",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     },
     "blacklist": {
       "type": "object",
       "description": "Names of datasets that will be filtered out of the catalogue. Set each to \"true\".",
       "additionalProperties": {
-        "type": "boolean"
+        "type": "boolean",
+        "format": "checkbox"
       }
     },
     "whitelist": {
       "type": "object",
       "description": "If there is a whitelist, only the names of datasets contained in it will be shown. All other datasets will be removed.",
       "additionalProperties": {
-        "type": "boolean"
+        "type": "boolean",
+        "format": "checkbox"
       }
     },
     "itemProperties": {

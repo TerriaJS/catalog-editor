@@ -7112,7 +7112,10 @@ JSONEditor.defaults.resolvers.unshift(function(schema) {
 JSONEditor.defaults.resolvers.unshift(function(schema) {
   if(schema.type === 'boolean') {
     // If explicitly set to 'checkbox', use that
-    if(schema.format === "checkbox" || (schema.options && schema.options.checkbox)) {
+    if(schema.format === "checkbox" || 
+      (schema.options && schema.options.checkbox) ||
+      (JSONEditor.defaults.editors.options && JSONEditor.defaults.editors.options.checkbox)
+      ) {
       return "checkbox";
     }
     // Otherwise, default to select menu

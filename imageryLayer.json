@@ -23,7 +23,8 @@
     },
     "treat404AsError": {
       "description": "whether a 404 response code when requesting a tile should be treated as an error.  If false, 404s\n        are assumed to just be missing tiles and need not be reported to the user.",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     },
     "ignoreUnknownTileErrors": {
       "description": "Gets or sets a value indicating whether non-specific (no HTTP status code) tile errors should be ignored. This is a\n         last resort, for dealing with odd cases such as data sources that return non-images (eg XML) with a 200 status code.\n         No error messages will be shown to the user.",
@@ -35,7 +36,8 @@
     },
     "keepOnTop": {
       "description": "Keeps the layer on top of all other imagery layers.  This property is observable.",
-      "type": "boolean"
+      "type": "boolean",
+      "format": "checkbox"
     }
   }
 }

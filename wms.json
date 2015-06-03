@@ -37,9 +37,10 @@
       "description": "Additional parameters to pass to the WMS server."
     },
     "clipToRectangle": {
-      "type": "boolean",
       "title": "Clip to Rectangle",
-      "description": "Whether this dataset should be clipped to the provided rectangle. False by default."
+      "description": "Whether this dataset should be clipped to the provided rectangle. False by default.",
+      "type": "boolean",
+      "format": "checkbox"
     },
     "getFeatureInfoFormats": {
       "type": "array",

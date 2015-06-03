@@ -16,6 +16,7 @@
         }
         scaleByValue: {
           type: boolean
+          format: checkbox
         }
         colorMap: {
           type: array
@@ -41,8 +42,7 @@
                 }
               }
             }
-          ]
-          
+          ]          
         }
         displayTime: {
           type: integer
@@ -68,6 +68,13 @@
 
       }
     }
+    keepOnTop: {
+      description:
+        "Keeps the layer on top of all other imagery layers."
+      type: boolean
+      format: checkbox
+    }
+
 
   }
 
