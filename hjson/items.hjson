@@ -19,6 +19,7 @@
       { "$ref": "abs-itt.json" }
       { "$ref": "wfs.json" }
       { "$ref": "kml.json" }
+      { "$ref": "geojson.json" }
       { "$ref": "gpx.json" }
       { "$ref": "ogr.json" }
       { "$ref": "esri-mapServer.json" }

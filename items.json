@@ -41,6 +41,9 @@
         "$ref": "kml.json"
       },
       {
+        "$ref": "geojson.json"
+      },
+      {
         "$ref": "gpx.json"
       },
       {
