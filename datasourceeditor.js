@@ -109,8 +109,9 @@ function afterSchemaLoad() {
     
     // Not valid
     if(errors.length) {
-      alert("Error in the schema file.")
-      console.log(JSON.stringify(errors,null,2));
+      // probably not an issue, validation errors are shown already.
+      // alert("Error in the schema file.")
+      // console.log(JSON.stringify(errors,null,2));
     } else {
       if (!$("#loading").is(":visible"))
         $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));

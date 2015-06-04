@@ -2,7 +2,7 @@
   # Ultimate base class for both items and groups
   required: [ "name", "type" ]
   type: object
-  defaultProperties: [ "name", "type" ]
+  defaultProperties: [ "name", "type","url" ]
   properties: {
     name: {
       title: "Name"

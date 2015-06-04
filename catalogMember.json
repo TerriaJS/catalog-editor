@@ -6,7 +6,8 @@
   "type": "object",
   "defaultProperties": [
     "name",
-    "type"
+    "type",
+    "url"
   ],
   "properties": {
     "name": {
