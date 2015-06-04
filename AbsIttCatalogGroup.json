@@ -4,6 +4,9 @@
   "allOf": [
     {
       "$ref": "grouptypes.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
     }
   ],
   "properties": {

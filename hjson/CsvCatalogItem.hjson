@@ -21,34 +21,33 @@
           format: checkbox
         }
         colorMap: {
-          title: "Color map"
+          title: "Color mappings"
           type: array
           format: table
           options: {
             collapsed: true
           }
-          items: [
-            {
-              required: [
-                color
-                offset
-              ]
-              type: object
-              properties: {
-                color:
-                {
-                  type: string
-                }
-                offset:
-                {
-                  type: number
-                }
+          items: {
+            # required: [ "color", "offset" ] # I don't know why but this caused validation fail
+            title: "Color mapping"
+            type: object
+            properties: {
+              color: {
+                title: "Color"
+                # type: "string" # sometimes number, sometimes string...
+              }
+              offset: {
+                type: number
               }
             }
-          ]
+          }
         }
         displayTime: {
           title: "Display time"
+          type: integer
+        }
+        displayDuration: {
+          title: "Display duration"
           type: integer
         }
         maxDisplayValue: {
@@ -74,6 +73,9 @@
         regionVariable: {
           title: "Region variable"
           type: string
+        }
+        legendTicks: {
+          title: "Legend ticks"
         }
 
       }

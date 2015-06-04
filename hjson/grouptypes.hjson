@@ -1,6 +1,6 @@
 {
   # General class for group items
-  allOf: [ { "$ref": "catalogMember.json" } ]
+  allOf: [ { "$ref": "CatalogMember.json" } ]
   type: object
   properties: {
     isOpen: {

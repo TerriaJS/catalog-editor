@@ -7,18 +7,16 @@
     {
     type: object
     title: Item
-    headerTemplate: "{{ self.name }}" # ({{self.type}})",
+    headerTemplate: "<%= self.name =>" # ({{self.type}})",
     allOf: [ { "$ref": "CatalogMember.json" } ]
     oneOf: [ # keep in sync with catalog in main schema file.
       { "$ref": "CatalogGroup.json" }
       { "$ref": "WebMapServiceCatalogItem.json" }
       { "$ref": "WebMapServiceCatalogGroup.json" }
-      { "$ref": "WebFeatureServiceCatalogGroup.json" }
       { "$ref": "CkanCatalogGroup.json" }
       { "$ref": "CsvCatalogItem.json" }
-      { "$ref": "AbsIttCatalogItem.json" }
-      { "$ref": "AbsIttCatalogGroup.json" }
       { "$ref": "WebFeatureServiceCatalogItem.json" }
+      { "$ref": "WebFeatureServiceCatalogGroup.json" }
       { "$ref": "KmlCatalogItem.json" }
       { "$ref": "GeoJsonCatalogItem.json" }
       { "$ref": "CzmlCatalogItem.json" }
@@ -26,6 +24,8 @@
       { "$ref": "OgrCatalogItem.json" }
       { "$ref": "ArcGisCatalogItem.json" }
       { "$ref": "ArcGisCatalogGroup.json" }
+      { "$ref": "AbsIttCatalogItem.json" }
+      { "$ref": "AbsIttCatalogGroup.json" }
     ]
   }
 }

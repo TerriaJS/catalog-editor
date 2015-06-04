@@ -3,6 +3,7 @@
   type: object
   allOf: [
     { "$ref": "grouptypes.json" }
+    { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
   ]
   defaultProperties: [ "type", "name", "url" ]
   properties: {
@@ -10,14 +11,18 @@
     filterQuery: {
       type: array
       title: "Filter Query"
+      format: grid
       description: 
         '''
         The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the
         array is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The
         search string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.
-        See the Solr documentation (http://wiki.apache.org/solr/CommonQueryParameters#fq) for information about filter queries.
+        See the [Solr documentation](http://wiki.apache.org/solr/CommonQueryParameters#fq) for information about filter queries.
         '''
-      items: [ { "type": "string" } ]
+      items: { 
+        title: Filter
+        type: string
+      }
     }
     includeWms: {
       title: "Include WMS Data Sources"
@@ -48,6 +53,7 @@
     }
     wmsParameters: {
       type: object
+      title: "WMS Parameters"
       description: "Parameters that will be set on each WMS item found in the catalog"
       properties: {
         tiled: {
@@ -64,6 +70,7 @@
     }
     blacklist: {
       type: object
+      title: Blacklist
       description: "Names of datasets that will be filtered out of the catalogue. Set each to \"true\"."
       additionalProperties: {
         type: boolean
@@ -72,6 +79,7 @@
     }
     whitelist: {
       type: object
+      title: Whitelist
       description: "If there is a whitelist, only the names of datasets contained in it will be shown. All other datasets will be removed."
       additionalProperties: {
         type: boolean

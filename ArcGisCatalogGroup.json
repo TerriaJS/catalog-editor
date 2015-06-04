@@ -5,6 +5,9 @@
   "allOf": [
     {
       "$ref": "grouptypes.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
     }
   ],
   "defaultProperties": [
@@ -22,13 +25,16 @@
     },
     "dataCustodian": {
       "type": "string",
+      "title": "Data Custodian",
       "description": "An HTML description of the custodian of the data sources in this group."
     },
     "blacklist": {
       "type": "object",
+      "title": "Blacklist",
       "description": "A set of properties of MapServer items that should not be loaded."
     },
     "itemProperties": {
+      "title": "Item properties",
       "description": "A list of properties that will be set on each child item. For example, { 'treat404AsError': false }",
       "type": "object",
       "additionalProperties": true

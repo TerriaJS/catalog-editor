@@ -4,6 +4,10 @@
     "type"
   ],
   "type": "object",
+  "defaultProperties": [
+    "name",
+    "type"
+  ],
   "properties": {
     "name": {
       "title": "Name",

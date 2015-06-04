@@ -2568,7 +2568,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
   },
   build: function() {
     var self = this;
-
+    console.log("Building object editor: " + this.path);
     // If the object should be rendered as a table row
     if(this.options.table_row) {
       this.editor_holder = this.container;
@@ -7276,3 +7276,5 @@ JSONEditor.defaults.resolvers.unshift(function(schema) {
 
   window.JSONEditor = JSONEditor;
 })();
+
+//# sourceMappingURL=jsoneditor.js.map

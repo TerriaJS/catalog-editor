@@ -3,6 +3,9 @@
   "allOf": [
     {
       "$ref": "grouptypes.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
     }
   ],
   "description": "An additional layer in the catalog hierarchy.",
@@ -10,10 +13,6 @@
   "options": {
     "disable_collapse": true
   },
-  "required": [
-    "name",
-    "type"
-  ],
   "defaultProperties": [
     "name",
     "type",

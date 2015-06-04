@@ -4,6 +4,7 @@
   type: object
   allOf: [
     { "$ref": "grouptypes.json" }
+    { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
     ]
   # required: [ "name", "type" ]
   defaultProperties: [ "name", "type", "url", "dataCustodian" ] # , "layers" ]

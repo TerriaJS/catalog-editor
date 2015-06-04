@@ -3,6 +3,7 @@
   type: object
   allOf: [
     { "$ref": "grouptypes.json" }
+    { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
   ]
   properties: {
     type: { type: "string", enum: [ "abs-itt-dataset-list" ] }

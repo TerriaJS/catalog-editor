@@ -1,10 +1,6 @@
 {
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "CatalogMember.json"
-    }
-  ],
+  "allOf": [],
   "properties": {
     "rectangle": {
       "type": "array",

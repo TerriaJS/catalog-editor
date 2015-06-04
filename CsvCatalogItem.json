@@ -33,32 +33,31 @@
           "format": "checkbox"
         },
         "colorMap": {
-          "title": "Color map",
+          "title": "Color mappings",
           "type": "array",
           "format": "table",
           "options": {
             "collapsed": true
           },
-          "items": [
-            {
-              "required": [
-                "color",
-                "offset"
-              ],
-              "type": "object",
-              "properties": {
-                "color": {
-                  "type": "string"
-                },
-                "offset": {
-                  "type": "number"
-                }
+          "items": {
+            "title": "Color mapping",
+            "type": "object",
+            "properties": {
+              "color": {
+                "title": "Color"
+              },
+              "offset": {
+                "type": "number"
               }
             }
-          ]
+          }
         },
         "displayTime": {
           "title": "Display time",
+          "type": "integer"
+        },
+        "displayDuration": {
+          "title": "Display duration",
           "type": "integer"
         },
         "maxDisplayValue": {
@@ -84,6 +83,9 @@
         "regionVariable": {
           "title": "Region variable",
           "type": "string"
+        },
+        "legendTicks": {
+          "title": "Legend ticks"
         }
       }
     },

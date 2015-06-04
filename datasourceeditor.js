@@ -1,6 +1,13 @@
 var request = new XMLHttpRequest();
 var schema={};
+var catalog={};
 var editor;
+
+$(function() {
+  request.open('GET', 'catalog.json', true);
+  request.send();
+});
+
 
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
@@ -21,10 +28,6 @@ request.onerror = function() {
     alert ("Couldn't access schema.");
 };
 
-$(function() {
-  request.open('GET', 'catalog.json', true);
-  request.send();
-});
 
       
 function afterSchemaLoad() { 
@@ -32,8 +35,8 @@ function afterSchemaLoad() {
 
     JSONEditor.defaults.iconlibs.mybootstrap = JSONEditor.AbstractIconLib.extend({
       mapping: {
-        collapse: 'chevron-down',
-        //expand: 'pencil',
+        collapse: 'resize-small',
+        expand: 'resize-full',
         "delete": 'remove',
         edit: 'pencil',
         add: 'plus',
@@ -45,6 +48,14 @@ function afterSchemaLoad() {
       icon_prefix: 'glyphicon glyphicon-'
     });
 
+    var alwaysname = { 
+      compile: function() {
+        return function (vars) {
+          return vars.self.name;
+        }
+      }
+    };
+
 
     editor = new JSONEditor(document.getElementById('editor_holder'),{
       // Enable fetching schemas via ajax
@@ -53,16 +64,41 @@ function afterSchemaLoad() {
       
       // The schema for the editor
       schema: schema,//{ $ref: "schema2.json" },
+      remove_empty_properties: true,
       //theme: "foundation5",
       theme: "bootstrap3",
+      template: alwaysname, // soooo much faster than the default template engine as long as we only use it for this.
       iconlib: "mybootstrap", 
       disable_edit_json: true
     });
 
 
   $("#jsonoutput").change(function() {
-    editor.setValue(JSON.parse($("#jsonoutput").val()));
+    var t = JSON.parse($("#jsonoutput").val());
+
+    var performance = window.performance;
+    var t0 = performance.now();
+    var errors = editor.validate(t);
+    if(errors.length) {
+      // errors is an array of objects, each with a `path`, `property`, and `message` parameter
+      // `property` is the schema keyword that triggered the validation error (e.g. "minLength")
+      // `path` is a dot separated path into the JSON object (e.g. "root.path.to.field")
+      console.log(JSON.stringify(errors,null,2));
+    }
+    else {
+      console.log("Validation ok in " + ((performance.now() - t0)/1000).toFixed(1) + " seconds.");
+    }
+
+
+    $("#loading h2").text("Parsing datasource file"); // Doesn't seem to display in time...
+
+    var t0 = performance.now();
+    editor.setValue(t);
+    console.log("Loaded in " + ((performance.now() - t0)/1000).toFixed(1) + " seconds.");
     $("#editor_holder").show();
+    $("#loading").hide();
+
+
   });
   
   // Hook up the validation indicator to update its 
@@ -74,10 +110,10 @@ function afterSchemaLoad() {
     // Not valid
     if(errors.length) {
       alert("Error in the schema file.")
-      console.log(errors);
+      console.log(JSON.stringify(errors,null,2));
     } else {
-      
-      $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
+      if (!$("#loading").is(":visible"))
+        $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
     }
   });
 }
@@ -86,7 +122,7 @@ $("#external-jsons li").click(function(e) {
   var url;
   targetname = e.target.textContent.trim();
   if  (targetname=='test-special') {
-    url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/191a4cb06ecf5089cd632f56140c2ec6f52df3c6/gistfile1.json';
+    url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/ced603a2dd6c4dd8664751bc45915a45f493dcbf/gistfile1.json';
   } else if (targetname == 'ganew') {
     url ='https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/ganew.json?ref=ga-datasource';
   } else {
@@ -105,10 +141,9 @@ $("#external-jsons li").click(function(e) {
 
 });
 function loadedFile(t) {
-    var catalog = t;
-    $("#loading h2").text("Parsing datasource file"); // Doesn't seem to display in time...
-    editor.setValue(catalog);
-    $("#editor_holder").show();
-    $("#loading").hide();
+    $("#jsonoutput").val(JSON.stringify(t,null,2));
+    $("#jsonoutput").trigger("change");
+    return;
+    
 }
 

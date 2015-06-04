@@ -22,3 +22,40 @@ button.btn.btn-default.json-editor-btn-delete[title="Delete Last Item"],
 button.btn.btn-default.json-editor-btn-delete[title="Delete All"] {
   display: none; /* spammy buttons at the top of each object */
 }
+
+.container-catalog>h3, .container-catalog>p {
+  /* The extra heading for the catalogue itself is just confusing. */
+  display: none;
+}
+
+.well[data-schemapath="root.catalog.1"],
+.well[data-schemapath="root.catalog.2"],
+.well[data-schemapath="root.catalog.3"],
+.well[data-schemapath="root.catalog.4"],
+.well[data-schemapath="root.catalog.5"],
+.well[data-schemapath="root.catalog.6"],
+.well[data-schemapath="root.catalog.7"],
+.well[data-schemapath="root.catalog.8"]
+ {
+  /* Visual separation for top level catalog items */
+  border-top: 20px solid hsl(0, 100%, 100%);
+
+}
+
+.well[data-schemapath="root.catalog.0"]>label,
+.well[data-schemapath="root.catalog.1"]>label,
+.well[data-schemapath="root.catalog.2"]>label,
+.well[data-schemapath="root.catalog.3"]>label,
+.well[data-schemapath="root.catalog.4"]>label,
+.well[data-schemapath="root.catalog.5"]>label,
+.well[data-schemapath="root.catalog.6"]>label,
+.well[data-schemapath="root.catalog.7"]>label,
+.well[data-schemapath="root.catalog.8"]>label {
+  background: hsl(0,0%,85%);
+  display:block;
+}
+
+
+body {
+  background-color: hsl(0,0%,85%);
+}

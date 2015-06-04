@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "title": "Item",
-    "headerTemplate": "{{ self.name }}",
+    "headerTemplate": "<%= self.name =>",
     "allOf": [
       {
         "$ref": "CatalogMember.json"
@@ -23,22 +23,16 @@
         "$ref": "WebMapServiceCatalogGroup.json"
       },
       {
-        "$ref": "WebFeatureServiceCatalogGroup.json"
-      },
-      {
         "$ref": "CkanCatalogGroup.json"
       },
       {
         "$ref": "CsvCatalogItem.json"
       },
       {
-        "$ref": "AbsIttCatalogItem.json"
-      },
-      {
-        "$ref": "AbsIttCatalogGroup.json"
-      },
-      {
         "$ref": "WebFeatureServiceCatalogItem.json"
+      },
+      {
+        "$ref": "WebFeatureServiceCatalogGroup.json"
       },
       {
         "$ref": "KmlCatalogItem.json"
@@ -60,6 +54,12 @@
       },
       {
         "$ref": "ArcGisCatalogGroup.json"
+      },
+      {
+        "$ref": "AbsIttCatalogItem.json"
+      },
+      {
+        "$ref": "AbsIttCatalogGroup.json"
       }
     ]
   }
