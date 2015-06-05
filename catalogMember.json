@@ -35,9 +35,7 @@
       "type": "string"
     },
     "info": {
-      "type": "array",
-      "description": "Gets or sets the array of section titles and contents for display in the layer info panel.\n        In future this may replace 'description' above - this list should not contain\n        sections named 'description' or 'Description' if the 'description' property\n        is also set as both will be displayed.\n        Content will be rendered as Markdown with HTML.",
-      "items": "object #??"
+      "$ref": "_info.json"
     },
     "isPromoted": {
       "type": "boolean",

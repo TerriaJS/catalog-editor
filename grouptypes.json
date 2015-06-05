@@ -16,6 +16,12 @@
       "title": "Data Custodian",
       "description": "Markdown/text description of the custodian of this data source.",
       "type": "string"
+    },
+    "preserveOrder": {
+      "title": "Preserve order",
+      "type": "boolean",
+      "format": "checkbox",
+      "description": "Prevent items in group being sorted. Subgroups will still sort unless their own preserveOrder flag is set."
     }
   }
 }

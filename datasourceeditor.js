@@ -3,11 +3,6 @@ var schema={};
 var catalog={};
 var editor;
 
-$(function() {
-  request.open('GET', 'catalog.json', true);
-  request.send();
-});
-
 
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
@@ -27,6 +22,15 @@ request.onload = function() {
 request.onerror = function() {
     alert ("Couldn't access schema.");
 };
+
+
+$(function() {
+  setTimeout(function() {
+    request.open('GET', 'catalog.json', true);
+    request.send();
+  }, 100);
+});
+
 
 
       
@@ -67,9 +71,12 @@ function afterSchemaLoad() {
       remove_empty_properties: true,
       //theme: "foundation5",
       theme: "bootstrap3",
-      template: alwaysname, // soooo much faster than the default template engine as long as we only use it for this.
+      template: 'default',//alwaysname, // soooo much faster than the default template engine as long as we only use it for this.
       iconlib: "mybootstrap", 
       disable_edit_json: true
+    });
+    editor.on('ready', function() {
+      $("#external-jsons").show();
     });
 
 
@@ -126,6 +133,8 @@ $("#external-jsons li").click(function(e) {
     url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/ced603a2dd6c4dd8664751bc45915a45f493dcbf/gistfile1.json';
   } else if (targetname == 'ganew') {
     url ='https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/ganew.json?ref=ga-datasource';
+  } else if (targetname == 'aremi') {
+    url = 'https://api.github.com/repos/NICTA/aremi-natmap/contents/wwwroot/init/aremi.json';
   } else {
     url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
   }

@@ -15,6 +15,7 @@
   ],
   "properties": {
     "opacity": {
+      "title": "Opacity",
       "description": "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque. Default: 0.6",
       "type": [
         "number",
@@ -22,20 +23,30 @@
       ]
     },
     "treat404AsError": {
+      "title": "Treat 404 response codes as error",
       "description": "whether a 404 response code when requesting a tile should be treated as an error.  If false, 404s\n        are assumed to just be missing tiles and need not be reported to the user.",
       "type": "boolean",
       "format": "checkbox"
     },
     "ignoreUnknownTileErrors": {
+      "title": "Ignore unknown title errors",
       "description": "Gets or sets a value indicating whether non-specific (no HTTP status code) tile errors should be ignored. This is a\n         last resort, for dealing with odd cases such as data sources that return non-images (eg XML) with a 200 status code.\n         No error messages will be shown to the user.",
       "type": "string"
     },
     "intervals": {
+      "title": "Intervals",
       "description": "The {@link TimeIntervalCollection} defining the intervals of distinct imagery.  If this catalog item \n        is not time-dynamic, undefined.",
       "type": "object"
     },
     "keepOnTop": {
+      "title": "Keep on top",
       "description": "Keeps the layer on top of all other imagery layers.  This property is observable.",
+      "type": "boolean",
+      "format": "checkbox"
+    },
+    "clipToRectangle": {
+      "title": "Clip to Rectangle",
+      "description": "Whether this dataset should be clipped to the designated bounding box. False by default.",
       "type": "boolean",
       "format": "checkbox"
     }

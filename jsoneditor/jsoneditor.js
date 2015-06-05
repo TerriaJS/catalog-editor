@@ -2568,7 +2568,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
   },
   build: function() {
     var self = this;
-    console.log("Building object editor: " + this.path);
+    //console.log("Building object editor: " + this.path);
     // If the object should be rendered as a table row
     if(this.options.table_row) {
       this.editor_holder = this.container;
@@ -2601,28 +2601,35 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       this.container.appendChild(this.title);
       this.container.style.position = 'relative';
       
-      // Edit JSON modal
-      this.editjson_holder = this.theme.getModal();
-      this.editjson_textarea = this.theme.getTextareaInput();
-      this.editjson_textarea.style.height = '170px';
-      this.editjson_textarea.style.width = '300px';
-      this.editjson_textarea.style.display = 'block';
-      this.editjson_save = this.getButton('Save','save','Save');
-      this.editjson_save.addEventListener('click',function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        self.saveJSON();
-      });
-      this.editjson_cancel = this.getButton('Cancel','cancel','Cancel');
-      this.editjson_cancel.addEventListener('click',function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        self.hideEditJSON();
-      });
-      this.editjson_holder.appendChild(this.editjson_textarea);
-      this.editjson_holder.appendChild(this.editjson_save);
-      this.editjson_holder.appendChild(this.editjson_cancel);
+      var showEditJson = true;
+      // Edit JSON Buttton disabled
+      if(this.schema.options && this.schema.options.disable_edit_json || this.jsoneditor.options.disable_edit_json)
+        showEditJson = false;
       
+
+      if (showEditJson) {
+        // Edit JSON modal
+        this.editjson_holder = this.theme.getModal();
+        this.editjson_textarea = this.theme.getTextareaInput();
+        this.editjson_textarea.style.height = '170px';
+        this.editjson_textarea.style.width = '300px';
+        this.editjson_textarea.style.display = 'block';
+        this.editjson_save = this.getButton('Save','save','Save');
+        this.editjson_save.addEventListener('click',function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.saveJSON();
+        });
+        this.editjson_cancel = this.getButton('Cancel','cancel','Cancel');
+        this.editjson_cancel.addEventListener('click',function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.hideEditJSON();
+        });
+        this.editjson_holder.appendChild(this.editjson_textarea);
+        this.editjson_holder.appendChild(this.editjson_save);
+        this.editjson_holder.appendChild(this.editjson_cancel);
+      }      
       // Manage Properties modal
       this.addproperty_holder = this.theme.getModal();
       this.addproperty_list = document.createElement('div');
@@ -2692,10 +2699,12 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
 
       // Control buttons
       this.title_controls = this.theme.getHeaderButtonHolder();
-      this.editjson_controls = this.theme.getHeaderButtonHolder();
+      if (showEditJson) 
+        this.editjson_controls = this.theme.getHeaderButtonHolder();
       this.addproperty_controls = this.theme.getHeaderButtonHolder();
       this.title.appendChild(this.title_controls);
-      this.title.appendChild(this.editjson_controls);
+      if (showEditJson) 
+        this.title.appendChild(this.editjson_controls);
       this.title.appendChild(this.addproperty_controls);
 
       // Show/Hide button
@@ -2731,15 +2740,18 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       }
       
       // Edit JSON Button
-      this.editjson_button = this.getButton('JSON','edit','Edit JSON');
-      this.editjson_button.addEventListener('click',function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        self.toggleEditJSON();
-      });
-      this.editjson_controls.appendChild(this.editjson_button);
-      this.editjson_controls.appendChild(this.editjson_holder);
-      
+      if (showEditJson) {
+
+        this.editjson_button = this.getButton('JSON','edit','Edit JSON');
+        this.editjson_button.addEventListener('click',function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.toggleEditJSON();
+        });
+        this.editjson_controls.appendChild(this.editjson_button);
+        this.editjson_controls.appendChild(this.editjson_holder);
+      }
+      /*
       // Edit JSON Buttton disabled
       if(this.schema.options && typeof this.schema.options.disable_edit_json !== "undefined") {
         if(this.schema.options.disable_edit_json) this.editjson_button.style.display = 'none';
@@ -2747,7 +2759,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       else if(this.jsoneditor.options.disable_edit_json) {
         this.editjson_button.style.display = 'none';
       }
-      
+      */
       // Object Properties Button
       this.addproperty_button = this.getButton('Properties','edit','Object Properties');
       this.addproperty_button.addEventListener('click',function(e) {
@@ -6850,33 +6862,34 @@ JSONEditor.defaults.iconlibs.jqueryui = JSONEditor.AbstractIconLib.extend({
 });
 
 JSONEditor.defaults.templates["default"] = function() {
-  var expandVars = function(vars) {
-    var expanded = {};
-    $each(vars, function(i,el) {
-      if(typeof el === "object" && el !== null) {
-        var tmp = {};
-        $each(el, function(j,item) {
-          tmp[i+'.'+j] = item;
-        });
-        $extend(expanded,expandVars(tmp));
-      }
-      else {
-        expanded[i] = el;
-      }
-    });
-    return expanded;
-  };
+  function resolve(ref, context) {
+    var dot = ref.indexOf('.');
+    if (dot === -1)
+      return context[ref];
+    var predot = ref.slice(0, dot);
+    if (!predot)
+      return null;
+    
+    if (context[predot] === undefined)
+      return null;
+    
+    return resolve(ref.slice(dot + 1), context[predot]);
+  }
   
   return {
     compile: function(template) {
       return function (vars) {
-        var expanded = expandVars(vars);
-        
         var ret = template+"";
-        // Only supports basic {{var}} macro replacement
-        $each(expanded,function(key,value) {
-          ret = ret.replace(new RegExp('{{\\s*'+key+'\\s*}}','g'),value);
-        });
+        var re = /{{\s*([a-zA-Z0-9_.\-]+)\s*}}/g;
+        var m = re.exec(ret);
+        while (m) {
+          var t = resolve(m[1], vars);
+          if (t) {
+            ret = ret.replace(m[0], t);
+            re.lastIndex += (t.length - m[0].length); // handle short substitutions
+          }
+          m = re.exec(ret);
+        }
         return ret;
       };
     }

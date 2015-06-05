@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "wms"
+      ]
+    },
+    "layers": {
+      "title": "Layer Names",
+      "description": "Comma-separated list of WMS layer names to include.",
+      "type": "string"
+    },
+    "abstract": {
+      "type": "string",
+      "title": "Abstract",
+      "description": "Override the abstract provided by the WMS server"
+    },
+    "parameters": {
+      "$ref": "wms-parameters.json"
+    },
+    "getFeatureInfoFormats": {
+      "type": "array",
+      "title": "GetFeatureInfo Formats",
+      "description": "The formats in which to try WMS GetFeatureInfo requests",
+      "items": [
+        {
+          "required": [
+            "type"
+          ],
+          "type": "object",
+          "title": "Format",
+          "properties": {
+            "type": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

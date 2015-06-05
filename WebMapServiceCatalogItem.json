@@ -4,6 +4,9 @@
   "type": "object",
   "allOf": [
     {
+      "$ref": "wms-properties.json"
+    },
+    {
       "$ref": "CatalogItem.json"
     },
     {
@@ -15,96 +18,5 @@
     "type",
     "url",
     "layers"
-  ],
-  "properties": {
-    "type": {
-      "type": "string",
-      "enum": [
-        "wms"
-      ]
-    },
-    "layers": {
-      "title": "Layer Names",
-      "description": "Comma-separated list of WMS layer names to include.",
-      "type": "string"
-    },
-    "abstract": {
-      "type": "string",
-      "title": "Abstract",
-      "description": "Override the abstract provided by the WMS server"
-    },
-    "parameters": {
-      "type": "object",
-      "title": "WMS parameters",
-      "description": "Additional parameters to pass to the WMS server.",
-      "additionalProperties": true,
-      "properties": {
-        "ABOVEMAXCOLOR": {
-          "title": "Color above maximum",
-          "type": "string"
-        },
-        "BELOWMINCOLOR": {
-          "title": "Color below minimum",
-          "type": "string"
-        },
-        "COLORSCALERANGE": {
-          "title": "Color scale range",
-          "type": "string"
-        },
-        "FORMAT": {
-          "title": "Format",
-          "type": "string"
-        },
-        "LOGSCALE": {
-          "title": "Log scale",
-          "type": "string"
-        },
-        "NUMCOLORBANDS": {
-          "title": "Number of color bands",
-          "type": "string"
-        },
-        "PALETTE": {
-          "title": "Palette",
-          "type": "string"
-        },
-        "STYLES": {
-          "title": "Styles",
-          "type": "string"
-        },
-        "TRANSPARENT": {
-          "title": "Transparent",
-          "type": "string"
-        },
-        "VERSION": {
-          "title": "Version",
-          "type": "string"
-        }
-      }
-    },
-    "clipToRectangle": {
-      "title": "Clip to Rectangle",
-      "description": "Whether this dataset should be clipped to the designated bounding box. False by default.",
-      "type": "boolean",
-      "format": "checkbox"
-    },
-    "getFeatureInfoFormats": {
-      "type": "array",
-      "title": "GetFeatureInfo Formats",
-      "description": "The formats in which to try WMS GetFeatureInfo requests",
-      "items": [
-        {
-          "required": [
-            "type"
-          ],
-          "type": "object",
-          "title": "Format",
-          "properties": {
-            "type": {
-              "type": "string"
-            }
-          }
-        }
-      ]
-    }
-  }
+  ]
 }

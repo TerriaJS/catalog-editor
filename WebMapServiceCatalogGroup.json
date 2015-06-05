@@ -27,6 +27,42 @@
       "title": "Data Custodian",
       "description": "Markdown/text description of the custodian of this data source.",
       "type": "string"
+    },
+    "parameters": {
+      "$ref": "wms-parameters.json"
+    },
+    "itemProperties": {
+      "type": "object",
+      "title": "Item Properties",
+      "description": "Any additional properties to set on each item in the group, overriding values retrieved from data sources.",
+      "defaultProperties": [
+        "rectangle"
+      ],
+      "required": [],
+      "properties": {
+        "info": {
+          "$ref": "_info.json"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "wms-properties.json"
+        },
+        {
+          "$ref": "CatalogItem.json"
+        }
+      ]
+    },
+    "titleField": {
+      "type": "string",
+      "title": "Title field",
+      "description": "The field name to use as the primary title in the catalog view. Default 'title', but 'name' or 'abstract' are possible."
+    },
+    "flatten": {
+      "type": "boolean",
+      "format": "checkbox",
+      "title": "Flatten hierarchy",
+      "description": "Whether the list of layers queried from GetCapabilities should be flattened into a list with no hierarchy."
     }
   }
 }

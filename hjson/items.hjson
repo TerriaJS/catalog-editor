@@ -7,7 +7,7 @@
     {
     type: object
     title: Item
-    headerTemplate: "<%= self.name =>" # ({{self.type}})",
+    headerTemplate: "{{ self.name }} ({{ self.type }})" # ({{self.type}})",
     allOf: [ { "$ref": "CatalogMember.json" } ]
     oneOf: [ # keep in sync with catalog in main schema file.
       { "$ref": "CatalogGroup.json" }
