@@ -59,3 +59,12 @@ button.btn.btn-default.json-editor-btn-delete[title="Delete All"] {
 body {
   background-color: hsl(0,0%,85%);
 }
+
+/* Make the visual hierarchy for subproperties more obvious. */
+.container-itemProperties {
+  padding-left: 4em !important;
+}
+
+.container-itemProperties > h3 {
+  margin-left: -2em !important;
+}
