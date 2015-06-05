@@ -6,7 +6,7 @@
   "items": {
     "type": "object",
     "title": "Item",
-    "headerTemplate": "{{ self.name }} ({{ self.type }})",
+    "headerTemplate": "{{ self.name }}",
     "allOf": [
       {
         "$ref": "CatalogMember.json"
