@@ -28,7 +28,7 @@
       type: string
 
     }
-    info: { "$ref": "_info.json" }
+    info: { "$ref": "r_info.json" }
     isPromoted: {
       type: boolean
       format: checkbox

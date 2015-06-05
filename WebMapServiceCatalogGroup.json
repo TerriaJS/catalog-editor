@@ -41,7 +41,7 @@
       "required": [],
       "properties": {
         "info": {
-          "$ref": "_info.json"
+          "$ref": "r_info.json"
         }
       },
       "allOf": [

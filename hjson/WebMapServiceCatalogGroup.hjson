@@ -25,7 +25,7 @@
       defaultProperties: [ "rectangle" ]
       required: []
       properties: {
-        info: { "$ref": "_info.json" }
+        info: { "$ref": "r_info.json" }
 
       }
       allOf: [
