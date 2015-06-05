@@ -30,6 +30,7 @@
     }
     info: { "$ref": "r_info.json" }
     isPromoted: {
+      title: "Promote this item"
       type: boolean
       format: checkbox
       description:

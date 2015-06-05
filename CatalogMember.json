@@ -38,6 +38,7 @@
       "$ref": "r_info.json"
     },
     "isPromoted": {
+      "title": "Promote this item",
       "type": "boolean",
       "format": "checkbox",
       "description": "Whether this item is kept above other non-promoted items."

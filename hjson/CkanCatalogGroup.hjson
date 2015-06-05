@@ -10,8 +10,8 @@
     type: { type: "string", enum: [ "ckan" ] }
     filterQuery: {
       type: array
-      title: "Filter Query"
-      format: grid
+      title: "Filters"
+      format: tabs
       description: 
         '''
         The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the

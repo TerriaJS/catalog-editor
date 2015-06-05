@@ -4,7 +4,7 @@
   type: object
   properties: {
     isOpen: {
-      title: "Is Open"
+      title: "Open automatically"
       description: "Should this group be automatically opened when Terria loads?"
       type: boolean
       format: checkbox
