@@ -21,6 +21,11 @@
       title: "Description"
       description: "Free text description of the layer, appearing in the datasource description box, overriding any retrieved metadata."
       type: string
+      format: textarea
+      options: {
+        expand_height: true
+      }
+      
     }
     url: { # Technically this is defined on every single data source type.
       title: URL

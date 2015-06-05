@@ -47,11 +47,7 @@
       type: string
       format: url
     }
-    dataCustodian: {
-      title: "Data Custodian"
-      description: "Markdown/text description of the custodian of this data source."
-      type: string
-    }
+    dataCustodian: { $ref: "r_datacustodian.json" }
     metadataUrl: {
       title: "Metadata URL"
       description: 

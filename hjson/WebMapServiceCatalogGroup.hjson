@@ -10,11 +10,7 @@
   defaultProperties: [ "name", "type", "url", "dataCustodian" ] # , "layers" ]
   properties: {
     type: { type: "string", enum: [ "wms-getCapabilities" ] }
-    dataCustodian: {
-      title: "Data Custodian"
-      description: "Markdown/text description of the custodian of this data source."
-      type: string
-    }
+    dataCustodian: { $ref: "r_datacustodian.json" }
     parameters: {
       "$ref": "wms-parameters.json"
     }

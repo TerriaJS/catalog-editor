@@ -23,6 +23,10 @@
       content: {
         title: Content
         type: string
+        format: textarea
+        options: {
+          expand_height: true
+        }
       }
     }
 

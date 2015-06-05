@@ -27,7 +27,11 @@
     "description": {
       "title": "Description",
       "description": "Free text description of the layer, appearing in the datasource description box, overriding any retrieved metadata.",
-      "type": "string"
+      "type": "string",
+      "format": "textarea",
+      "options": {
+        "expand_height": true
+      }
     },
     "url": {
       "title": "URL",

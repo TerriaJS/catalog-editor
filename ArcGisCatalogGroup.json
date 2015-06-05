@@ -24,9 +24,7 @@
       ]
     },
     "dataCustodian": {
-      "type": "string",
-      "title": "Data Custodian",
-      "description": "An HTML description of the custodian of the data sources in this group."
+      "$ref": "r_datacustodian.json"
     },
     "blacklist": {
       "type": "object",

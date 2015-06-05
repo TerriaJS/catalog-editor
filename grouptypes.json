@@ -13,9 +13,7 @@
       "format": "checkbox"
     },
     "dataCustodian": {
-      "title": "Data Custodian",
-      "description": "Markdown/text description of the custodian of this data source.",
-      "type": "string"
+      "$ref": "r_datacustodian.json"
     },
     "preserveOrder": {
       "title": "Preserve order",

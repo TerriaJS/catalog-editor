@@ -12,11 +12,7 @@
       type: string
       enum: [ "esri-mapServer-group" ]
     }
-    dataCustodian: {
-        type: string
-        title: Data Custodian
-        description: "An HTML description of the custodian of the data sources in this group."
-    }
+    dataCustodian: { $ref: "r_datacustodian.json" }
     blacklist: {
       type: object
       title: Blacklist

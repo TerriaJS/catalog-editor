@@ -23,7 +23,11 @@
       },
       "content": {
         "title": "Content",
-        "type": "string"
+        "type": "string",
+        "format": "textarea",
+        "options": {
+          "expand_height": true
+        }
       }
     }
   }

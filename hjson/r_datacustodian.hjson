@@ -1,0 +1,9 @@
+{
+  type: string
+  title: Data Custodian
+  description: "An HTML description of the custodian of the data sources in this group."
+  format: textarea
+  options: {
+    expand_height: true
+  }
+}
