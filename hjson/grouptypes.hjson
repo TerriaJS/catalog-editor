@@ -2,22 +2,29 @@
   # General class for group items
   allOf: [ { "$ref": "CatalogMember.json" } ]
   type: object
+  # defaultProperties: [ "name", "type", "items", "preserveOrder" ] # this isn't being used?
+
   properties: {
+    # The property `items: []` generally shouldn't be set, other than for the "group" type.
+
+    # Technically set on each item individually..."
+    dataCustodian: { 
+      propertyOrder: 10
+      $ref: "r_datacustodian.json" 
+    }
+    preserveOrder: {
+      title: "Preserve order"
+      type: boolean
+      format: checkbox
+      propertyOrder:11
+      description: Prevent items in group being sorted. Subgroups will still sort unless their own preserveOrder flag is set.
+    }
     isOpen: {
       title: "Open automatically"
       description: "Should this group be automatically opened when Terria loads?"
       type: boolean
       format: checkbox
-    }
-    # The property `items: []` generally shouldn't be set, other than for the "group" type.
-
-    # Technically set on each item individually..."
-    dataCustodian: { $ref: "r_datacustodian.json" }
-    preserveOrder: {
-      title: "Preserve order"
-      type: boolean
-      format: checkbox
-      description: Prevent items in group being sorted. Subgroups will still sort unless their own preserveOrder flag is set.
+      propertyOrder: 12
     }
 
   }

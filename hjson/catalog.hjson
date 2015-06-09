@@ -8,16 +8,21 @@
   description: "This file configures one or more data sources for TerriaJS."
   defaultProperties: [ "catalog" ]
   properties: {
-    # services: # This is [] in all the default config files. Not implemented yet?
-    # {
-    #  items: [ ]
-    #  type: array
-    #  
-    # }
+    services: { # This is [] in all the default config files. Not implemented yet?
+      title: Services
+      propertyOrder: 2000
+      type: array
+      items: {
+        title: Service
+      }
+    }
     catalog: {
       title: "Catalog"
       $ref: "items.json" # oh this does work? before I had to copy the list from that def
       format: ""
+      items: {
+        title: "Top-level group"
+      }
     }
     homeCamera: {
       title: "Home Camera"

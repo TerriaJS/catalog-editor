@@ -23,19 +23,24 @@
     "tableStyle": {
       "type": "object",
       "title": "Table styling",
+      "format": "grid",
       "properties": {
         "scale": {
-          "type": "number"
+          "title": "Scale",
+          "type": "number",
+          "propertyOrder": 130
         },
         "scaleByValue": {
           "title": "Scale by value",
           "type": "boolean",
-          "format": "checkbox"
+          "format": "checkbox",
+          "propertyOrder": 131
         },
         "colorMap": {
           "title": "Color mappings",
           "type": "array",
           "format": "table",
+          "propertyOrder": 1500,
           "options": {
             "collapsed": true
           },
@@ -54,27 +59,32 @@
         },
         "displayTime": {
           "title": "Display time",
-          "type": "integer"
+          "type": "integer",
+          "propertyOrder": 150
         },
         "displayDuration": {
           "title": "Display duration",
-          "type": "integer"
+          "type": "integer",
+          "propertyOrder": 151
         },
         "maxDisplayValue": {
           "title": "Maximum display value",
-          "type": "integer"
+          "type": "integer",
+          "propertyOrder": 100
+        },
+        "minDisplayValue": {
+          "title": "Minimum display value",
+          "type": "integer",
+          "propertyOrder": 99
         },
         "imageUrl": {
           "title": "Image URL",
+          "description": "URL of an image to display at each point.",
           "type": "string"
         },
         "regionType": {
           "title": "Region type",
           "type": "string"
-        },
-        "minDisplayValue": {
-          "title": "Minimum display value",
-          "type": "integer"
         },
         "dataVariable": {
           "title": "Data variable",

@@ -9,10 +9,21 @@
     "catalog"
   ],
   "properties": {
+    "services": {
+      "title": "Services",
+      "propertyOrder": 2000,
+      "type": "array",
+      "items": {
+        "title": "Service"
+      }
+    },
     "catalog": {
       "title": "Catalog",
       "$ref": "items.json",
-      "format": ""
+      "format": "",
+      "items": {
+        "title": "Top-level group"
+      }
     },
     "homeCamera": {
       "title": "Home Camera",

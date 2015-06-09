@@ -25,9 +25,10 @@ button.btn.btn-default.json-editor-btn-delete[title="Delete All"] {
 
 .container-catalog>h3, .container-catalog>p {
   /* The extra heading for the catalogue itself is just confusing. */
-  display: none;
+  /*display: none;*/
 }
 
+.well[data-schemapath="root.catalog.0"],
 .well[data-schemapath="root.catalog.1"],
 .well[data-schemapath="root.catalog.2"],
 .well[data-schemapath="root.catalog.3"],
@@ -38,7 +39,7 @@ button.btn.btn-default.json-editor-btn-delete[title="Delete All"] {
 .well[data-schemapath="root.catalog.8"]
  {
   /* Visual separation for top level catalog items */
-  border-top: 20px solid hsl(0, 100%, 100%);
+  border-bottom: 20px solid hsl(208, 56%, 72%);
 
 }
 

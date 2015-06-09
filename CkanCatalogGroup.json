@@ -12,7 +12,8 @@
   "defaultProperties": [
     "type",
     "name",
-    "url"
+    "url",
+    "filterQuery"
   ],
   "properties": {
     "type": {
@@ -25,7 +26,7 @@
       "type": "array",
       "title": "Filters",
       "format": "tabs",
-      "description": "The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the\narray is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The\nsearch string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.\nSee the [Solr documentation](http://wiki.apache.org/solr/CommonQueryParameters#fq) for information about filter queries.",
+      "description": "The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the\narray is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The\nsearch string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.\nSee the <a href=\"http://wiki.apache.org/solr/CommonQueryParameters#fq\">[Solr documentation]</a> for information about filter queries.",
       "items": {
         "title": "Filter",
         "type": "string"
@@ -55,7 +56,7 @@
       "title": "Filter by WMS 'Get Capabilities'",
       "type": "boolean",
       "format": "checkbox",
-      "description": "Whether the CKAN datasets should be filtered by querying GetCapabilities from each referenced WMS server and excluding datasets not found therein."
+      "description": "Filter the CKAN datasets by querying GetCapabilities from each referenced WMS server and excluding datasets not found therein."
     },
     "wmsParameters": {
       "type": "object",
@@ -70,7 +71,7 @@
     },
     "useResourceName": {
       "title": "Use Resource Name",
-      "description": "Whether each catalog item's name should be populated from individual resources instead of from the CKAN dataset",
+      "description": "Populate each catalog item's name from individual resources instead of from the CKAN dataset",
       "type": "boolean",
       "format": "checkbox"
     },

@@ -16,7 +16,9 @@
   "defaultProperties": [
     "name",
     "type",
-    "items"
+    "items",
+    "preserveOrder",
+    "isOpen"
   ],
   "properties": {
     "type": {

@@ -6,20 +6,23 @@
   ],
   "type": "object",
   "properties": {
-    "isOpen": {
-      "title": "Open automatically",
-      "description": "Should this group be automatically opened when Terria loads?",
-      "type": "boolean",
-      "format": "checkbox"
-    },
     "dataCustodian": {
+      "propertyOrder": 10,
       "$ref": "r_datacustodian.json"
     },
     "preserveOrder": {
       "title": "Preserve order",
       "type": "boolean",
       "format": "checkbox",
+      "propertyOrder": 11,
       "description": "Prevent items in group being sorted. Subgroups will still sort unless their own preserveOrder flag is set."
+    },
+    "isOpen": {
+      "title": "Open automatically",
+      "description": "Should this group be automatically opened when Terria loads?",
+      "type": "boolean",
+      "format": "checkbox",
+      "propertyOrder": 12
     }
   }
 }

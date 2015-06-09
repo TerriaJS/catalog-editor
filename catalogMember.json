@@ -4,11 +4,6 @@
     "type"
   ],
   "type": "object",
-  "defaultProperties": [
-    "name",
-    "type",
-    "url"
-  ],
   "properties": {
     "name": {
       "title": "Name",
