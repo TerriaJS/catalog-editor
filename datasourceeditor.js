@@ -159,6 +159,8 @@ $("#loadjson").click(function(e) {
       loadURL(raw_url);
 
     });
+  } else {
+    loadURL(url);
   }
  
 });
@@ -186,11 +188,17 @@ function loadedFile(t) {
 }
 
 $("#savejson").click(function(e) {
-  function savedGist(e) {
-    $("#loadingmsg").html('<h2>Saved!</h2>Your new datasource file has been saved to: <a href="' + e.html_url + '">' + e.html_url + '</a>' +
-      '<p>Send this URL to the person who manages your TerriaJS server.</p>');
+  function savedGist(j) {
+    var raw_url = j.files[Object.keys(j.files)[0]].raw_url;
+    var cleanpreviewurl = 'http://nationalmap.research.nicta.com/#clean&' + encodeURIComponent(raw_url);
+    var previewurl = 'http://nationalmap.research.nicta.com/#' + encodeURIComponent(raw_url);
+    $("#loadingmsg").html('<h2>Saved!</h2>Your new datasource file has been saved to: <a href="' + j.html_url + '">' + j.html_url + '</a>' +
+      '<p>You can send this URL to the person who manages your TerriaJS server.</p>' + 
+      //'<p><a target="_blank" href="' + previewurl + '">Preview in National Map</a></p>' + 
+      '<p><a target="_blank" href="' + cleanpreviewurl + '">Preview in National Map (without other data sources)</a></p>' 
+      );
     $("#loading").show();
-    console.log(e);
+    console.log(j);
     //$("#sourceurl").val(
   }
   //e.preventDefault();
