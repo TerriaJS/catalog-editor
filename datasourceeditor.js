@@ -129,6 +129,8 @@ $("#external-jsons li").click(function(e) {
   e.preventDefault();
   var url;
   targetname = e.target.textContent.trim();
+  // Need to go through Github API or else CORS issues. 
+
   if  (targetname=='test-special') {
     url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/ced603a2dd6c4dd8664751bc45915a45f493dcbf/gistfile1.json';
   } else if (targetname == 'ganew') {
@@ -138,7 +140,31 @@ $("#external-jsons li").click(function(e) {
   } else {
     url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
   }
-  $.ajax({
+
+  $("#sourceurl").val(url);
+  return;
+ });
+
+//https://api.github.com/gists/08f89468f51822ade8d7
+
+$("#loadjson").click(function(e) {
+  e.preventDefault();
+  url = $("#sourceurl").val().trim()
+  if (url.match('^https:\/\/gist.github.com')) {
+    // handle loading user-friendly Gist URLs by looking up raw url first
+    var newurl = url.replace(/^https:\/\/gist\.github\.com(\/[^\/]+(?=\/.))?/, 'https://api.github.com/gists');
+    $.getJSON(newurl, null, function(j) {
+      var f = j.files;
+      var raw_url = j.files[Object.keys(j.files)[0]].raw_url;
+      loadURL(raw_url);
+
+    });
+  }
+ 
+});
+
+function loadURL(url) {
+   $.ajax({
       dataType: "json",
       url: url,
       accepts: { 'json': 'application/vnd.github.v3.raw'},
@@ -146,14 +172,39 @@ $("#external-jsons li").click(function(e) {
       error: function(e) { alert("Error " + e.status + ": " + e.statusText); }
   });
   $("#editor_holder").hide();
-  $("#loading h2").text("Loading datasource file");
+  $("#loadingmsg").html("<h2>Loading datasource</h2>Large files may take a very long time. Really.");
   $("#loading").show();
 
-});
+}
+
 function loadedFile(t) {
     $("#jsonoutput").val(JSON.stringify(t,null,2));
     $("#jsonoutput").trigger("change");
+    $("#savejson").show();
     return;
     
 }
 
+$("#savejson").click(function(e) {
+  function savedGist(e) {
+    $("#loadingmsg").html('<h2>Saved!</h2>Your new datasource file has been saved to: <a href="' + e.html_url + '">' + e.html_url + '</a>' +
+      '<p>Send this URL to the person who manages your TerriaJS server.</p>');
+    $("#loading").show();
+    console.log(e);
+    //$("#sourceurl").val(
+  }
+  //e.preventDefault();
+  var t = JSON.stringify(editor.getValue(),null,2);
+  var f = {
+    description: 'Modified data source file',
+    'public': false,
+    files: {
+      'datasource.json': { // extract actual filename
+        'content': t
+      }
+    }
+  };
+  $("#loadingmsg").html("<h2>Saving datasource</h2>Saving a copy of your file...");
+  $("#loading").show();
+  $.post('https://api.github.com/gists', JSON.stringify(f), savedGist, 'json');
+});

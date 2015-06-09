@@ -8,7 +8,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/modernizr.js"></script>  
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="overrides.css">
 
@@ -16,7 +16,7 @@
     <style>
       #jsonoutput { 
         /*display: none; */
-        width: 80%;
+        width: 98%;
         height: 200px;
         font-family:monospace;
         background-color: hsl(220,80%,95%);
@@ -31,57 +31,80 @@
   </head>
   <body>
     <div class="container">
-    <div class="row">
-      <div class="large-12 columns">
-          <h1>TerriaJS data source editor (alpha)</h1>
+      <div class="row">
+        <div class="large-12 columns">
+            <h1>TerriaJS data source editor (alpha)</h1>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="large-8 columns">
-          <!--<button id='load'>Load from JSON</button>-->
-          <textarea id="jsonoutput" value="{ catalog: [] }">
-          </textarea>
+      <div class="row">
+        <div class="large-12 columns">
+            <!--<button id='load'>Load from JSON</button>-->
+            <textarea id="jsonoutput" value="{ catalog: [] }">
+            </textarea>
+        </div>
       </div>
-      <div class="large-4 columns">
-      </div>
-    </div>
-    <!-- Need to go through Github API or else CORS issues. --> 
-    Load existing datasource: 
-    <ul class="list-inline" id="external-jsons" style="display:none">
-    <li><a href="#">test-special</a></a></li>
-    <li><a href="#">test</a></li>
-    <li><a href="#">nm</a></li>
-    <li><a href="#">abs</a></li>
-    <li><a href="#">ckan</a></li>
-    <li><a href="#">csiro</a></li>
-    <li><a href="#">dgakml</a></li>
-    <li><a href="#">ganew</a></li>
-    <li><a href="#">geelong</a></li>
-    <li><a href="#">qld</a></li>
-    <li><a href="#">sa</a></li>
-    <li><a href="#">vic</a></li>
-    <li><a href="#">aremi</a></li>
-    </ul>
-    <div id="loading" class="container well"  style="display: none">
-      <div class="row bg-info">
-      <div class="large-8 columns">
-      <h2>Loading JSON</h2> Large files take aaaaaaages.
-      </div>
-      </div>
-    </div>
+    
 
-    <div class="row">
-      <div class="col-md-12">
-          <div id='editor_holder' style="display: none"></div>
-          </formset>
-
+      <form class="form-horizontal">
+      <div class="form-group">
+        <label for="sourceurl" class="col-sm-1 control-label">
+          Load from: 
+        </label>
+        <div class="col-sm-10">
+        <ul class="list-inline " id="external-jsons" style="display:none">
+        <li><a href="#">test-special</a></a></li>
+        <li><a href="#">test</a></li>
+        <li><a href="#">nm</a></li>
+        <li><a href="#">abs</a></li>
+        <li><a href="#">ckan</a></li>
+        <li><a href="#">csiro</a></li>
+        <li><a href="#">dgakml</a></li>
+        <li><a href="#">ganew</a></li>
+        <li><a href="#">geelong</a></li>
+        <li><a href="#">qld</a></li>
+        <li><a href="#">sa</a></li>
+        <li><a href="#">vic</a></li>
+        <li><a href="#">aremi</a></li>
+        </ul>
+        </div>
       </div>
-    </div>
+      <div class="form-group">
+
+        <label for="sourceurl" class="col-sm-1 control-label">
+          URL: 
+        </label>
+        <div class="col-sm-10 form-inline">
+        <input type="text" id="sourceurl" class="form-control" style="width: 40em">
+          <button type="submit" id="loadjson" class="btn btn-primary">Load</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-1 col-sm-offset-10">
+          <button type="button" id="savejson" class="btn btn-danger">Save to Gist</button>
+        </div>
+      </div>
+      </form>
+
+      <div id="loading" class="centre-block"  style="display: none">
+        <div class="row">
+        <div class="large-4" id="loadingmsg">
+        <h2>Loading JSON</h2> Large files take aaaaaaages.
+        </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+            <div id='editor_holder' style="display: none"></div>
+            </formset>
+
+        </div>
+      </div>
     </div>
     
     <script src="datasourceeditor.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="jsoneditor/jsoneditor.js"></script>
     
   </body>

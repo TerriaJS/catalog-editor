@@ -51,9 +51,14 @@ button.btn.btn-default.json-editor-btn-delete[title="Delete All"] {
 .well[data-schemapath="root.catalog.6"]>label,
 .well[data-schemapath="root.catalog.7"]>label,
 .well[data-schemapath="root.catalog.8"]>label {
-  background: hsl(0,0%,85%);
+  /*background: hsl(0,0%,85%);*/
+  background: hsl(208, 56%, 80%);
   display:block;
 }
+
+div[data-schemapath="root"] > p { display: none; }
+div[data-schemapath="root"] > h3 > span { display: none; }
+
 
 
 body {
@@ -67,4 +72,15 @@ body {
 
 .container-itemProperties > h3 {
   margin-left: -2em !important;
+}
+
+#savejson {
+  display:none;
+}
+
+#loadingmsg {
+  border-radius: 10px;
+  border: 1px solid gray;
+  padding: 0em 0em 2em 2em;
+  background-color: hsl(60,100%, 85%);
 }
