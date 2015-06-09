@@ -120,7 +120,7 @@ function afterSchemaLoad() {
       // alert("Error in the schema file.")
       // console.log(JSON.stringify(errors,null,2));
     } else {
-      if (!$("#loading").is(":visible"))
+      //if (!$("#loading").is(":visible"))
         $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
     }
   });
@@ -193,11 +193,16 @@ $("#savejson").click(function(e) {
     var cleanpreviewurl = 'http://nationalmap.research.nicta.com/#clean&' + encodeURIComponent(raw_url);
     var previewurl = 'http://nationalmap.research.nicta.com/#' + encodeURIComponent(raw_url);
     $("#loadingmsg").html('<h2>Saved!</h2>Your new datasource file has been saved to: <a href="' + j.html_url + '">' + j.html_url + '</a>' +
-      '<p>You can send this URL to the person who manages your TerriaJS server.</p>' + 
+      '<p>You can:<ul><li> Send this URL to the person who manages your TerriaJS server.</li>' + 
       //'<p><a target="_blank" href="' + previewurl + '">Preview in National Map</a></p>' + 
-      '<p><a target="_blank" href="' + cleanpreviewurl + '">Preview in National Map (without other data sources)</a></p>' 
+      '<li><a target="_blank" href="' + cleanpreviewurl + '">Preview it in National Map</a></li>' +
+      '<li><a id="downloadfile" href="#">Download the datasource file</a>.</li>' +
+      '</li>'
       );
     $("#loading").show();
+    $("#downloadfile").click(function(e) {
+      saveTextAs($("#jsonoutput").val(), 'datasource.json');
+    });
     console.log(j);
     //$("#sourceurl").val(
   }
