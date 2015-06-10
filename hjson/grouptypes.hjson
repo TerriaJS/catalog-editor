@@ -10,6 +10,7 @@
     # Technically set on each item individually..."
     dataCustodian: { 
       propertyOrder: 10
+      title: "Data custodian"
       $ref: "r_datacustodian.json" 
     }
     preserveOrder: {

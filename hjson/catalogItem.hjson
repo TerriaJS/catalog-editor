@@ -1,8 +1,5 @@
 {
   type: object
-  allOf: [
-    # { "$ref": "CatalogMember.json" }
-  ]
   properties: {
     rectangle: {
       type: "array" # TODO limit to 4 ? sometimes 2?
@@ -47,7 +44,10 @@
       type: string
       format: url
     }
-    dataCustodian: { $ref: "r_datacustodian.json" }
+    dataCustodian: { 
+      title: "Data custodian"
+      $ref: "r_datacustodian.json" 
+    }
     metadataUrl: {
       title: "Metadata URL"
       description: 
@@ -84,6 +84,4 @@
       description: "the clock parameters for this data item"        
     }
   }
-  # allOf: [ { "$ref": "itemOrGroup.json" } ]
-  # not: [ { "$ref": "#/definitions/group" } ]
 }

@@ -1,8 +1,8 @@
-/*! JSON Editor v0.7.18 - JSON Schema -> HTML Editor
+/*! JSON Editor v0.7.20 - JSON Schema -> HTML Editor
  * By Jeremy Dorn - https://github.com/jdorn/json-editor/
  * Released under the MIT license
  *
- * Date: 2015-05-09
+ * Date: 2015-06-08
  */
 
 /**
@@ -199,9 +199,9 @@ var $extend = function(destination) {
 };
 
 var $each = function(obj,callback) {
-  if(!obj) return;
+  if(!obj || typeof obj !== "object") return;
   var i;
-  if(typeof obj.length === 'number') {
+  if(Array.isArray(obj) || (typeof obj.length === 'number' && obj.length > 0 && (obj.length - 1) in obj)) {
     for(i=0; i<obj.length; i++) {
       if(callback(i,obj[i])===false) return;
     }
@@ -637,6 +637,9 @@ JSONEditor.prototype = {
     while (schema.$ref) {
       var ref = schema.$ref;
       delete schema.$ref;
+      
+      if(!this.refs[ref]) ref = decodeURIComponent(ref);
+      
       schema = this.extendSchemas(schema,this.refs[ref]);
     }
     return schema;
@@ -837,7 +840,6 @@ JSONEditor.Validator = Class.extend({
     path = path || 'root';
 
     // Work on a copy of the schema
-    // ##SB 
     schema = $extend({},this.jsoneditor.expandRefs(schema));
 
     /*
@@ -2449,7 +2451,6 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
           
           if(editor.options.hidden) editor.container.style.display = 'none';
           else this.theme.setGridColumnSize(editor.container,rows[i].editors[j].width);
-          editor.container.className += ' container-' + key;
           row.appendChild(editor.container);
         }
       }
@@ -2465,7 +2466,6 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         
         if(editor.options.hidden) editor.container.style.display = 'none';
         else self.theme.setGridColumnSize(editor.container,12);
-        editor.container.className += ' container-' + key;
         row.appendChild(editor.container);
       });
     }
@@ -2568,7 +2568,6 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
   },
   build: function() {
     var self = this;
-    //console.log("Building object editor: " + this.path);
     // If the object should be rendered as a table row
     if(this.options.table_row) {
       this.editor_holder = this.container;
@@ -2601,12 +2600,8 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       this.container.appendChild(this.title);
       this.container.style.position = 'relative';
       
-      var showEditJson = true;
       // Edit JSON Buttton disabled
-      if(this.schema.options && this.schema.options.disable_edit_json || this.jsoneditor.options.disable_edit_json)
-        showEditJson = false;
-      
-
+      var showEditJson = !(this.schema.options && this.schema.options.disable_edit_json || this.jsoneditor.options.disable_edit_json);
       if (showEditJson) {
         // Edit JSON modal
         this.editjson_holder = this.theme.getModal();
@@ -2741,7 +2736,6 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
       
       // Edit JSON Button
       if (showEditJson) {
-
         this.editjson_button = this.getButton('JSON','edit','Edit JSON');
         this.editjson_button.addEventListener('click',function(e) {
           e.preventDefault();
@@ -2751,15 +2745,6 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         this.editjson_controls.appendChild(this.editjson_button);
         this.editjson_controls.appendChild(this.editjson_holder);
       }
-      /*
-      // Edit JSON Buttton disabled
-      if(this.schema.options && typeof this.schema.options.disable_edit_json !== "undefined") {
-        if(this.schema.options.disable_edit_json) this.editjson_button.style.display = 'none';
-      }
-      else if(this.jsoneditor.options.disable_edit_json) {
-        this.editjson_button.style.display = 'none';
-      }
-      */
       // Object Properties Button
       this.addproperty_button = this.getButton('Properties','edit','Object Properties');
       this.addproperty_button.addEventListener('click',function(e) {
@@ -6457,7 +6442,7 @@ JSONEditor.defaults.themes.foundation5 = JSONEditor.defaults.themes.foundation.e
   },
   getTabHolder: function() {
     var el = document.createElement('div');
-    el.innerHTML = "<dl class='tabs vertical'></dl><div class='tabs-content'></div>";
+    el.innerHTML = "<dl class='tabs vertical'></dl><div class='tabs-content vertical'></div>";
     return el;
   },
   getTab: function(text) {
@@ -6862,33 +6847,56 @@ JSONEditor.defaults.iconlibs.jqueryui = JSONEditor.AbstractIconLib.extend({
 });
 
 JSONEditor.defaults.templates["default"] = function() {
-  function resolve(ref, context) {
-    var dot = ref.indexOf('.');
-    if (dot === -1)
-      return context[ref];
-    var predot = ref.slice(0, dot);
-    if (!predot)
-      return null;
-    
-    if (context[predot] === undefined)
-      return null;
-    
-    return resolve(ref.slice(dot + 1), context[predot]);
-  }
-  
   return {
     compile: function(template) {
-      return function (vars) {
+      var matches = template.match(/{{\s*([a-zA-Z0-9\-_\.]+)\s*}}/g);
+      var l = matches.length;
+
+      // Shortcut if the template contains no variables
+      if(!l) return function() { return template; };
+
+      // Pre-compute the search/replace functions
+      // This drastically speeds up template execution
+      var replacements = [];
+      var get_replacement = function(i) {
+        var p = matches[i].replace(/[{}\s]+/g,'').split('.');
+        var n = p.length;
+        var func;
+        
+        if(n > 1) {
+          var cur;
+          func = function(vars) {
+            cur = vars;
+            for(i=0; i<n; i++) {
+              cur = cur[p[i]];
+              if(!cur) break;
+            }
+            return cur;
+          };
+        }
+        else {
+          p = p[0];
+          func = function(vars) {
+            return vars[p];
+          };
+        }
+        
+        replacements.push({
+          s: matches[i],
+          r: func
+        });
+      };
+      for(var i=0; i<l; i++) {
+        get_replacement(i);
+      }
+
+      // The compiled function
+      return function(vars) {
         var ret = template+"";
-        var re = /{{\s*([a-zA-Z0-9_.\-]+)\s*}}/g;
-        var m = re.exec(ret);
-        while (m) {
-          var t = resolve(m[1], vars);
-          if (t) {
-            ret = ret.replace(m[0], t);
-            re.lastIndex += (t.length - m[0].length); // handle short substitutions
-          }
-          m = re.exec(ret);
+        var r;
+        for(i=0; i<l; i++) {
+          r = replacements[i];
+          ret = ret.replace(r.s, r.r(vars));
         }
         return ret;
       };

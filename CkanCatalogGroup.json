@@ -26,7 +26,7 @@
       "type": "array",
       "title": "Filters",
       "format": "tabs",
-      "description": "The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the\narray is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The\nsearch string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.\nSee the <a href=\"http://wiki.apache.org/solr/CommonQueryParameters#fq\">[Solr documentation]</a> for information about filter queries.",
+      "description": "The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the\narray is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The\nsearch string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.\n<br/>See the <a href=\"http://wiki.apache.org/solr/CommonQueryParameters#fq\">Solr documentation</a> for information about filter queries.",
       "items": {
         "title": "Filter",
         "type": "string"
@@ -96,7 +96,7 @@
     "itemProperties": {
       "type": "object",
       "title": "Item Properties",
-      "description": "Any additional properties to set on each item in the group, overriding values retrieved from data sources."
+      "description": "Any additional properties set on each item in the group, overriding values retrieved from data sources."
     }
   }
 }

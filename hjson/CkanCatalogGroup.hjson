@@ -89,7 +89,7 @@
     itemProperties: {
       type: object
       title: "Item Properties"
-      description: "Any additional properties to set on each item in the group, overriding values retrieved from data sources."          
+      description: "Any additional properties set on each item in the group, overriding values retrieved from data sources."          
     }
   }
 }

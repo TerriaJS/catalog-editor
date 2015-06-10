@@ -27,18 +27,20 @@
       "$ref": "r_datacustodian.json"
     },
     "parameters": {
+      "title": "WMS parameters",
       "$ref": "wms-parameters.json"
     },
     "itemProperties": {
       "type": "object",
       "title": "Item Properties",
-      "description": "Any additional properties to set on each item in the group, overriding values retrieved from data sources.",
+      "description": "Additional properties applied to each item in the group, overriding values retrieved from data sources.",
       "defaultProperties": [
         "rectangle"
       ],
       "required": [],
       "properties": {
         "info": {
+          "title": "Information metadata",
           "$ref": "r_info.json"
         }
       },
@@ -48,6 +50,9 @@
         },
         {
           "$ref": "CatalogItem.json"
+        },
+        {
+          "$ref": "ImageryLayerCatalogItem.json"
         }
       ]
     },
