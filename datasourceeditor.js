@@ -137,6 +137,11 @@ $("#external-jsons li").click(function(e) {
     url ='https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/ganew.json?ref=ga-datasource';
   } else if (targetname == 'aremi') {
     url = 'https://api.github.com/repos/NICTA/aremi-natmap/contents/wwwroot/init/aremi.json';
+  } else if (targetname == '(blank)') {
+    //url = 'https://gist.github.com/4092eda0d9b6a54ca839';
+    editor.setValue({catalog:[]});
+    $("#jsonoutput").trigger("change");
+    return;
   } else {
     url = 'https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/' + targetname + '.json';
   }
