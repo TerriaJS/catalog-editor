@@ -27,12 +27,10 @@
       "type": "string"
     },
     "blacklist": {
-      "type": "object",
-      "description": "Names of datasets that will be filtered out of the catalogue. Set each to \"true\".",
-      "additionalProperties": {
-        "type": "boolean",
-        "format": "checkbox"
-      }
+      "$ref": "r_blacklist.json"
+    },
+    "whitelist": {
+      "$ref": "r_whitelist.json"
     },
     "rectangle": {
       "type": "array",
@@ -50,6 +48,26 @@
             "number",
             "string"
           ]
+        }
+      ]
+    },
+    "itemProperties": {
+      "type": "object",
+      "title": "Item Properties",
+      "description": "Additional properties applied to each item in the group, overriding values retrieved from data sources.",
+      "required": [],
+      "properties": {
+        "info": {
+          "title": "Information metadata",
+          "$ref": "r_info.json"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "absitem-properties.json"
+        },
+        {
+          "$ref": "CatalogItem.json"
         }
       ]
     }

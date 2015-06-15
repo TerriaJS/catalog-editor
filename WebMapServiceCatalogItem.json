@@ -18,5 +18,13 @@
     "type",
     "url",
     "layers"
-  ]
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "wms"
+      ]
+    }
+  }
 }

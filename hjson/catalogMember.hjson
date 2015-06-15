@@ -15,7 +15,6 @@
       type: string
       description: "Code designating the kind of data source. Cannot be changed in this editor."
       options: { "hidden": true }
-      #enum: [ "wms", "group", "ckan", "csv","abs-itt","wfs","wms-getCapabilities" ]
     }
     description: {
       title: "Description"
@@ -40,6 +39,32 @@
       format: checkbox
       description:
         "Whether this item is kept above other non-promoted items."
+    }
+    isHidden: {
+      title: "Hide"
+      type: boolean
+      format: checkbox
+      description: "Whether this item is hidden from the catalog."
+    }
+    initialMessage: {
+      title: "Initial message"
+      type: object
+      description: "A message that is presented to the user when an item or group is initially clicked."
+      defaultProperties: [ "title", "content", "key" ]
+      properties: {
+        title: {
+          title: Title
+          type: string
+        }
+        content: {
+          title: Content
+          type: string
+        }
+        key: {
+          title: Key
+          type: string
+        }
+      }
     }
   }
 }

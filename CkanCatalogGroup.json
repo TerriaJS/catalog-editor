@@ -76,22 +76,10 @@
       "format": "checkbox"
     },
     "blacklist": {
-      "type": "object",
-      "title": "Blacklist",
-      "description": "Names of datasets that will be filtered out of the catalogue. Set each to \"true\".",
-      "additionalProperties": {
-        "type": "boolean",
-        "format": "checkbox"
-      }
+      "$ref": "r_blacklist.json"
     },
     "whitelist": {
-      "type": "object",
-      "title": "Whitelist",
-      "description": "If there is a whitelist, only the names of datasets contained in it will be shown. All other datasets will be removed.",
-      "additionalProperties": {
-        "type": "boolean",
-        "format": "checkbox"
-      }
+      "$ref": "r_whitelist.json"
     },
     "itemProperties": {
       "type": "object",

@@ -8,5 +8,9 @@
     { "$ref": "ImageryLayerCatalogItem.json" }
     ]
   defaultProperties: [ "name", "type", "url", "layers" ]
+  properties: {
+    type: { type: "string", enum: [ "wms" ] }
+  }
+
 
 }

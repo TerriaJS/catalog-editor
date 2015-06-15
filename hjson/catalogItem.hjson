@@ -83,5 +83,10 @@
       type: "object" #??
       description: "the clock parameters for this data item"        
     }
+    nowViewingMessage: {
+      title: "\"Now Viewing\" message"
+      description: A message to show when this item is enabled for the first time in order to call attention to the Now Viewing panel.
+      type: string
+    }
   }
 }

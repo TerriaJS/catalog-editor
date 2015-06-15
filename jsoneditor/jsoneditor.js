@@ -2451,6 +2451,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
           
           if(editor.options.hidden) editor.container.style.display = 'none';
           else this.theme.setGridColumnSize(editor.container,rows[i].editors[j].width);
+          editor.container.className += ' container-' + key.replace(/ /g, '-');
           row.appendChild(editor.container);
         }
       }
@@ -2466,6 +2467,7 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
         
         if(editor.options.hidden) editor.container.style.display = 'none';
         else self.theme.setGridColumnSize(editor.container,12);
+        editor.container.className += ' container-' + key.replace(/ /g, '-');
         row.appendChild(editor.container);
       });
     }
@@ -6847,56 +6849,33 @@ JSONEditor.defaults.iconlibs.jqueryui = JSONEditor.AbstractIconLib.extend({
 });
 
 JSONEditor.defaults.templates["default"] = function() {
+  function resolve(ref, context) {
+    var dot = ref.indexOf('.');
+    if (dot === -1)
+      return context[ref];
+    var predot = ref.slice(0, dot);
+    if (!predot)
+      return null;
+    
+    if (context[predot] === undefined)
+      return null;
+    
+    return resolve(ref.slice(dot + 1), context[predot]);
+  }
+  
   return {
     compile: function(template) {
-      var matches = template.match(/{{\s*([a-zA-Z0-9\-_\.]+)\s*}}/g);
-      var l = matches.length;
-
-      // Shortcut if the template contains no variables
-      if(!l) return function() { return template; };
-
-      // Pre-compute the search/replace functions
-      // This drastically speeds up template execution
-      var replacements = [];
-      var get_replacement = function(i) {
-        var p = matches[i].replace(/[{}\s]+/g,'').split('.');
-        var n = p.length;
-        var func;
-        
-        if(n > 1) {
-          var cur;
-          func = function(vars) {
-            cur = vars;
-            for(i=0; i<n; i++) {
-              cur = cur[p[i]];
-              if(!cur) break;
-            }
-            return cur;
-          };
-        }
-        else {
-          p = p[0];
-          func = function(vars) {
-            return vars[p];
-          };
-        }
-        
-        replacements.push({
-          s: matches[i],
-          r: func
-        });
-      };
-      for(var i=0; i<l; i++) {
-        get_replacement(i);
-      }
-
-      // The compiled function
-      return function(vars) {
+      return function (vars) {
         var ret = template+"";
-        var r;
-        for(i=0; i<l; i++) {
-          r = replacements[i];
-          ret = ret.replace(r.s, r.r(vars));
+        var re = /{{\s*([a-zA-Z0-9_.\-]+)\s*}}/g;
+        var m = re.exec(ret);
+        while (m) {
+          var t = resolve(m[1], vars);
+          if (t) {
+            ret = ret.replace(m[0], t);
+            re.lastIndex += (t.length - m[0].length); // handle short substitutions
+          }
+          m = re.exec(ret);
         }
         return ret;
       };

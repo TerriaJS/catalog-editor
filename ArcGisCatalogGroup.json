@@ -27,9 +27,7 @@
       "$ref": "r_datacustodian.json"
     },
     "blacklist": {
-      "type": "object",
-      "title": "Blacklist",
-      "description": "A set of properties of MapServer items that should not be loaded."
+      "$ref": "r_blacklist.json"
     },
     "itemProperties": {
       "title": "Item properties",

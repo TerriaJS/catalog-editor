@@ -1,7 +1,6 @@
 {
   type: object
   properties: {
-    type: { type: "string", enum: [ "wms" ] }
     layers: {
       title: "Layer Names"
       description: "Comma-separated list of WMS layer names to include."

@@ -19,14 +19,8 @@
         a dataset by querying http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json"
       type: string
     }
-    blacklist: {
-      type: object
-      description: "Names of datasets that will be filtered out of the catalogue. Set each to \"true\"."
-      additionalProperties: {
-        type: boolean
-        format: checkbox
-      }
-    }
+    blacklist: { $ref: "r_blacklist.json" }
+    whitelist: { $ref: "r_whitelist.json" }
      # Not really sure why we have this here.
     rectangle: {
       type: "array" # TODO limit to 4 ? sometimes 2?
@@ -47,6 +41,24 @@
         }
       ]
     }
+    itemProperties: {
+      type: object
+      title: "Item Properties"
+      description: "Additional properties applied to each item in the group, overriding values retrieved from data sources." 
+      # defaultProperties: [ "rectangle" ]
+      required: []
+      properties: {
+        info: {
+          title: Information metadata
+          "$ref": "r_info.json"
+        }
+      }
+      allOf: [
+      { "$ref": "absitem-properties.json" }
+      { "$ref": "CatalogItem.json" }
+      ]
+    }
+
 
 
   }
