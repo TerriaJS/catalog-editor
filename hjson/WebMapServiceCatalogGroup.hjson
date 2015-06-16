@@ -4,7 +4,8 @@
   type: object
   allOf: [
     { "$ref": "grouptypes.json" }
-    { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
+    { "$ref": "CatalogMember.json" }
+    { "$ref": "ImageryLayerCatalogItem.json" }
   ]
   # required: [ "name", "type" ]
   defaultProperties: [ "name", "type", "url", "dataCustodian" ] # , "layers" ]
@@ -22,7 +23,7 @@
       title: "Item Properties"
       description: "Additional properties applied to each item in the group, overriding values retrieved from data sources." 
       defaultProperties: [ "rectangle" ]
-      required: []
+      # required: []
       properties: {
         info: {
           title: Information metadata
@@ -30,10 +31,13 @@
         }
 
       }
+      # Strangely this next line seems to be important
+      $ref: "WebMapServiceCatalogItem.json"
       allOf: [
-      { "$ref": "wms-properties.json" }
-      { "$ref": "CatalogItem.json" }
-      { "$ref": "ImageryLayerCatalogItem.json" }
+      # { "$ref": "WebMapServiceCatalogItem.json" }
+       { "$ref": "wms-properties.json" }
+       { "$ref": "CatalogItem.json" }
+       { "$ref": "ImageryLayerCatalogItem.json" }
       ]
     }
     titleField: {

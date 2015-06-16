@@ -1,8 +1,4 @@
 {
-  "required": [
-    "name",
-    "type"
-  ],
   "type": "object",
   "properties": {
     "name": {

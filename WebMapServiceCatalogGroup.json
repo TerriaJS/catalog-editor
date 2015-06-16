@@ -8,6 +8,9 @@
     },
     {
       "$ref": "CatalogMember.json"
+    },
+    {
+      "$ref": "ImageryLayerCatalogItem.json"
     }
   ],
   "defaultProperties": [
@@ -37,13 +40,13 @@
       "defaultProperties": [
         "rectangle"
       ],
-      "required": [],
       "properties": {
         "info": {
           "title": "Information metadata",
           "$ref": "r_info.json"
         }
       },
+      "$ref": "WebMapServiceCatalogItem.json",
       "allOf": [
         {
           "$ref": "wms-properties.json"

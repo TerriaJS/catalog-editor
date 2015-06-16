@@ -3,7 +3,8 @@
   type: object
   allOf: [
     { "$ref": "grouptypes.json" }
-    { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
+    { "$ref": "CatalogMember.json" }
+    { "$ref": "CatalogItem.json" }
   ]
   properties: {
     type: { type: "string", enum: [ "abs-itt-dataset-list" ] }
@@ -15,32 +16,13 @@
     regionType: {
       title: "Region Type"
       description: 
-        "The ABS region type to query.  You can obtain a list of all available region types for
-        a dataset by querying http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json"
+        "The ABS region type to query.  See the <a href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json'>
+        list of all available region types for a dataset</a>."
       type: string
     }
     blacklist: { $ref: "r_blacklist.json" }
     whitelist: { $ref: "r_whitelist.json" }
      # Not really sure why we have this here.
-    rectangle: {
-      type: "array" # TODO limit to 4 ? sometimes 2?
-      format: "table"
-      title: "Bounding box"
-      options: {
-        collapsed: true
-        disable_array_reorder: true
-      }
-      maxItems: 4
-      minItems: 2
-      items: [
-        {
-          type: [
-            number
-            string
-          ]
-        }
-      ]
-    }
     itemProperties: {
       type: object
       title: "Item Properties"
@@ -54,7 +36,7 @@
         }
       }
       allOf: [
-      { "$ref": "absitem-properties.json" }
+      { "$ref": "AbsIttCatalogItem.json" }
       { "$ref": "CatalogItem.json" }
       ]
     }

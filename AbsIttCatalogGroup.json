@@ -7,6 +7,9 @@
     },
     {
       "$ref": "CatalogMember.json"
+    },
+    {
+      "$ref": "CatalogItem.json"
     }
   ],
   "properties": {
@@ -23,7 +26,7 @@
     },
     "regionType": {
       "title": "Region Type",
-      "description": "The ABS region type to query.  You can obtain a list of all available region types for\n        a dataset by querying http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json",
+      "description": "The ABS region type to query.  See the <a href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json'>\n        list of all available region types for a dataset</a>.",
       "type": "string"
     },
     "blacklist": {
@@ -31,25 +34,6 @@
     },
     "whitelist": {
       "$ref": "r_whitelist.json"
-    },
-    "rectangle": {
-      "type": "array",
-      "format": "table",
-      "title": "Bounding box",
-      "options": {
-        "collapsed": true,
-        "disable_array_reorder": true
-      },
-      "maxItems": 4,
-      "minItems": 2,
-      "items": [
-        {
-          "type": [
-            "number",
-            "string"
-          ]
-        }
-      ]
     },
     "itemProperties": {
       "type": "object",
@@ -64,7 +48,7 @@
       },
       "allOf": [
         {
-          "$ref": "absitem-properties.json"
+          "$ref": "AbsIttCatalogItem.json"
         },
         {
           "$ref": "CatalogItem.json"

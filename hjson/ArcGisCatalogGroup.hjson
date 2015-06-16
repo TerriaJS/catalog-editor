@@ -14,12 +14,27 @@
     }
     dataCustodian: { $ref: "r_datacustodian.json" }
     blacklist: { $ref: "r_blacklist.json" }
+
     itemProperties: {
-      title: Item properties
-      description: "A list of properties that will be set on each child item. For example, { 'treat404AsError': false }"
       type: object
+      title: "Item Properties"
+      description: "Additional properties applied to each item in the group, overriding values retrieved from data sources." 
+      # defaultProperties: [ "rectangle" ]
       additionalProperties: true
+      required: []
+      properties: {
+        #info: {
+        #  title: Information metadata
+        #  "$ref": "r_info.json"
+        #}
+      }
+      allOf: [
+      # { "$ref": "ArcGisCatalogItem.json" }
+      # { "$ref": "CatalogItem.json" }
+      { "$ref": "CatalogMember.json" }
+      ]
     }
+
 
   }
 }

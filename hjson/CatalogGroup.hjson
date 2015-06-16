@@ -8,10 +8,10 @@
   type: "object"
   options: { "disable_collapse": true }
   # defaultProperties: [ "name", "type", "items" ]
-  #required: [ "name", "type" ] # items?
+  required: [ "name", "type" ] # items?
   defaultProperties: [ "name", "type", "items", "preserveOrder", "isOpen" ] # this isn't being used?
   properties: {
-    type: { type: "string", enum: [ "group" ] }
+    type: { enum: [ "group" ] }
     items: { "$ref":  "items.json" }
   }
 }

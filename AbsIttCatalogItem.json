@@ -6,7 +6,7 @@
       "$ref": "CatalogItem.json"
     },
     {
-      "$ref": "absitem-properties.json"
+      "$ref": "CatalogMember.json"
     }
   ],
   "defaultProperties": [
@@ -24,6 +24,41 @@
       "enum": [
         "abs-itt"
       ]
+    },
+    "filter": {
+      "title": "Filter",
+      "description": "The list of initial concepts and codes on which to filter the data.  See the \n          <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetConcepts&datasetid=ABS_CENSUS2011_B25>list of all available\n         concepts for a dataset</a>\n         and a <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=MEASURE&format=json'>list of the possible values for a concept</a>",
+      "type": "array",
+      "format": "table",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dataSetID": {
+      "title": "Dataset ID",
+      "description": "The ID of the ABS dataset.  See the <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetList'>list of all datasets</a>",
+      "type": "string"
+    },
+    "regionType": {
+      "title": "Region Type",
+      "description": "The ABS region type to query.  See the <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json'>\n        available region types for a dataset</a>",
+      "type": "string"
+    },
+    "regionConcept": {
+      "title": "Region Concept",
+      "description": "The ABS region concept.  You can obtain a list of all available concepts for\n         a dataset by querying http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetConcepts&datasetid=ABS_CENSUS2011_B19",
+      "type": "string"
+    },
+    "opacity": {
+      "title": "Opacity",
+      "description": "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque.",
+      "type": "number"
+    },
+    "displayPercent": {
+      "title": "Display percentage",
+      "description": "Show percentages instead of raw values. True by default",
+      "type": "boolean",
+      "format": "checkbox"
     }
   }
 }

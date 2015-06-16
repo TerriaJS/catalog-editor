@@ -13,6 +13,10 @@
   "options": {
     "disable_collapse": true
   },
+  "required": [
+    "name",
+    "type"
+  ],
   "defaultProperties": [
     "name",
     "type",
@@ -22,7 +26,6 @@
   ],
   "properties": {
     "type": {
-      "type": "string",
       "enum": [
         "group"
       ]

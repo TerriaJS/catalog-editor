@@ -9,6 +9,7 @@
     title: Item
     headerTemplate: "{{ self.name }}" # ({{self.type}})",
     allOf: [ { "$ref": "CatalogMember.json" } ]
+    required: [ "name", "type" ] # ??
     oneOf: [ # keep in sync with catalog in main schema file.
       { "$ref": "CatalogGroup.json" }
       { "$ref": "WebMapServiceCatalogItem.json" }

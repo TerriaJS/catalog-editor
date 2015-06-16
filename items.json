@@ -12,6 +12,10 @@
         "$ref": "CatalogMember.json"
       }
     ],
+    "required": [
+      "name",
+      "type"
+    ],
     "oneOf": [
       {
         "$ref": "CatalogGroup.json"
