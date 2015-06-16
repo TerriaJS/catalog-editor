@@ -124,14 +124,18 @@ function afterSchemaLoad() {
         $("#jsonoutput").val(JSON.stringify(editor.getValue(), null, 2));
     }
   });
+
+  populateSources();
 }
-$("#external-jsons li").click(function(e) {
+
+function clickedExternalJson(e) {
   e.preventDefault();
   var url;
   targetname = e.target.textContent.trim();
   // Need to go through Github API or else CORS issues. 
-
-  if  (targetname=='test-special') {
+  if ($(e.target).data("url")) {
+    url = $(e.target).data("url");
+  } else if  (targetname=='test-special') {
     url = 'https://gist.githubusercontent.com/stevage/08f89468f51822ade8d7/raw/ced603a2dd6c4dd8664751bc45915a45f493dcbf/gistfile1.json';
   } else if (targetname == 'ganew') {
     url ='https://api.github.com/repos/NICTA/nationalmap/contents/wwwroot/init/ganew.json?ref=ga-datasource';
@@ -148,7 +152,10 @@ $("#external-jsons li").click(function(e) {
 
   $("#sourceurl").val(url);
   return;
- });
+}
+
+$("#external-jsons li").click(clickedExternalJson);
+
 
 //https://api.github.com/gists/08f89468f51822ade8d7
 
@@ -190,6 +197,55 @@ function loadedFile(t) {
     $("#savejson").show();
     return;
     
+}
+
+function populateSources() {
+  var appendtarget = "#external-jsons";
+
+  function loadjson(url) {
+    $.ajax({
+        dataType: "json",
+        url: url,
+        accepts: { 'json': 'application/vnd.github.v3.raw'},
+        error: function(e) { alert("Error " + e.status + ": " + e.statusText); },
+        success: loaded
+    });
+
+  }
+
+  function loaded(j) {
+    j.forEach(function(e) {
+      if (e.url.match(/\.json/)) {
+
+        $(appendtarget).append($(
+          "<li><a href='#' data-url='" + e.url + "'" +
+            ">" + 
+            e.name.replace('.json','')
+            .replace(/^\d\d_/, '')
+            .replace(/^\d\d_/, '') // catch 00_01_names
+            .replace(/_/g, ' ')
+            .replace('000 settings', 'General settings') +
+            "</a>" +
+            (e.name.match('00_National_Data_Sets.json') ? ' <ul id="external-jsons-national"></ul> ' : '') +
+             "</li>"
+        ));
+      }
+
+    });
+    $("#external-jsons li").click(clickedExternalJson);
+    console.log(j);
+    if (appendtarget === "#external-jsons") {
+      //$(appendtarget).append('<li><ul id="external-jsons-national"></ul></li>');
+      appendtarget='#external-jsons-national';
+      loadjson('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets?ref=split-datasources');
+    }
+  };
+
+  $("#external-jsons").html("");
+
+  // https://api.github.com/repos/NICTA/nationalmap/contents/datasources?ref=split-datasources
+  loadjson('https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/69384f0b9efdd1b8a508bbf2171957bfefd8fc8d/gistfile1.txt');
+
 }
 
 $("#savejson").click(function(e) {
