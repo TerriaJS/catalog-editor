@@ -191,7 +191,13 @@ function loadURL(url) {
 
 }
 
-function loadedFile(t) {
+function loadedFile(t, status, request) {
+    console.log(request);
+    var remaining = Number(request.getResponseHeader('X-RateLimit-Remaining'));
+    if (remaining <= 5) {
+      alert("GitHub limits file requests to 60 per hour. You only have " + remaining + " left, then you'll need to wait for a bit, " +
+      "or manually copy/paste the source file in.");
+    }
     $("#jsonoutput").val(JSON.stringify(t,null,2));
     $("#jsonoutput").trigger("change");
     $("#savejson").show();
