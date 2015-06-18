@@ -85,3 +85,8 @@ body {
   padding: 0em 0em 2em 2em;
   background-color: hsl(60,100%, 85%);
 }
+
+textarea.form-control {
+  /* By default some get created at 1px */
+  min-height: 2.5em;
+}
