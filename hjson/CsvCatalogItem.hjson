@@ -5,7 +5,7 @@
   allOf: [ 
     { "$ref": "CatalogItem.json" }
   ]
-  defaultProperties: [ "name", "type", "url", "tableStyle" ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "tableStyle" ]
   properties: {
     type: { type: "string", enum: [ "csv" ] }
     tableStyle: {

@@ -16,8 +16,7 @@
   "defaultProperties": [
     "name",
     "type",
-    "url",
-    "dataCustodian"
+    "url"
   ],
   "properties": {
     "type": {

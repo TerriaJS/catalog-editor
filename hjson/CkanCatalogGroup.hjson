@@ -5,7 +5,7 @@
     { "$ref": "grouptypes.json" }
     { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
   ]
-  defaultProperties: [ "type", "name", "url", "filterQuery" ]
+  defaultProperties: [ "type", "name", "url" ] # disabled, per #1, "filterQuery" ]
   properties: {
     type: { type: "string", enum: [ "ckan" ] }
     filterQuery: {

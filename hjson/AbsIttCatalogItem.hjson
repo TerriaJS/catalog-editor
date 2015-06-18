@@ -5,7 +5,8 @@
     { "$ref": "CatalogItem.json" }
     { "$ref": "CatalogMember.json" }
   ]
-  defaultProperties: [ "type", "url", "name", "dataSetID", "regionType", "regionConcept", "filter" ]
+  defaultProperties: [ "type", "url", "name" ] # disabled, per #1 , "dataSetID", "regionType", "regionConcept", "filter" ]
+  
   properties: {
     type: { type: "string", enum: [ "abs-itt" ] }
     filter: {

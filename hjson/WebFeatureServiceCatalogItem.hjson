@@ -5,7 +5,7 @@
   allOf: [
     { "$ref": "CatalogItem.json" }
     ]
-  defaultProperties: [ "name", "type", "url", "typeNames" ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "typeNames" ]
   properties: {
     type: { type: "string", enum: [ "wfs" ] }
     typeNames: {

@@ -6,7 +6,7 @@
     { "$ref": "grouptypes.json" }
     { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
     ]
-  defaultProperties: [ "name", "type", "url", "dataCustodian"  ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "dataCustodian"  ]
   properties: {
     type: {
       type: string
@@ -28,6 +28,7 @@
         #  "$ref": "r_info.json"
         #}
       }
+      $ref: "ArcGisCatalogItem.json"
       allOf: [
       # { "$ref": "ArcGisCatalogItem.json" }
       # { "$ref": "CatalogItem.json" }

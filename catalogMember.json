@@ -53,6 +53,9 @@
         "content",
         "key"
       ],
+      "options": {
+        "remove_empty_properties": true
+      },
       "properties": {
         "title": {
           "title": "Title",

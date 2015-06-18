@@ -5,7 +5,7 @@
   allOf: [
     { "$ref": "CatalogItem.json" }
     ]
-  defaultProperties: [ "name", "type", "url", "layers" ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "layers" ]
   properties: {
 
     opacity: {

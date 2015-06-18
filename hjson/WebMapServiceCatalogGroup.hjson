@@ -8,7 +8,7 @@
     { "$ref": "ImageryLayerCatalogItem.json" }
   ]
   # required: [ "name", "type" ]
-  defaultProperties: [ "name", "type", "url", "dataCustodian" ] # , "layers" ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "dataCustodian" ] # , "layers" ]
   properties: {
     type: { type: "string", enum: [ "wms-getCapabilities" ] }
     dataCustodian: { 

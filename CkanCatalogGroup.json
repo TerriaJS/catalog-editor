@@ -12,8 +12,7 @@
   "defaultProperties": [
     "type",
     "name",
-    "url",
-    "filterQuery"
+    "url"
   ],
   "properties": {
     "type": {

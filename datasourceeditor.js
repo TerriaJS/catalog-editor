@@ -68,7 +68,7 @@ function afterSchemaLoad() {
       
       // The schema for the editor
       schema: schema,//{ $ref: "schema2.json" },
-      remove_empty_properties: true,
+      //remove_empty_properties: true,
       //theme: "foundation5",
       theme: "bootstrap3",
       template: 'default',//alwaysname, // soooo much faster than the default template engine as long as we only use it for this.

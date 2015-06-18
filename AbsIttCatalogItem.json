@@ -12,11 +12,7 @@
   "defaultProperties": [
     "type",
     "url",
-    "name",
-    "dataSetID",
-    "regionType",
-    "regionConcept",
-    "filter"
+    "name"
   ],
   "properties": {
     "type": {

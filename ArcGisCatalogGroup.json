@@ -13,8 +13,7 @@
   "defaultProperties": [
     "name",
     "type",
-    "url",
-    "dataCustodian"
+    "url"
   ],
   "properties": {
     "type": {
@@ -36,6 +35,7 @@
       "additionalProperties": true,
       "required": [],
       "properties": {},
+      "$ref": "ArcGisCatalogItem.json",
       "allOf": [
         {
           "$ref": "CatalogMember.json"

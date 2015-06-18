@@ -10,8 +10,7 @@
   "defaultProperties": [
     "name",
     "type",
-    "url",
-    "tableStyle"
+    "url"
   ],
   "properties": {
     "type": {
@@ -52,6 +51,7 @@
                 "title": "Color"
               },
               "offset": {
+                "title": "Offset",
                 "type": "number"
               }
             }

@@ -6,7 +6,7 @@
     { "$ref": "CatalogItem.json" }
     { "$ref": "ImageryLayerCatalogItem.json" }
     ]
-  defaultProperties: [ "name", "type", "url", "layers" ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "layers" ]
   properties: {
     type: { type: "string", enum: [ "esri-mapServer" ] }
     layers: {

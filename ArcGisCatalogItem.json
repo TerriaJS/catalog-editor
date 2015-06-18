@@ -13,8 +13,7 @@
   "defaultProperties": [
     "name",
     "type",
-    "url",
-    "layers"
+    "url"
   ],
   "properties": {
     "type": {

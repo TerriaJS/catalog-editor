@@ -7,7 +7,7 @@
     { "$ref": "CatalogMember.json" } # this redundancy shouldn't be required
     ]
   # required: [ "name", "type" ]
-  defaultProperties: [ "name", "type", "url", "dataCustodian" ] # , "layers" ]
+  defaultProperties: [ "name", "type", "url" ] # disabled, per #1, "dataCustodian" ] # , "layers" ]
   properties: {
     type: { type: "string", enum: [ "wfs-getCapabilities" ] }
     dataCustodian: { $ref: "r_datacustodian.json" }

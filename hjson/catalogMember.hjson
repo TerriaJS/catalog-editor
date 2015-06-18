@@ -51,6 +51,7 @@
       type: object
       description: "A message that is presented to the user when an item or group is initially clicked."
       defaultProperties: [ "title", "content", "key" ]
+      options: { "remove_empty_properties": true }
       properties: {
         title: {
           title: Title

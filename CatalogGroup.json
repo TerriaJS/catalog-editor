@@ -17,13 +17,6 @@
     "name",
     "type"
   ],
-  "defaultProperties": [
-    "name",
-    "type",
-    "items",
-    "preserveOrder",
-    "isOpen"
-  ],
   "properties": {
     "type": {
       "enum": [
