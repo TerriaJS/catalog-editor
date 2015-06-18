@@ -58,6 +58,9 @@
         }
       ]
     },
+    "blacklist": {
+      "$ref": "r_blacklist.json"
+    },
     "titleField": {
       "type": "string",
       "title": "Title field",
