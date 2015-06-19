@@ -104,6 +104,7 @@ function afterSchemaLoad() {
     console.log("Loaded in " + ((performance.now() - t0)/1000).toFixed(1) + " seconds.");
     $("#editor_holder").show();
     $("#loading").hide();
+    $("#savejson").show();
 
 
   });
@@ -200,7 +201,6 @@ function loadedFile(t, status, request) {
     }
     $("#jsonoutput").val(JSON.stringify(t,null,2));
     $("#jsonoutput").trigger("change");
-    $("#savejson").show();
     return;
     
 }
@@ -243,7 +243,7 @@ function populateSources() {
     if (appendtarget === "#external-jsons") {
       //$(appendtarget).append('<li><ul id="external-jsons-national"></ul></li>');
       appendtarget='#external-jsons-national';
-      loadjson('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets?ref=split-datasources');
+      loadjson('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets');
     }
   };
 
