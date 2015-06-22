@@ -232,12 +232,13 @@ function populateSources() {
             .replace(/_/g, ' ')
             .replace('000 settings', 'General settings') +
             "</a>" +
-            (e.name.match('00_National_Data_Sets.json') ? ' <ul id="external-jsons-national"></ul> ' : '') +
+            (e.name.match('00_National_Data_Sets') ? ' <ul id="external-jsons-national"></ul> ' : '') +
              "</li>"
         ));
       }
 
     });
+    //$(appendtarget).append($("<li><a href='#'>(blank)</a></li>"));
     $("#external-jsons li").click(clickedExternalJson);
     console.log(j);
     if (appendtarget === "#external-jsons") {
@@ -250,7 +251,7 @@ function populateSources() {
   $("#external-jsons").html("");
 
   // https://api.github.com/repos/NICTA/nationalmap/contents/datasources?ref=split-datasources
-  loadjson('https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/69384f0b9efdd1b8a508bbf2171957bfefd8fc8d/gistfile1.txt');
+  loadjson('https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/gistfile1.txt');
 
 }
 
