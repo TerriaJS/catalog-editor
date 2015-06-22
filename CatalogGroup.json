@@ -13,6 +13,11 @@
   "options": {
     "disable_collapse": true
   },
+  "defaultProperties": [
+    "name",
+    "type",
+    "items"
+  ],
   "required": [
     "name",
     "type"
