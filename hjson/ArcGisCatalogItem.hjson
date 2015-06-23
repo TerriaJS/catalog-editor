@@ -12,7 +12,7 @@
     layers: {
       type: string
       title: Layers
-      description: "comma-separated list of layer IDs to show.  If this property is undefined, all layers are shown."
+      description: "Comma-separated list of layer IDs to show.  If this property is undefined, all layers are shown."
     }
     maximumScale: {
       type: number
