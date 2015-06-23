@@ -242,7 +242,7 @@ function populateSources() {
     $("#external-jsons li").click(clickedExternalJson);
     console.log(j);
     if (appendtarget === "#external-jsons") {
-      //$(appendtarget).append('<li><ul id="external-jsons-national"></ul></li>');
+      $(appendtarget).append('<li>National Data Sets<ul id="external-jsons-national"></ul></li>');
       appendtarget='#external-jsons-national';
       loadjson('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets');
     }
