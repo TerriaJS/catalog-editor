@@ -21,6 +21,13 @@
         font-family:monospace;
         background-color: hsl(220,80%,95%);
       }
+      #jsonoutputbox label {
+        color: #555;
+        font-size: 16px;
+      }
+      #sourceurl {
+         width: 60em;
+      }
       body {
         transform: scale(0.75);
         transform-origin: top;
@@ -37,8 +44,49 @@
         </div>
       </div>
       <div class="row">
+        <div class="span4 collapse-group">
+        <h2>Help</h2>
+        <a href="terriajs.io" target="_blank">TerriaJS</a> is the software that runs National Map, AREMI, Northern Australia Map, NEII Viewer, and related sites. This tool is for TerriaJS administrators in charge of managing the data sources that are
+        shown in those sites. It lets you load a catalog (a list of datasources), make changes to it, and then save a copy to the web.
+        <div class="collapse">
+        <h3>Loading a catalog</h3>
+        <p>To load a catalog, either:
+        <ol>
+          <li>Click the name of one of the National Map catalog groups, then click the <b>Load</b> button.</li>
+          <li>If the catalog JSON code is on the web somewhere, paste the URL into the URL box then click the <b>Load</b> button.</li>
+          <li>Copy the JSON code for the catalog from somewhere else. Paste it into the JSON code box, then click anywhere outside the box to load from it.</li>
+
+        </ol>
+        </p>
+        <h3>Saving changes</h3>
+        Click the <b>Save to Gist</b> button. A copy of the catalog will be saved to Gist, a website for storing text files
+        run by GitHub. The contents is private unless you share the URL with someone. You can then preview the changes or
+        send a copy to the system administrator.
+        <h3>Adding properties</h3>
+        There are many additional properties you can add to each catalog item or group besides its name and type. 
+        <ol><li>Click the <b>Properties</b> button at the top of the item</li>
+        <li>Scroll down to find the property you want to add, then click its checkbox</li>
+        <li>Now close the <b>Properties</b> list, and go and find that property, to give it a value.</li>
+        </ol>
+
+        <h3>Moving items up and down</h3>
+        To reorder items within a group, click the &uarr; and &darr; buttons located <b>below and to the right</b> of the list of items. Reordering items in the primary group level can be slow.
+        <h3>Adding an item</h3>
+        To add a new item into a group:
+        <ol><li>Click <b>✚ Item</b>, located <b>above</b> the list of items. (To add a new top-level group, click <b>✚ Top-level group</b> located <b>at the bottom</b>.)</li>
+        <li>Choose a type from the drop down list. The default is "Group"</li>
+        <li>Enter a name</li>
+        <li>Add additional properties (See "<i>Adding properties</i>", above)</li>
+        </ul>
+        </div>
+          <p><a class="btn" href="#" style="background:hsl(240,50%,95%)">Click for help &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="row" id="jsonoutputbox">
         <div class="large-12 columns">
             <!--<button id='load'>Load from JSON</button>-->
+            <label for="jsonoutput">JSON code</label>
             <textarea id="jsonoutput" value="{ catalog: [] }">
             </textarea>
         </div>
@@ -75,7 +123,7 @@
           URL: 
         </label>
         <div class="col-sm-10 form-inline">
-        <input type="text" id="sourceurl" class="form-control" style="width: 50em">
+        <input type="text" id="sourceurl" class="form-control">
           <button type="submit" id="loadjson" class="btn btn-primary">Load</button>
         </div>
       </div>

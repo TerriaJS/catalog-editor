@@ -29,6 +29,14 @@ $(function() {
     request.open('GET', 'catalog.json', true);
     request.send();
   }, 100);
+
+  $('.row .btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $collapse = $this.closest('.collapse-group').find('.collapse');
+    $collapse.collapse('toggle');
+    });
+
 });
 
 
@@ -260,10 +268,10 @@ $("#savejson").click(function(e) {
     var raw_url = j.files[Object.keys(j.files)[0]].raw_url;
     var cleanpreviewurl = 'http://nationalmap.research.nicta.com/#clean&' + encodeURIComponent(raw_url);
     var previewurl = 'http://nationalmap.research.nicta.com/#' + encodeURIComponent(raw_url);
-    $("#loadingmsg").html('<h2>Saved!</h2>Your new datasource file has been saved to: <a href="' + j.html_url + '">' + j.html_url + '</a>' +
-      '<p>You can:<ul><li> Send this URL to the person who manages your TerriaJS server.</li>' + 
-      //'<p><a target="_blank" href="' + previewurl + '">Preview in National Map</a></p>' + 
-      '<li><a target="_blank" href="' + cleanpreviewurl + '">Preview it in National Map</a></li>' +
+    $("#loadingmsg").html('<h2>Saved!</h2>' + 
+      '<p><a target="_blank" href="' + cleanpreviewurl + '">Preview your changes in National Map</a></p>' +
+      '<p>If you\'re happy with your changes, you can: ' + 
+      '<ul><li> Send this URL to the person who manages your TerriaJS server: <a target="_blank" href="' + j.html_url + '">' + j.html_url + '</a></li>' + 
       '<li><a id="downloadfile" href="#">Download the datasource file</a>.</li>' +
       '</li>'
       );
@@ -289,3 +297,4 @@ $("#savejson").click(function(e) {
   $("#loading").show();
   $.post('https://api.github.com/gists', JSON.stringify(f), savedGist, 'json');
 });
+
