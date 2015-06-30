@@ -5,7 +5,8 @@
       "title": "Name",
       "type": "string",
       "description": "Name identifying this item or group.",
-      "propertyOrder": 1
+      "propertyOrder": 1,
+      "default": "(unnamed item)"
     },
     "type": {
       "title": "Item type",

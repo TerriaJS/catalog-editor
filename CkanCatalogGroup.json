@@ -89,7 +89,7 @@
     },
     "groupBy": {
       "title": "Group by",
-      "description": "How datasets should be grouped.  Valid values are: <ul>\n <li> `none` - Datasets are put in a flat list; they are not grouped at all.</li>\n <li>`group` - Datasets are grouped according to their CKAN group.  Datasets that are not in any groups are put at the top level.</li>\n <li> `organization` - Datasets are grouped by their CKAN organization.  Datasets that are not associated with an organization are put at the top level.</li></ul>",
+      "description": "How datasets should be grouped.         ",
       "type": "string",
       "enum": [
         "none",

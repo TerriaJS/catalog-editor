@@ -9,6 +9,7 @@
       type: string
       description: "Name identifying this item or group."
       propertyOrder: 1
+      default: "(unnamed item)"
     }
     type: {
       title: "Item type"
@@ -23,8 +24,7 @@
       format: textarea
       options: {
         expand_height: true
-      }
-      
+      }      
     }
     url: { # Technically this is defined on every single data source type.
       title: URL
