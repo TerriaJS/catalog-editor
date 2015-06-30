@@ -113,6 +113,7 @@ function afterSchemaLoad() {
     $("#editor_holder").show();
     $("#loading").hide();
     $("#savejson").show();
+    $("#editor_holder")[0].scrollIntoView();
 
 
   });
