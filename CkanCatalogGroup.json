@@ -75,15 +75,34 @@
       "format": "checkbox"
     },
     "blacklist": {
-      "$ref": "r_blacklist.json"
+      "$ref": "r_blacklist.json",
+      "title": "Blacklist"
     },
     "whitelist": {
-      "$ref": "r_whitelist.json"
+      "$ref": "r_whitelist.json",
+      "title": "Whitelist"
     },
     "itemProperties": {
       "type": "object",
       "title": "Item Properties",
       "description": "Any additional properties set on each item in the group, overriding values retrieved from data sources."
+    },
+    "groupBy": {
+      "title": "Group by",
+      "description": "How datasets should be grouped.  Valid values are: <ul>\n <li> `none` - Datasets are put in a flat list; they are not grouped at all.</li>\n <li>`group` - Datasets are grouped according to their CKAN group.  Datasets that are not in any groups are put at the top level.</li>\n <li> `organization` - Datasets are grouped by their CKAN organization.  Datasets that are not associated with an organization are put at the top level.</li></ul>",
+      "type": "string",
+      "enum": [
+        "none",
+        "group",
+        "organization"
+      ],
+      "options": {
+        "enum_titles": [
+          "None – Datasets are put in a flat list; they are not grouped at all",
+          "CKAN group – Datasets that are not in any groups are put at the top level",
+          "CKAN Organization – Datasets that are not associated with an organization are put at the top level"
+        ]
+      }
     }
   }
 }
