@@ -90,3 +90,7 @@ textarea.form-control {
   /* By default some get created at 1px */
   min-height: 2.5em;
 }
+
+.property-selector {
+  max-height: 400px !important;
+}
