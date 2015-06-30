@@ -89,7 +89,13 @@ function afterSchemaLoad() {
 
 
   $("#jsonoutput").change(function() {
-    var t = JSON.parse($("#jsonoutput").val());
+    var t;
+    try {
+      t = JSON.parse($("#jsonoutput").val());
+    } catch (e) {
+      alert("There's a syntax problem with your JSON code. \n\n" + e.message);
+      return;
+    }
 
     var performance = window.performance;
     var t0 = performance.now();
@@ -98,6 +104,11 @@ function afterSchemaLoad() {
       // errors is an array of objects, each with a `path`, `property`, and `message` parameter
       // `property` is the schema keyword that triggered the validation error (e.g. "minLength")
       // `path` is a dot separated path into the JSON object (e.g. "root.path.to.field")
+      var msg ="There's a problem with your JSON code. \n\n";
+      for (var i =0; i < errors.length; i++) {
+        msg += '[' + errors[i].path + '] ' + errors[i].message + '\n';
+        alert(msg);
+      }
       console.log(JSON.stringify(errors,null,2));
     }
     else {
