@@ -107,8 +107,8 @@ function afterSchemaLoad() {
       var msg ="There's a problem with your JSON code. \n\n";
       for (var i =0; i < errors.length; i++) {
         msg += '[' + errors[i].path + '] ' + errors[i].message + '\n';
-        alert(msg);
       }
+      alert(msg);
       console.log(JSON.stringify(errors,null,2));
     }
     else {
