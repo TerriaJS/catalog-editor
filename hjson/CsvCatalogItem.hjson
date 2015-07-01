@@ -11,15 +11,19 @@
     tableStyle: {
       type: object
       title: "Table styling"
-      format:grid
+      # format:grid
+      defaultProperties: [ "colorMap" ] 
       properties: {
         scale: {
           title: Scale
+          description: "For scaled point (lat/lon) datasets, how much to scale by. " # ?
           type: number
+          default: 1
           propertyOrder: 130
         }
         scaleByValue: {
           title: "Scale by value"
+          description: "For point (lat/lon) datasets, draw each point/image bigger depending on the value of the data variable."
           type: boolean
           format: checkbox
           propertyOrder: 131
@@ -48,25 +52,29 @@
             }
           }
         }
-        displayTime: {
+        # Not currently implemented?
+        /* displayTime: {
           title: "Display time"
           type: integer
           propertyOrder: 150
 
-        }
+        } */
         displayDuration: {
           title: "Display duration"
+          description: In minutes. # I don't know what this does, really.
           type: integer
           propertyOrder: 151
 
         }
         maxDisplayValue: {
           title: "Maximum display value"
+          description: "Upper end of color or point scaled range."
           type: integer
           propertyOrder: 100
         }
         minDisplayValue: {
           title: "Minimum display value"
+          description: "Lower end of color or point scaled range."
           type: integer
           propertyOrder: 99
         }
@@ -75,20 +83,41 @@
           description: URL of an image to display at each point.
           type: string
         }
-        regionType: { #unclear how this works
+        regionType: { 
           title: "Region type"
           type: string
+          enum: [ "STE", "SA4","SA3", "SA2", "POA", "CED", "SED", "LGA", "SSC", "CNT2", "CNT3" ]
+          options: {
+            enum_titles: [ "State/territory (STE)", "Statistical area 4 (SA4)", "Statistical area 3 (SA3)", "Statistical area 2 (SA2)",
+              "Postcodes/postal areas (POA)", "Commonwealth electoral districts (CED)", "State electoral districts (SED)",
+              "Local government areas (LGA)", "State suburbs (SSC)", "2-letter country codes (CNT2)", "3-letter country codes (CNT3)" ]
+            input_width: 300px
+            remove_empty_properties: true
+          }
         }
         dataVariable: {
           title: "Data variable"
           type: string
+          description: "Column containing a numeric value to use for colour coding."
+          options: {
+            remove_empty_properties: true # doesn't do anything...yet.
+          }
         }
         regionVariable: {
           title: "Region variable"
+          description: "Name of the column containing region names."
           type: string
+          options: {
+            remove_empty_properties: true
+          }
         }
         legendTicks: {
           title: "Legend ticks"
+          description: "How many discrete colours to show in the legend on the Now Viewing page."
+          type: integer
+          options: {
+            remove_empty_properties: true
+          }
         }
 
       }
