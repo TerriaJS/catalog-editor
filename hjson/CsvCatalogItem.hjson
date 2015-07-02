@@ -12,7 +12,7 @@
       type: object
       title: "Table styling"
       # format:grid
-      defaultProperties: [ "colorMap" ] 
+      defaultProperties: [ "colorMap" ]
       properties: {
         scale: {
           title: Scale
