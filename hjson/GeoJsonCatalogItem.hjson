@@ -11,5 +11,36 @@
       type: "string"
       enum: [ "geojson" ]
     }
+    style: {
+      type: object
+      title: "Style"
+      description: "Display properties to override the default (random colors etc.)"
+      properties: {
+        lineColor: {
+          title: "Line color"
+          type: string
+        }
+        lineAlpha: {
+          title: "Line alpha"
+          type: number
+        }
+        fillColor: {
+          title: "Fill color"
+          type: string
+        }
+        fillPolygons: {
+          title: "Fill polygons"
+          type: boolean
+        }
+        pointColor: {
+          title: "Color of points"
+          type: string
+        }
+        lineWidth: {
+          title: "Line width"
+          type: integer
+        }
+      }
+    }
   }
 }
