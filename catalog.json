@@ -1,7 +1,5 @@
 {
-  "required": [
-    "catalog"
-  ],
+  "required": [],
   "type": "object",
   "title": "Terria data source",
   "description": "This file configures one or more data sources for TerriaJS.",

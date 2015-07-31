@@ -1,7 +1,6 @@
 {
   required:
   [
-    "catalog"
   ]
   type: object
   title: "Terria data source"
