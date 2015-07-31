@@ -15,6 +15,7 @@
       { "$ref": "WebMapServiceCatalogItem.json" }
       { "$ref": "WebMapServiceCatalogGroup.json" }
       { "$ref": "CkanCatalogGroup.json" }
+      { "$ref": "SocrataCatalogGroup.json" }
       { "$ref": "CsvCatalogItem.json" }
       { "$ref": "WebFeatureServiceCatalogItem.json" }
       { "$ref": "WebFeatureServiceCatalogGroup.json" }

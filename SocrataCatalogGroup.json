@@ -1,0 +1,53 @@
+{
+  "title": "Socrata catalog",
+  "description": "An open data portal hosted by Socrata",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "grouptypes.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ],
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "socrata"
+      ]
+    },
+    "filterQuery": {
+      "type": "array",
+      "title": "Filter query",
+      "description": "Array of different queries to append to the base URL. Defaults to ['limitTo=MAPS']",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dataCustodian": {
+      "$ref": "r_datacustodian.json",
+      "title": "Data custodian"
+    },
+    "groupBy": {
+      "type": "string",
+      "title": "Group by",
+      "description": "How to group items. Can be 'category' or 'none'.",
+      "enum": [
+        "none",
+        "category"
+      ],
+      "options": {
+        "enum_titles": [
+          "None - Datasets are put in a flat list; they are not grouped at all",
+          "Category - Datasets are grouped according to their Socrata category"
+        ]
+      }
+    }
+  }
+}

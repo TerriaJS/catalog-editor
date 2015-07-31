@@ -30,6 +30,9 @@
         "$ref": "CkanCatalogGroup.json"
       },
       {
+        "$ref": "SocrataCatalogGroup.json"
+      },
+      {
         "$ref": "CsvCatalogItem.json"
       },
       {
