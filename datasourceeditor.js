@@ -1,35 +1,14 @@
-var request = new XMLHttpRequest();
 var schema={};
 var catalog={};
 var editor;
 
 
-request.onload = function() {
-  if (request.status >= 200 && request.status < 400) {
-    // Success!
-    try {
-      schema =  JSON.parse(request.responseText);
-      afterSchemaLoad();
-    } catch (e) {
-      alert ("Problem loading schema: " + e.message);
-    }
-
-} else {
-    alert ("Couldn't access schema.");
-  }
-};
-
-request.onerror = function() {
-    alert ("Couldn't access schema.");
-};
-
-
 $(function() {
-  setTimeout(function() {
-    request.open('GET', 'catalog.json', true);
-    request.send();
-  }, 100);
-
+  var schemafile;
+  $.getJSON('catalog.json', afterSchemaLoad)
+  .fail(function(jqxhr, status, error) { 
+    alert('Couldn\'t access schema file "catalog.json": \n' + error) 
+  });
   $('.row .btn').on('click', function(e) {
     e.preventDefault();
     var $this = $(this);
@@ -39,11 +18,10 @@ $(function() {
 
 });
 
-
-
       
-function afterSchemaLoad() { 
+function afterSchemaLoad(json) { 
     // Initialize the editor
+    schema = json;
 
     JSONEditor.defaults.iconlibs.mybootstrap = JSONEditor.AbstractIconLib.extend({
       mapping: {
@@ -84,7 +62,7 @@ function afterSchemaLoad() {
       disable_edit_json: true
     });
     editor.on('ready', function() {
-      $("#external-jsons").show();
+      $("#nm-jsons").show();
     });
 
 
@@ -175,16 +153,20 @@ function clickedExternalJson(e) {
   return;
 }
 
-$("#external-jsons li").click(clickedExternalJson);
+$("#nm-jsons li").click(clickedExternalJson);
+$("#other-jsons li").click(clickedExternalJson);
 
 
 //https://api.github.com/gists/08f89468f51822ade8d7
 
-$("#loadjson").click(function(e) {
+$("#loadjson").click(clickLoadJSON);
+
+// Possibly alter the current URL target, then load it.
+function clickLoadJSON(e) {
   e.preventDefault();
   url = $("#sourceurl").val().trim()
   if (url.match('^https:\/\/gist.github.com')) {
-    // handle loading user-friendly Gist URLs by looking up raw url first
+    // handle loading user-friendly Gist URLs by looking up raw url first - we grab the first file.
     var newurl = url.replace(/^https:\/\/gist\.github\.com(\/[^\/]+(?=\/.))?/, 'https://api.github.com/gists');
     $.getJSON(newurl, null, function(j) {
       var f = j.files;
@@ -195,9 +177,9 @@ $("#loadjson").click(function(e) {
   } else {
     loadURL(url);
   }
- 
-});
+}
 
+// Retrieve the URL specified, then trigger loading.
 function loadURL(url) {
    $.ajax({
       dataType: "json",
@@ -212,12 +194,15 @@ function loadURL(url) {
 
 }
 
+// We have received file, put it in the JSON edit box, which will trigger parsing.
 function loadedFile(t, status, request) {
     console.log(request);
-    var remaining = Number(request.getResponseHeader('X-RateLimit-Remaining'));
-    if (remaining <= 5) {
-      alert("GitHub limits file requests to 60 per hour. You only have " + remaining + " left, then you'll need to wait for a bit, " +
-      "or manually copy/paste the source file in.");
+    if (request !== undefined) {
+      var remaining = request.getResponseHeader('X-RateLimit-Remaining');
+      if (remaining !== null && Number(remaining) <= 5) {
+        alert("GitHub limits file requests to 60 per hour. You only have " + remaining + " left. When they run out, you'll need to wait for a bit, " +
+        "or manually copy/paste the source file in.");
+      }
     }
     $("#jsonoutput").val(JSON.stringify(t,null,2));
     $("#jsonoutput").trigger("change");
@@ -225,26 +210,31 @@ function loadedFile(t, status, request) {
     
 }
 
+// Use the list of data sources in the National Map Github repo to make a list of clickable targets.
 function populateSources() {
-  var appendtarget = "#external-jsons";
+  var appendtarget = "#nm-jsons";
 
-  function loadjson(url) {
+  function loadDataSourceList(url) {
     $.ajax({
         dataType: "json",
         url: url,
         accepts: { 'json': 'application/vnd.github.v3.raw'},
         error: function(e) { alert("Error " + e.status + ": " + e.statusText); },
-        success: loaded
+        success: loadedList
     });
 
   }
 
-  function loaded(j) {
+  function loadedList(j) {
     j.forEach(function(e) {
       if (e.url.match(/\.json/)) {
-
+        //https://rawgit.com/NICTA/nationalmap/6756f1a1304722b27ff2553a2eb64bfed9dcf212/datasources/000_settings.json
+        // html_url: https://github.com/NICTA/nationalmap/blob/master/datasources/000_settings.json
+        // use rawgit to save Github requests
+        // thought we could use the sha, but it's not the right sha?
+        var url = 'https://rawgit.com/NICTA/nationalmap/master' + '/' + e.path;
         $(appendtarget).append($(
-          "<li><a href='#' data-url='" + e.url + "'" +
+          "<li><a href='#' data-url='" + url + "'" +
             ">" + 
             e.name.replace('.json','')
             .replace(/^\d\d_/, '')
@@ -252,26 +242,28 @@ function populateSources() {
             .replace(/_/g, ' ')
             .replace('000 settings', 'General settings') +
             "</a>" +
-            (e.name.match('00_National_Data_Sets') ? ' <ul id="external-jsons-national"></ul> ' : '') +
+            (e.name.match('00_National_Data_Sets') ? ' <ul id="nm-jsons-national"></ul> ' : '') +
              "</li>"
         ));
       }
 
     });
-    //$(appendtarget).append($("<li><a href='#'>(blank)</a></li>"));
-    $("#external-jsons li").click(clickedExternalJson);
+    $("#nm-jsons li").click(clickedExternalJson);
     console.log(j);
-    if (appendtarget === "#external-jsons") {
-      $(appendtarget).append('<li>National Data Sets<ul id="external-jsons-national"></ul></li>');
-      appendtarget='#external-jsons-national';
-      loadjson('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets');
+    if (appendtarget === "#nm-jsons") {
+      $(appendtarget).append('<li>National Data Sets<ul id="nm-jsons-national"></ul></li>');
+      appendtarget='#nm-jsons-national';
+      loadDataSourceList('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets');
     }
   };
 
-  $("#external-jsons").html("");
+  $("#nm-jsons").html("");
 
-  // https://api.github.com/repos/NICTA/nationalmap/contents/datasources?ref=split-datasources
-  loadjson('https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/gistfile1.txt');
+  var source = 'https://api.github.com/repos/NICTA/nationalmap/contents/datasources';
+
+  // for testing, to reduce wasting Github API calls
+  if (false) { source = 'https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/gistfile1.txt'; }
+  loadDataSourceList(source);
 
 }
 
