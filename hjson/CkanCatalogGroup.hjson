@@ -16,12 +16,13 @@
         '''
         The filter query to pass to CKAN when querying the available data sources and their groups.  Each string in the
         array is passed to CKAN as an independent search string and the results are concatenated to create the complete list.  The
-        search string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.
+        search string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.<br>
         <br/>See the <a href="http://wiki.apache.org/solr/CommonQueryParameters#fq">Solr documentation</a> for information about filter queries.
         '''
       items: { 
         title: Filter
         type: string
+        description:  Example: <code>fq=groups:my_group</code>
       }
     }
     includeWms: {
@@ -31,6 +32,11 @@
 }
     includeKml: {
       title: "Include KML Data Sources"
+      type: boolean
+      format: checkbox
+    }
+    includeGeoJson: {
+      title: "Include GeoJSON Data Sources"
       type: boolean
       format: checkbox
     }

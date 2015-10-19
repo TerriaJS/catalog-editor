@@ -64,7 +64,7 @@
         },
         "displayDuration": {
           "title": "Display duration",
-          "description": "In minutes. # I don't know what this does, really.",
+          "description": "For datasets with time, how many minutes does each row correspond to? One day per row: 1440, one day per month: 43200 (approx), one day per year: 525946.",
           "type": "integer",
           "propertyOrder": 151
         },
