@@ -47,6 +47,11 @@
       "type": "boolean",
       "format": "checkbox"
     },
+    "includeCsv": {
+      "title": "Include CSV Data Sources",
+      "type": "boolean",
+      "format": "checkbox"
+    },
     "includeEsriMapServer": {
       "title": "Include ESRI Map Server Data Sources",
       "type": "boolean",

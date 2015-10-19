@@ -19,7 +19,7 @@
         search string is equivalent to what would be in the parameters segment of the url calling the CKAN search api.<br>
         <br/>See the <a href="http://wiki.apache.org/solr/CommonQueryParameters#fq">Solr documentation</a> for information about filter queries.
         '''
-      items: { 
+      items: {
         title: Filter
         type: string
         description:  Example: <code>fq=groups:my_group</code>
@@ -37,6 +37,11 @@
     }
     includeGeoJson: {
       title: "Include GeoJSON Data Sources"
+      type: boolean
+      format: checkbox
+    }
+    includeCsv: {
+      title: "Include CSV Data Sources"
       type: boolean
       format: checkbox
     }
