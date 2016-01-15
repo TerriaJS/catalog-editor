@@ -1,53 +1,39 @@
 {
-  "title": "GeoJSON file",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "CatalogItem.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
+    "data": {
+      "type": "object",
+      "title": "#Data",
+      "description": "The GeoJSON data, represented as a binary blob, object literal, or a Promise for one of those things.\nIf this property is set, {@link CatalogItem#url} is ignored."
+    },
+    "dataSourceUrl": {
+      "type": "string",
+      "title": "#Data source URL",
+      "description": "The URL from which the {@link GeoJsonCatalogItem#data} was obtained.  This will be used\nto resolve any resources linked in the GeoJSON file, if any."
+    },
     "type": {
       "type": "string",
       "enum": [
         "geojson"
-      ]
-    },
-    "style": {
-      "type": "object",
-      "title": "Style",
-      "description": "Display properties to override the default (random colors etc.)",
-      "properties": {
-        "lineColor": {
-          "title": "Line color",
-          "type": "string"
-        },
-        "lineAlpha": {
-          "title": "Line alpha",
-          "type": "number"
-        },
-        "fillColor": {
-          "title": "Fill color",
-          "type": "string"
-        },
-        "fillPolygons": {
-          "title": "Fill polygons",
-          "type": "boolean"
-        },
-        "pointColor": {
-          "title": "Color of points",
-          "type": "string"
-        },
-        "lineWidth": {
-          "title": "Line width",
-          "type": "integer"
-        }
+      ],
+      "options": {
+        "hidden": true
       }
     }
-  }
+  },
+  "description": "A {@link CatalogItem} representing GeoJSON feature data.",
+  "title": "GeoJSON",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

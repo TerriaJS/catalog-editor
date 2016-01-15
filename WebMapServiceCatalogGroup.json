@@ -1,76 +1,73 @@
 {
-  "title": "WMS group ('GetCapabilities')",
-  "description": "A number of layers from a Web Mapping Service server",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "grouptypes.json"
-    },
-    {
-      "$ref": "CatalogMember.json"
-    },
-    {
-      "$ref": "ImageryLayerCatalogItem.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
+    "url": {
+      "type": "string",
+      "title": "#URL",
+      "description": "The URL of the WMS server."
+    },
+    "dataCustodian": {
+      "type": "string",
+      "title": "#Data custodian",
+      "description": "A description of the custodian of the data sources in this group.\nThis property is an HTML string that must be sanitized before display to the user.",
+      "format": "textarea",
+      "options": {
+        "expand_height": true
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "title": "#Parameters",
+      "description": "The additional parameters to pass to the WMS server when requesting images.\nIf this property is undefiend, {@link WebMapServiceCatalogItem.defaultParameters} is used."
+    },
+    "blacklist": {
+      "type": "object",
+      "title": "#Blacklist",
+      "description": "A hash of names of blacklisted data layers.  A layer that appears in this hash\nwill not be shown to the user.  In this hash, the keys should be the Title of the layers to blacklist,\nand the values should be \"true\".",
+      "additionalProperties": {
+        "type": "boolean",
+        "format": "checkbox"
+      }
+    },
+    "titleField": {
+      "type": "string",
+      "title": "#Title field",
+      "description": "The field name to use as the primary title in the catalog view: each WMS layer's\n\"title\" (default), \"name\", or \"abstract\"."
+    },
+    "itemProperties": {
+      "type": "object",
+      "title": "#Item properties",
+      "description": "A hash of properties that will be set on each child item.\nFor example, { 'treat404AsError': false }"
+    },
+    "flatten": {
+      "type": "boolean",
+      "title": "#Flatten",
+      "description": "A value indicating whether the list of layers queried from GetCapabilities should be\nflattened into a list with no hierarchy.",
+      "format": "checkbox"
+    },
     "type": {
       "type": "string",
       "enum": [
         "wms-getCapabilities"
-      ]
-    },
-    "dataCustodian": {
-      "$ref": "r_datacustodian.json"
-    },
-    "parameters": {
-      "title": "WMS parameters",
-      "$ref": "wms-parameters.json"
-    },
-    "itemProperties": {
-      "type": "object",
-      "title": "Item Properties",
-      "description": "Additional properties applied to each item in the group, overriding values retrieved from data sources.",
-      "defaultProperties": [
-        "rectangle"
       ],
-      "properties": {
-        "info": {
-          "title": "Information metadata",
-          "$ref": "r_info.json"
-        }
-      },
-      "$ref": "WebMapServiceCatalogItem.json",
-      "allOf": [
-        {
-          "$ref": "wms-properties.json"
-        },
-        {
-          "$ref": "CatalogItem.json"
-        },
-        {
-          "$ref": "ImageryLayerCatalogItem.json"
-        }
-      ]
-    },
-    "blacklist": {
-      "$ref": "r_blacklist.json"
-    },
-    "titleField": {
-      "type": "string",
-      "title": "Title field",
-      "description": "The field name to use as the primary title in the catalog view. Default 'title', but 'name' or 'abstract' are possible."
-    },
-    "flatten": {
-      "type": "boolean",
-      "format": "checkbox",
-      "title": "Flatten hierarchy",
-      "description": "Whether the list of layers queried from GetCapabilities should be flattened into a list with no hierarchy."
+      "options": {
+        "hidden": true
+      }
     }
-  }
+  },
+  "description": "A {@link CatalogGroup} representing a collection of layers from a Web Map Service (WMS) server.",
+  "title": "Web Map Service (WMS) Server",
+  "allOf": [
+    {
+      "$ref": "CatalogGroup.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {},
+  "description": "A {@link CatalogItem} composed of multiple other catalog items.  When this item is enabled or shown, the composed items are\nenabled or shown as well.  Other properties, including {@link CatalogItem#rectangle},\n{@link CatalogItem#clock}, and {@link CatalogItem#legendUrls}, are not composed in any way, so you should manually set those\nproperties on this object as appropriate.",
+  "title": "Composite",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
+}

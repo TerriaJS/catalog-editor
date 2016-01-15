@@ -9,12 +9,17 @@
     "url": {
       "type": "string",
       "title": "#URL",
-      "description": "The URL of the Map Service."
+      "description": "The URL of the WMTS server."
     },
     "dataCustodian": {
       "type": "string",
       "title": "#Data custodian",
       "description": "A description of the custodian of the data sources in this group.\nThis property is an HTML string that must be sanitized before display to the user."
+    },
+    "parameters": {
+      "type": "object",
+      "title": "#Parameters",
+      "description": "The additional parameters to pass to the WMTS server when requesting images.\nIf this property is undefiend, {@link WebMapTileServiceCatalogItem.defaultParameters} is used."
     },
     "blacklist": {
       "type": "object",
@@ -25,18 +30,23 @@
         "format": "checkbox"
       }
     },
+    "titleField": {
+      "type": "string",
+      "title": "#Title field",
+      "description": "The field name to use as the primary title in the catalog view: each WMTS layer's\n\"title\" (default), \"identifier\", or \"abstract\"."
+    },
     "type": {
       "type": "string",
       "enum": [
-        "esri-mapServer-group"
+        "wmts-getCapabilities"
       ],
       "options": {
         "hidden": true
       }
     }
   },
-  "description": "A {@link CatalogGroup} representing a collection of layers from an ArcGIS Map Service.",
-  "title": "ArcGIS Map Service Group",
+  "description": "A {@link CatalogGroup} representing a collection of layers from a Web Map Tile Service (WMTS) server.",
+  "title": "Web Map Tile Service (WMTS) Server",
   "allOf": [
     {
       "$ref": "CatalogGroup.json"

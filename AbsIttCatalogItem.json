@@ -1,6 +1,63 @@
 {
-  "title": "ABS ITT",
   "type": "object",
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "dataSetID": {
+      "type": "string",
+      "title": "#Data set i d",
+      "description": "The ID of the ABS dataset.  You can obtain a list of all datasets by querying\nhttp://stat.abs.gov.au/itt/query.jsp?method=GetDatasetList (or equivalent).  This property\nis observable."
+    },
+    "regionTypeConcept": {
+      "type": "string",
+      "title": "#Region type concept",
+      "description": "The ABS region type concept used with the region code to set the region type."
+    },
+    "regionConcept": {
+      "type": "string",
+      "title": "#Region concept",
+      "description": "The ABS region concept.  You can obtain a list of all available concepts for\na dataset by querying\nhttp://stat.abs.gov.au/itt/query.jsp?method=GetDatasetConcepts&datasetid=ABS_CENSUS2011_B19\n(or equivalent)."
+    },
+    "filter": {
+      "type": "array",
+      "title": "#Filter",
+      "description": "Gets the list of initial concepts and codes on which to filter the data.  You can obtain a list of all available\nconcepts for a dataset by querying http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetConcepts&datasetid=ABS_CENSUS2011_B25\n(or equivalent) and a list of the possible values for a concept by querying\nhttp://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=MEASURE&format=json.",
+      "format": "table",
+      "items": {
+        "type": "string"
+      }
+    },
+    "opacity": {
+      "type": "number",
+      "title": "#Opacity",
+      "description": "The opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is\nfully opaque."
+    },
+    "displayPercent": {
+      "type": "boolean",
+      "title": "#Display percent",
+      "description": "Gets or sets whether to show percentages or raw values.",
+      "format": "checkbox"
+    },
+    "tableStyle": {
+      "type": "object",
+      "title": "#Table style",
+      "description": "The styling for the abs data."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "abs-itt"
+      ],
+      "options": {
+        "hidden": true
+      }
+    }
+  },
+  "description": "A {@link CatalogItem} representing region-mapped data obtained from the Australia Bureau of Statistics\n(ABS) ITT query interface.  Documentation for the query interface is found here: http://stat.abs.gov.au/itt/r.jsp?api",
+  "title": "ABS.Stat",
   "allOf": [
     {
       "$ref": "CatalogItem.json"
@@ -8,53 +65,5 @@
     {
       "$ref": "CatalogMember.json"
     }
-  ],
-  "defaultProperties": [
-    "type",
-    "url",
-    "name"
-  ],
-  "properties": {
-    "type": {
-      "type": "string",
-      "enum": [
-        "abs-itt"
-      ]
-    },
-    "filter": {
-      "title": "Filter",
-      "description": "The list of initial concepts and codes on which to filter the data.  See the \n          <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetConcepts&datasetid=ABS_CENSUS2011_B25>list of all available\n         concepts for a dataset</a>\n         and a <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=MEASURE&format=json'>list of the possible values for a concept</a>",
-      "type": "array",
-      "format": "table",
-      "items": {
-        "type": "string"
-      }
-    },
-    "dataSetID": {
-      "title": "Dataset ID",
-      "description": "The ID of the ABS dataset.  See the <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetList'>list of all datasets</a>",
-      "type": "string"
-    },
-    "regionType": {
-      "title": "Region Type",
-      "description": "The ABS region type to query.  See the <a target='_blank' href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json'>\n        available region types for a dataset</a>",
-      "type": "string"
-    },
-    "regionConcept": {
-      "title": "Region Concept",
-      "description": "The ABS region concept.  You can obtain a list of all available concepts for\n         a dataset by querying http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetConcepts&datasetid=ABS_CENSUS2011_B19",
-      "type": "string"
-    },
-    "opacity": {
-      "title": "Opacity",
-      "description": "the opacity (alpha) of the data item, where 0.0 is fully transparent and 1.0 is fully opaque.",
-      "type": "number"
-    },
-    "displayPercent": {
-      "title": "Display percentage",
-      "description": "Show percentages instead of raw values. True by default",
-      "type": "boolean",
-      "format": "checkbox"
-    }
-  }
+  ]
 }

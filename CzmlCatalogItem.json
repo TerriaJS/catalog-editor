@@ -1,23 +1,39 @@
 {
-  "title": "CZML file",
-  "description": "A CZML (Cesium markup language) file",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "CatalogItem.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
+    "data": {
+      "type": "object",
+      "title": "#Data",
+      "description": "The CZML data, represented as a binary Blob, JSON object literal, or a Promise for one of those things.\nIf this property is set, {@link CatalogItem#url} is ignored."
+    },
+    "dataSourceUrl": {
+      "type": "string",
+      "title": "#Data source URL",
+      "description": "The URL from which the {@link CzmlCatalogItem#data} was obtained.  This will be used\nto resolve any resources linked in the CZML file, if any."
+    },
     "type": {
       "type": "string",
       "enum": [
         "czml"
-      ]
+      ],
+      "options": {
+        "hidden": true
+      }
     }
-  }
+  },
+  "description": "A {@link CatalogItem} representing Cesium Language (CZML) data.",
+  "title": "Cesium Language (CZML)",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

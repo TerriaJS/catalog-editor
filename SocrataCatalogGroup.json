@@ -1,53 +1,53 @@
 {
-  "title": "Socrata catalog",
-  "description": "An open data portal hosted by Socrata",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "grouptypes.json"
-    },
-    {
-      "$ref": "CatalogMember.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
-    "type": {
+    "url": {
       "type": "string",
-      "enum": [
-        "socrata"
-      ]
+      "title": "#URL",
+      "description": "The URL of the Socrata server."
     },
     "filterQuery": {
       "type": "array",
-      "title": "Filter query",
-      "description": "Array of different queries to append to the base URL. Defaults to ['limitTo=MAPS']",
+      "title": "#Filter query",
+      "description": "The filter query to pass to Socrata when querying the available data sources and their groups.  Each string in the\narray is passed to Socrata as an independent search string and the results are concatenated to create the complete list.",
+      "format": "tabs",
       "items": {
         "type": "string"
       }
     },
     "dataCustodian": {
-      "$ref": "r_datacustodian.json",
-      "title": "Data custodian"
+      "type": "string",
+      "title": "#Data custodian",
+      "description": "A description of the custodian of the data sources in this group.\nThis property is an HTML string that must be sanitized before display to the user."
     },
     "groupBy": {
       "type": "string",
-      "title": "Group by",
-      "description": "How to group items. Can be 'category' or 'none'.",
+      "title": "#Group by",
+      "description": "A value indicating how datasets should be grouped.  Valid values are:\n* `none` - Datasets are put in a flat list; they are not grouped at all.\n* `category` - Datasets are grouped according to their category in Socrata."
+    },
+    "type": {
+      "type": "string",
       "enum": [
-        "none",
-        "category"
+        "socrata"
       ],
       "options": {
-        "enum_titles": [
-          "None - Datasets are put in a flat list; they are not grouped at all",
-          "Category - Datasets are grouped according to their Socrata category"
-        ]
+        "hidden": true
       }
     }
-  }
+  },
+  "description": "A {@link CatalogGroup} representing a collection of layers from a [Socrata](http://Socrata.org) server. Only spatial layers with a defined Map \nvisualisation are shown, using WMS.",
+  "title": "Socrata Server",
+  "allOf": [
+    {
+      "$ref": "CatalogGroup.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

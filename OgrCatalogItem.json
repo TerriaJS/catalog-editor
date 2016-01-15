@@ -1,23 +1,34 @@
 {
-  "title": "Other geospatial file (OGR)",
-  "description": "A URL pointing to any file supported by the ogr2ogr conversion library.",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "CatalogItem.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
+    "dataSourceUrl": {
+      "type": "string",
+      "title": "#Data source URL",
+      "description": "The URL from which the {@link OgrCatalogItem#data} was obtained.  This may be used\nto resolve any resources linked in the Ogr file, if any."
+    },
     "type": {
       "type": "string",
       "enum": [
         "ogr"
-      ]
+      ],
+      "options": {
+        "hidden": true
+      }
     }
-  }
+  },
+  "description": "A {@link CatalogItem} representing ogr2ogr supported data formats.",
+  "title": "Unknown / Converted to GeoJSON",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

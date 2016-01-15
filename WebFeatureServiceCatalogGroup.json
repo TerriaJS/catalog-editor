@@ -1,29 +1,48 @@
 {
-  "title": "WFS group ('GetCapabilities')",
-  "description": "A number of layers from a Web Feature Service server",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "grouptypes.json"
-    },
-    {
-      "$ref": "CatalogMember.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
+    "url": {
+      "type": "string",
+      "title": "#URL",
+      "description": "The URL of the WFS server."
+    },
+    "dataCustodian": {
+      "type": "string",
+      "title": "#Data custodian",
+      "description": "A description of the custodian of the data sources in this group.\nThis property is an HTML string that must be sanitized before display to the user."
+    },
+    "blacklist": {
+      "type": "object",
+      "title": "#Blacklist",
+      "description": "A hash of names of blacklisted data layers.  A layer that appears in this hash\nwill not be shown to the user.  In this hash, the keys should be the Title of the layers to blacklist,\nand the values should be \"true\".",
+      "additionalProperties": {
+        "type": "boolean",
+        "format": "checkbox"
+      }
+    },
     "type": {
       "type": "string",
       "enum": [
         "wfs-getCapabilities"
-      ]
-    },
-    "dataCustodian": {
-      "$ref": "r_datacustodian.json"
+      ],
+      "options": {
+        "hidden": true
+      }
     }
-  }
+  },
+  "description": "A {@link CatalogGroup} representing a collection of feature types from a Web Feature Service (WFS) server.",
+  "title": "Web Feature Service (WFS) Server",
+  "allOf": [
+    {
+      "$ref": "CatalogGroup.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

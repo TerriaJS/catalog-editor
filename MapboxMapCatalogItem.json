@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "fileExtension": {
+      "type": "string",
+      "title": "#File extension",
+      "description": "The file extension used to retrieve Open Street Map data"
+    },
+    "maximumLevel": {
+      "type": "string",
+      "title": "#Maximum level",
+      "description": "The maximum tile level to retrieve from Open Street Map data"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "mapbox-map"
+      ],
+      "options": {
+        "hidden": true
+      }
+    }
+  },
+  "title": "Mapbox Map",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "ImageryLayerCatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
+}

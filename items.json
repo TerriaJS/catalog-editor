@@ -5,7 +5,7 @@
   "format": "tabs",
   "items": {
     "type": "object",
-    "title": "Item",
+    "title": "item",
     "headerTemplate": "{{ self.name }}",
     "allOf": [
       {
@@ -18,55 +18,82 @@
     ],
     "oneOf": [
       {
-        "$ref": "CatalogGroup.json"
+        "$ref": "manual/JustCatalogGroup.json"
       },
       {
-        "$ref": "WebMapServiceCatalogItem.json"
+        "$ref": "BingMapsCatalogItem.json"
       },
       {
-        "$ref": "WebMapServiceCatalogGroup.json"
-      },
-      {
-        "$ref": "CkanCatalogGroup.json"
-      },
-      {
-        "$ref": "SocrataCatalogGroup.json"
-      },
-      {
-        "$ref": "CsvCatalogItem.json"
-      },
-      {
-        "$ref": "WebFeatureServiceCatalogItem.json"
-      },
-      {
-        "$ref": "WebFeatureServiceCatalogGroup.json"
-      },
-      {
-        "$ref": "KmlCatalogItem.json"
-      },
-      {
-        "$ref": "GeoJsonCatalogItem.json"
-      },
-      {
-        "$ref": "CzmlCatalogItem.json"
-      },
-      {
-        "$ref": "GpxCatalogItem.json"
-      },
-      {
-        "$ref": "OgrCatalogItem.json"
-      },
-      {
-        "$ref": "ArcGisCatalogItem.json"
+        "$ref": "AbsIttCatalogGroup.json"
       },
       {
         "$ref": "ArcGisCatalogGroup.json"
       },
       {
+        "$ref": "CzmlCatalogItem.json"
+      },
+      {
+        "$ref": "OpenStreetMapCatalogItem.json"
+      },
+      {
+        "$ref": "MapboxMapCatalogItem.json"
+      },
+      {
+        "$ref": "GpxCatalogItem.json"
+      },
+      {
+        "$ref": "UrthecastCatalogItem.json"
+      },
+      {
+        "$ref": "OgrCatalogItem.json"
+      },
+      {
+        "$ref": "WebMapTileServiceCatalogGroup.json"
+      },
+      {
+        "$ref": "UrthecastCatalogGroup.json"
+      },
+      {
+        "$ref": "CswCatalogGroup.json"
+      },
+      {
+        "$ref": "ArcGisMapServerCatalogItem.json"
+      },
+      {
+        "$ref": "WfsFeaturesCatalogGroup.json"
+      },
+      {
+        "$ref": "KmlCatalogItem.json"
+      },
+      {
+        "$ref": "WebFeatureServiceCatalogItem.json"
+      },
+      {
+        "$ref": "WebMapServiceCatalogGroup.json"
+      },
+      {
+        "$ref": "WebFeatureServiceCatalogGroup.json"
+      },
+      {
+        "$ref": "SocrataCatalogGroup.json"
+      },
+      {
+        "$ref": "CkanCatalogGroup.json"
+      },
+      {
+        "$ref": "CsvCatalogItem.json"
+      },
+      {
+        "$ref": "GeoJsonCatalogItem.json"
+      },
+      {
         "$ref": "AbsIttCatalogItem.json"
       },
       {
-        "$ref": "AbsIttCatalogGroup.json"
+        "$ref": "WebMapTileServiceCatalogItem.json"
+      },
+      {
+        "$ref": "WebMapServiceCatalogItem.json"
       }
     ]
   }

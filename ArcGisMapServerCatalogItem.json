@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "layers": {
+      "type": "string",
+      "title": "#Layers",
+      "description": "The comma-separated list of layer IDs to show.  If this property is undefined,\nall layers are shown."
+    },
+    "maximumScale": {
+      "type": "number",
+      "title": "#Maximum scale",
+      "description": "The denominator of the largest scale (smallest denominator) for which tiles should be requested.  For example, if this value is 1000, then tiles representing\na scale larger than 1:1000 (i.e. numerically smaller denominator, when zooming in closer) will not be requested.  Instead, tiles of the largest-available scale, as specified by this property,\nwill be used and will simply get blurier as the user zooms in closer."
+    },
+    "maximumScaleBeforeMessage": {
+      "type": "number",
+      "title": "#Maximum scale before message",
+      "description": "The denominator of the largest scale (smallest denominator) beyond which to show a message explaining that no further zoom levels are available, at the request\nof the data custodian."
+    },
+    "showTilesAfterMessage": {
+      "type": "boolean",
+      "title": "#Show tiles after message",
+      "description": "A value indicating whether to continue showing tiles when the {@link ArcGisMapServerCatalogItem#maximumScaleBeforeMessage}\nis exceeded.",
+      "format": "checkbox"
+    },
+    "allowFeaturePicking": {
+      "type": "boolean",
+      "title": "#Allow feature picking",
+      "description": "A value indicating whether features in this catalog item can be selected by clicking them on the map.",
+      "format": "checkbox"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "esri-mapServer"
+      ],
+      "options": {
+        "hidden": true
+      }
+    }
+  },
+  "description": "A {@link ImageryLayerCatalogItem} representing a layer from an Esri ArcGIS MapServer.",
+  "title": "Esri ArcGIS MapServer",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "ImageryLayerCatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
+}

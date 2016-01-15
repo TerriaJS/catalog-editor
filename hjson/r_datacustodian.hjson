@@ -1,9 +1,0 @@
-{
-  type: string
-  title: Data Custodian
-  description: "A Markdown or HTML description of the custodian of this data source."
-  format: textarea
-  options: {
-    expand_height: true
-  }
-}

@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "urthecast"
+      ],
+      "options": {
+        "hidden": true
+      }
+    }
+  },
+  "description": "A {@link ImageryLayerCatalogItem} representing a layer of Urthecast Imagrey.",
+  "title": "Urthecast Map Tiles Service Renderer",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "ImageryLayerCatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
+}

@@ -6,16 +6,6 @@
     "url"
   ],
   "properties": {
-    "url": {
-      "type": "string",
-      "title": "#URL",
-      "description": "The URL of the Map Service."
-    },
-    "dataCustodian": {
-      "type": "string",
-      "title": "#Data custodian",
-      "description": "A description of the custodian of the data sources in this group.\nThis property is an HTML string that must be sanitized before display to the user."
-    },
     "blacklist": {
       "type": "object",
       "title": "#Blacklist",
@@ -28,15 +18,15 @@
     "type": {
       "type": "string",
       "enum": [
-        "esri-mapServer-group"
+        "urthecast-group"
       ],
       "options": {
         "hidden": true
       }
     }
   },
-  "description": "A {@link CatalogGroup} representing a collection of layers from an ArcGIS Map Service.",
-  "title": "ArcGIS Map Service Group",
+  "description": "A {@link CatalogGroup} representing a collection of avalible Urthecast sensor platforms.",
+  "title": "Urthcast Sensor Platforms",
   "allOf": [
     {
       "$ref": "CatalogGroup.json"

@@ -1,59 +1,71 @@
 {
-  "title": "ABS ITT Dataset List",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "grouptypes.json"
-    },
-    {
-      "$ref": "CatalogMember.json"
-    },
-    {
-      "$ref": "CatalogItem.json"
-    }
+  "defaultProperties": [
+    "name",
+    "type",
+    "url"
   ],
   "properties": {
+    "url": {
+      "type": "string",
+      "title": "#URL",
+      "description": "The URL of the ABS ITT API, typically http://stat.abs.gov.au/itt/query.jsp."
+    },
+    "filter": {
+      "type": "array",
+      "title": "#Filter",
+      "description": "The filter for the ABS dataset.  You can obtain a list of all datasets by querying\nhttp://stat.abs.gov.au/itt/query.jsp?method=GetDatasetList (or equivalent).  This property\nis observable.",
+      "format": "tabs",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tableStyle": {
+      "type": "object",
+      "title": "#Table style",
+      "description": "The styling for the abs data."
+    },
+    "dataCustodian": {
+      "type": "string",
+      "title": "#Data custodian",
+      "description": "A description of the custodian of the data sources in this group.\nThis property is an HTML string that must be sanitized before display to the user."
+    },
+    "blacklist": {
+      "type": "object",
+      "title": "#Blacklist",
+      "description": "A hash of names of blacklisted datasets.  A dataset that appears in this hash\nwill not be shown to the user.  In this hash, the keys should be the name of the dataset to blacklist,\nand the values should be \"true\".",
+      "additionalProperties": {
+        "type": "boolean",
+        "format": "checkbox"
+      }
+    },
+    "whitelist": {
+      "type": "object",
+      "title": "#Whitelist",
+      "description": "A hash of names of whitelisted datasets.  A dataset that doesn't appears in this hash\nwill not be shown to the user.  In this hash, the keys should be the name of the dataset to blacklist,\nand the values should be \"true\".",
+      "additionalProperties": {
+        "type": "boolean",
+        "format": "checkbox"
+      }
+    },
     "type": {
       "type": "string",
       "enum": [
         "abs-itt-dataset-list"
-      ]
-    },
-    "dataSetID": {
-      "title": "Dataset ID",
-      "description": "The ID of the ABS dataset.  You can obtain a list of all datasets by querying http://stat.abs.gov.au/itt/query.jsp?method=GetDatasetList (or equivalent)",
-      "type": "string"
-    },
-    "regionType": {
-      "title": "Region Type",
-      "description": "The ABS region type to query.  See the <a href='http://stat.abs.gov.au/itt/query.jsp?method=GetCodeListValue&datasetid=ABS_CENSUS2011_B25&concept=REGIONTYPE&format=json'>\n        list of all available region types for a dataset</a>.",
-      "type": "string"
-    },
-    "blacklist": {
-      "$ref": "r_blacklist.json"
-    },
-    "whitelist": {
-      "$ref": "r_whitelist.json"
-    },
-    "itemProperties": {
-      "type": "object",
-      "title": "Item Properties",
-      "description": "Additional properties applied to each item in the group, overriding values retrieved from data sources.",
-      "required": [],
-      "properties": {
-        "info": {
-          "title": "Information metadata",
-          "$ref": "r_info.json"
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "AbsIttCatalogItem.json"
-        },
-        {
-          "$ref": "CatalogItem.json"
-        }
-      ]
+      ],
+      "options": {
+        "hidden": true
+      }
     }
-  }
+  },
+  "description": "A {@link CatalogGroup} representing a collection of items from an Australian Bureau of Statistics\n(ABS) ITT server, formed by querying for all the codes in a given dataset and concept.",
+  "title": "ABS.Stat Dataset List",
+  "allOf": [
+    {
+      "$ref": "CatalogGroup.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

@@ -6,26 +6,29 @@
     "url"
   ],
   "properties": {
-    "dataSourceUrl": {
+    "key": {
       "type": "string",
-      "title": "#Data source URL",
-      "description": "The URL from which the {@link GpxCatalogItem#data} was obtained.  This may be used\nto resolve any resources linked in the Gpx file, if any."
+      "title": "#Key",
+      "description": "The Bing Maps API key to use.  If this property is undefined,\n{@link BingMapsApi.getKey} is used."
     },
     "type": {
       "type": "string",
       "enum": [
-        "gpx"
+        "bing-maps"
       ],
       "options": {
         "hidden": true
       }
     }
   },
-  "description": "A {@link CatalogItem} representing GPX data.",
-  "title": "GPX",
+  "description": "A {@link ImageryLayerCatalogItem} representing a layer from the Bing Maps server.",
+  "title": "Bing Maps",
   "allOf": [
     {
       "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "ImageryLayerCatalogItem.json"
     },
     {
       "$ref": "CatalogMember.json"

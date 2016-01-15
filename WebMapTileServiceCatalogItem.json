@@ -6,25 +6,39 @@
     "url"
   ],
   "properties": {
-    "layers": {
+    "layer": {
       "type": "string",
-      "title": "#Layers",
-      "description": "The WMS layers to include.  To specify multiple layers, separate them\nwith a commas."
+      "title": "#Layer",
+      "description": "The WMTS layer to use."
     },
-    "parameters": {
-      "type": "object",
-      "title": "#Parameters",
-      "description": "The additional parameters to pass to the WMS server when requesting images.\nIf this property is undefined, {@link WebMapServiceCatalogItem.defaultParameters} is used."
+    "style": {
+      "type": "string",
+      "title": "#Style",
+      "description": "The WMTS style to use."
+    },
+    "tileMatrixSetID": {
+      "type": "string",
+      "title": "#Tile matrix set i d",
+      "description": "The WMTS Tile Matrix Set ID to use."
+    },
+    "tileMatrixSetLabels": {
+      "type": "array",
+      "title": "#Tile matrix set labels",
+      "description": "The labels for each level in the matrix set.",
+      "format": "tabs",
+      "items": {
+        "type": "string"
+      }
     },
     "tilingScheme": {
       "type": "object",
       "title": "#Tiling scheme",
-      "description": "The tiling scheme to pass to the WMS server when requesting images.\nIf this property is undefiend, the default tiling scheme of the provider is used."
+      "description": "The tiling scheme to pass to the WMTS server when requesting images.\nIf this property is undefiend, the default tiling scheme of the provider is used."
     },
     "getFeatureInfoFormats": {
       "type": "array",
       "title": "#Get feature info formats",
-      "description": "The formats in which to try WMS GetFeatureInfo requests.  If this property is undefined, the `WebMapServiceImageryProvider` defaults\nare used.",
+      "description": "The formats in which to try WMTS GetFeatureInfo requests.  If this property is undefined, the `WebMapServiceImageryProvider` defaults\nare used.",
       "format": "tabs",
       "items": {
         "type": "enum"
@@ -41,23 +55,23 @@
       "title": "#Min scale denominator",
       "description": "The denominator of the largest scale (smallest denominator) for which tiles should be requested.  For example, if this value is 1000, then tiles representing\na scale larger than 1:1000 (i.e. numerically smaller denominator, when zooming in closer) will not be requested.  Instead, tiles of the largest-available scale, as specified by this property,\nwill be used and will simply get blurier as the user zooms in closer."
     },
-    "maxRefreshIntervals": {
-      "type": "number",
-      "title": "#Max refresh intervals",
-      "description": "The maximum number of intervals that can be created by a single\ndate range, when specified in the form time/time/periodicity.\neg. 2015-04-27T16:15:00/2015-04-27T18:45:00/PT15M has 11 intervals"
+    "format": {
+      "type": "string",
+      "title": "#Format",
+      "description": "The format in which to request tile images.  If not specified, 'image/png' is used."
     },
     "type": {
       "type": "string",
       "enum": [
-        "wms"
+        "wmts"
       ],
       "options": {
         "hidden": true
       }
     }
   },
-  "description": "A {@link ImageryLayerCatalogItem} representing a layer from a Web Map Service (WMS) server.",
-  "title": "Web Map Service (WMS)",
+  "description": "A {@link ImageryLayerCatalogItem} representing a layer from a Web Map Tile Service (WMTS) server.",
+  "title": "Web Map Tile Service (WMTS)",
   "allOf": [
     {
       "$ref": "CatalogItem.json"

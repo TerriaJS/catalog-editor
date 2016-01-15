@@ -5,7 +5,7 @@ var editor;
 
 $(function() {
   var schemafile;
-  $.getJSON('catalog.json', afterSchemaLoad)
+  $.getJSON('manual/catalog.json', afterSchemaLoad)
   .fail(function(jqxhr, status, error) { 
     alert('Couldn\'t access schema file "catalog.json": \n' + error) 
   });

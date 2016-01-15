@@ -825,7 +825,7 @@ JSONEditor.Validator = Class.extend({
   _validateSchema: function(schema,value,path) {
     var self = this;
     var errors = [];
-    var valid, i, j;
+    var valid, i, j, validschemas = [];
     var stringified = JSON.stringify(value);
     var STOPONERROR = false;//true;
     var SHORTCIRCUITONEOF=false;//true;
@@ -929,6 +929,7 @@ JSONEditor.Validator = Class.extend({
     // `oneOf`
     if(schema.oneOf) {
       valid = 0;
+      validschemas = [];
       var oneof_errors = [];
       
       for(i=0; i<schema.oneOf.length && !(valid > 0 && SHORTCIRCUITONEOF); i++) {
@@ -936,6 +937,7 @@ JSONEditor.Validator = Class.extend({
         var tmp = this._validateSchema(schema.oneOf[i],value,path);
         if(!tmp.length) {
           valid++;
+          validschemas.push(schema.oneOf[i].title);
         }
 
         for(j=0; j<tmp.length; j++) {
@@ -948,7 +950,7 @@ JSONEditor.Validator = Class.extend({
         errors.push({
           path: path,
           property: 'oneOf',
-          message: this.translate('error_oneOf', [valid])
+          message: this.translate('error_oneOf', [validschemas.join(',') + ' (' + valid + ')'])
         });
         errors = errors.concat(oneof_errors);
       }

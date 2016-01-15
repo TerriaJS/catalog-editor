@@ -1,35 +1,29 @@
 {
-  "title": "Group",
-  "allOf": [
-    {
-      "$ref": "grouptypes.json"
-    },
-    {
-      "$ref": "CatalogMember.json"
-    }
-  ],
-  "description": "An additional layer in the catalog hierarchy.",
   "type": "object",
-  "options": {
-    "disable_collapse": true
-  },
   "defaultProperties": [
     "name",
     "type",
-    "items"
-  ],
-  "required": [
-    "name",
-    "type"
+    "url"
   ],
   "properties": {
-    "type": {
-      "enum": [
-        "group"
-      ]
+    "isOpen": {
+      "type": "boolean",
+      "title": "#Is open",
+      "description": "A value indicating whether the group is currently expanded and showing\nits children.",
+      "format": "checkbox"
     },
-    "items": {
-      "$ref": "items.json"
+    "isLoading": {
+      "type": "boolean",
+      "title": "#Is loading",
+      "description": "A value indicating whether the group is currently loading.  This property\nis observable.",
+      "format": "checkbox"
     }
-  }
+  },
+  "description": "A group of data items and other groups in the {@link Catalog}.  A group can contain\n{@link CatalogMember|CatalogMembers} or other\n{@link CatalogGroup|CatalogGroups}.",
+  "title": "Group",
+  "allOf": [
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }

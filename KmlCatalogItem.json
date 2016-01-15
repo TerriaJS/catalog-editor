@@ -1,23 +1,34 @@
 {
-  "title": "KML file",
-  "description": "A KML or KMZ file (Keyhole Markup Language)",
   "type": "object",
-  "allOf": [
-    {
-      "$ref": "CatalogItem.json"
-    }
-  ],
   "defaultProperties": [
     "name",
     "type",
     "url"
   ],
   "properties": {
+    "dataSourceUrl": {
+      "type": "string",
+      "title": "#Data source URL",
+      "description": "The URL from which the {@link KmlCatalogItem#data} was obtained.  This will be used\nto resolve any resources linked in the KML file, if any."
+    },
     "type": {
       "type": "string",
       "enum": [
         "kml"
-      ]
+      ],
+      "options": {
+        "hidden": true
+      }
     }
-  }
+  },
+  "description": "A {@link CatalogItem} representing KML or KMZ feature data.",
+  "title": "KML or KMZ",
+  "allOf": [
+    {
+      "$ref": "CatalogItem.json"
+    },
+    {
+      "$ref": "CatalogMember.json"
+    }
+  ]
 }
