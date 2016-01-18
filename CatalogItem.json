@@ -10,13 +10,13 @@
       "type": "array",
       "title": "#Rectangle",
       "description": "The geographic rectangle (extent or bounding box) containing this data item.",
+      "format": "table",
       "items": {
         "type": [
           "number",
           "string"
         ]
       },
-      "format": "table",
       "options": {
         "collapsed": true,
         "disable_array_reorder": true

@@ -18,7 +18,7 @@
     ],
     "oneOf": [
       {
-        "$ref": "manual/JustCatalogGroup.json"
+        "$ref": "JustCatalogGroup.json"
       },
       {
         "$ref": "BingMapsCatalogItem.json"
@@ -33,37 +33,43 @@
         "$ref": "CzmlCatalogItem.json"
       },
       {
-        "$ref": "OpenStreetMapCatalogItem.json"
-      },
-      {
-        "$ref": "MapboxMapCatalogItem.json"
-      },
-      {
         "$ref": "GpxCatalogItem.json"
-      },
-      {
-        "$ref": "UrthecastCatalogItem.json"
-      },
-      {
-        "$ref": "OgrCatalogItem.json"
-      },
-      {
-        "$ref": "WebMapTileServiceCatalogGroup.json"
-      },
-      {
-        "$ref": "UrthecastCatalogGroup.json"
       },
       {
         "$ref": "CswCatalogGroup.json"
       },
       {
+        "$ref": "MapboxMapCatalogItem.json"
+      },
+      {
         "$ref": "ArcGisMapServerCatalogItem.json"
       },
       {
-        "$ref": "WfsFeaturesCatalogGroup.json"
+        "$ref": "OpenStreetMapCatalogItem.json"
       },
       {
         "$ref": "KmlCatalogItem.json"
+      },
+      {
+        "$ref": "CkanCatalogGroup.json"
+      },
+      {
+        "$ref": "OgrCatalogItem.json"
+      },
+      {
+        "$ref": "UrthecastCatalogItem.json"
+      },
+      {
+        "$ref": "UrthecastCatalogGroup.json"
+      },
+      {
+        "$ref": "AbsIttCatalogItem.json"
+      },
+      {
+        "$ref": "CsvCatalogItem.json"
+      },
+      {
+        "$ref": "WebMapTileServiceCatalogGroup.json"
       },
       {
         "$ref": "WebFeatureServiceCatalogItem.json"
@@ -78,16 +84,10 @@
         "$ref": "SocrataCatalogGroup.json"
       },
       {
-        "$ref": "CkanCatalogGroup.json"
-      },
-      {
-        "$ref": "CsvCatalogItem.json"
+        "$ref": "WfsFeaturesCatalogGroup.json"
       },
       {
         "$ref": "GeoJsonCatalogItem.json"
-      },
-      {
-        "$ref": "AbsIttCatalogItem.json"
       },
       {
         "$ref": "WebMapTileServiceCatalogItem.json"
