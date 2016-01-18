@@ -27,19 +27,19 @@
         "$ref": "AbsIttCatalogGroup.json"
       },
       {
-        "$ref": "ArcGisCatalogGroup.json"
-      },
-      {
         "$ref": "CzmlCatalogItem.json"
       },
       {
         "$ref": "GpxCatalogItem.json"
       },
       {
-        "$ref": "CswCatalogGroup.json"
+        "$ref": "ArcGisCatalogGroup.json"
       },
       {
         "$ref": "MapboxMapCatalogItem.json"
+      },
+      {
+        "$ref": "CswCatalogGroup.json"
       },
       {
         "$ref": "ArcGisMapServerCatalogItem.json"
@@ -48,16 +48,19 @@
         "$ref": "OpenStreetMapCatalogItem.json"
       },
       {
-        "$ref": "KmlCatalogItem.json"
+        "$ref": "CkanCatalogGroup.json"
       },
       {
-        "$ref": "CkanCatalogGroup.json"
+        "$ref": "KmlCatalogItem.json"
       },
       {
         "$ref": "OgrCatalogItem.json"
       },
       {
         "$ref": "UrthecastCatalogItem.json"
+      },
+      {
+        "$ref": "WebMapTileServiceCatalogGroup.json"
       },
       {
         "$ref": "UrthecastCatalogGroup.json"
@@ -69,25 +72,22 @@
         "$ref": "CsvCatalogItem.json"
       },
       {
-        "$ref": "WebMapTileServiceCatalogGroup.json"
+        "$ref": "WebFeatureServiceCatalogGroup.json"
+      },
+      {
+        "$ref": "GeoJsonCatalogItem.json"
+      },
+      {
+        "$ref": "WfsFeaturesCatalogGroup.json"
+      },
+      {
+        "$ref": "SocrataCatalogGroup.json"
       },
       {
         "$ref": "WebFeatureServiceCatalogItem.json"
       },
       {
         "$ref": "WebMapServiceCatalogGroup.json"
-      },
-      {
-        "$ref": "WebFeatureServiceCatalogGroup.json"
-      },
-      {
-        "$ref": "SocrataCatalogGroup.json"
-      },
-      {
-        "$ref": "WfsFeaturesCatalogGroup.json"
-      },
-      {
-        "$ref": "GeoJsonCatalogItem.json"
       },
       {
         "$ref": "WebMapTileServiceCatalogItem.json"
