@@ -1,0 +1,19 @@
+{
+  "name": "terriajs-catalog-editor",
+  "version": "0.1.0",
+  "description": "Web-based, JSON-schema-driven editor for TerriaJS catalogs.",
+  "main": "datasourceeditor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TerriaJS/catalog-editor.git"
+  },
+  "author": "Steve Bennett <http://stevebennett.me>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/TerriaJS/catalog-editor/issues"
+  },
+  "homepage": "https://github.com/TerriaJS/catalog-editor#readme"
+}
