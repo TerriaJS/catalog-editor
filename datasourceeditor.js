@@ -253,13 +253,13 @@ function populateSources() {
     if (appendtarget === "#nm-jsons") {
       $(appendtarget).append('<li>National Data Sets<ul id="nm-jsons-national"></ul></li>');
       appendtarget='#nm-jsons-national';
-      loadDataSourceList('https://api.github.com/repos/NICTA/nationalmap/contents/datasources/00_National_Data_Sets');
+      loadDataSourceList('https://api.github.com/repos/TerriaJS/NationalMap-Catalog/contents/datasources/00_National_Data_Sets');
     }
   };
 
   $("#nm-jsons").html("");
 
-  var source = 'https://api.github.com/repos/NICTA/nationalmap/contents/datasources';
+  var source = 'https://api.github.com/repos/TerriaJS/NationalMap-Catalog/contents/datasources';
 
   // for testing, to reduce wasting Github API calls
   if (false) { source = 'https://gist.githubusercontent.com/stevage/d2aef2fddd7e24e305e5/raw/gistfile1.txt'; }
